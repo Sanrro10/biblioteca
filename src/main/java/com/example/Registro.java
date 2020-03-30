@@ -1,17 +1,20 @@
 package com.example;
 
 import java.awt.BorderLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class InicioSesion extends JFrame {
+public class Registro extends JFrame {
 
 	/**
 	 * 
@@ -21,12 +24,13 @@ public class InicioSesion extends JFrame {
 	private JPanel contentpane;
 	private JLabel labelUser = new JLabel();
 	private JLabel labelPass = new JLabel();
+	private JLabel labelConfirmPass = new JLabel();
 	private JTextField textUser = new JTextField();
-	private JTextField textPass = new JTextField();
+	private JPasswordField textPass = new JPasswordField();
+	private JPasswordField textConfirmPass = new JPasswordField();
 	private JButton buttonAceptar = new JButton();
-	private JButton buttonRegistrar = new JButton();
 
-	public InicioSesion(int altura, int anchura) {
+	public Registro(int altura, int anchura) {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -41,13 +45,13 @@ public class InicioSesion extends JFrame {
 		labelPass.setBounds(200, 130, 200, 20);
 		contentpane.add(labelPass);
 
+		labelConfirmPass.setText("Confirmar contraseña:");
+		labelConfirmPass.setBounds(200, 160, 200, 20);
+		contentpane.add(labelConfirmPass);
+
 		buttonAceptar.setBounds(350, 300, 100, 50);
 		buttonAceptar.setText("Aceptar");
 		contentpane.add(buttonAceptar);
-		
-		buttonRegistrar.setBounds(200, 300, 100, 50);
-		buttonRegistrar.setText("Registrar");
-		contentpane.add(buttonRegistrar);
 
 		textUser.setBounds(340, 100, 100, 20);
 		contentpane.add(textUser);
@@ -55,29 +59,27 @@ public class InicioSesion extends JFrame {
 		textPass.setBounds(340, 130, 100, 20);
 		contentpane.add(textPass);
 
+		textConfirmPass.setBounds(340, 160, 100, 20);
+		contentpane.add(textConfirmPass);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(altura, anchura);
-		setTitle("Bilbioteca");
+		setTitle("Registro biblioteca");
 
 		buttonAceptar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				if (textPass.getText().equals(textConfirmPass.getText())) {
+					JOptionPane.showConfirmDialog(null, "Usuario registrado correctamente");
+					Registro.this.dispose();
+				}else {
+					JOptionPane.showConfirmDialog(null, "Datos incorrectos");
+					Registro.this.repaint();
+				}
 			}
 		});
-		
-		buttonRegistrar.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Registro registro = new Registro(750, 422); // quitar comentario para ver la ventana
-
-				registro.setVisible(true);
-
-			}
-		});
 	}
 
 }
