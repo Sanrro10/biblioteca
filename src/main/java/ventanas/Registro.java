@@ -1,10 +1,12 @@
 package ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,6 +31,7 @@ public class Registro extends JFrame {
 	private JPasswordField textPass = new JPasswordField();
 	private JPasswordField textConfirmPass = new JPasswordField();
 	private JButton buttonAceptar = new JButton();
+	private JLabel labelBackGround = new JLabel();
 
 	public Registro(int altura, int anchura) {
 		contentpane = new JPanel();
@@ -38,15 +41,21 @@ public class Registro extends JFrame {
 		contentpane.setLayout(null);
 
 		labelUser.setText("Nombre de Usuario:");
-		labelUser.setBounds(200, 100, 200, 20);
+		labelUser.setBounds(200, 100, 120, 20);
+		labelUser.setBackground(Color.white);
+		labelUser.setOpaque(true);
 		contentpane.add(labelUser, BorderLayout.SOUTH);
 
 		labelPass.setText("Contraseña:");
-		labelPass.setBounds(200, 130, 200, 20);
+		labelPass.setBounds(200, 130, 80, 20);
+		labelPass.setBackground(Color.white);
+		labelPass.setOpaque(true);
 		contentpane.add(labelPass);
 
 		labelConfirmPass.setText("Confirmar contraseña:");
-		labelConfirmPass.setBounds(200, 160, 200, 20);
+		labelConfirmPass.setBounds(200, 160, 130, 20);
+		labelConfirmPass.setBackground(Color.white);
+		labelConfirmPass.setOpaque(true);
 		contentpane.add(labelConfirmPass);
 
 		buttonAceptar.setBounds(350, 300, 100, 50);
@@ -61,6 +70,10 @@ public class Registro extends JFrame {
 
 		textConfirmPass.setBounds(340, 160, 100, 20);
 		contentpane.add(textConfirmPass);
+		
+		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/background.jpg")));
+		labelBackGround.setBounds(0, 0, altura, anchura);
+		contentpane.add(labelBackGround);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(altura, anchura);
