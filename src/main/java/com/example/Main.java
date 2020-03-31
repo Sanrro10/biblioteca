@@ -9,6 +9,8 @@ import java.net.URI;
 
 import com.example.*;
 
+import ventanas.InicioSesion;
+
 /**
  * Main class.
  *
@@ -42,11 +44,9 @@ public class Main {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException {
 
-		/*
-		 * InicioSesion inicioSesion = new InicioSesion(750, 422); //quitar comentario para ver la ventana
-		 * 
-		 * inicioSesion.setVisible(true);
-		 */
+		InicioSesion inicioSesion = new InicioSesion(750, 422); // quitar comentario para ver la ventana
+
+		inicioSesion.setVisible(true);
 
 		final HttpServer server = startServer();
 		System.out.println(String.format(

@@ -1,15 +1,20 @@
-package com.example;
+package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.example.Conexion;
+import com.example.Usuario;
 
 public class InicioSesion extends JFrame {
 
@@ -44,7 +49,7 @@ public class InicioSesion extends JFrame {
 		buttonAceptar.setBounds(350, 300, 100, 50);
 		buttonAceptar.setText("Aceptar");
 		contentpane.add(buttonAceptar);
-		
+
 		buttonRegistrar.setBounds(200, 300, 100, 50);
 		buttonRegistrar.setText("Registrar");
 		contentpane.add(buttonRegistrar);
@@ -63,11 +68,19 @@ public class InicioSesion extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+				usuarios = Conexion.cogerUsuarios();
 
+				for (Usuario u : usuarios) {
+					if (textUser.getText().equals(u.getNombre())) {
+						JOptionPane.showConfirmDialog(null, "Usuario correcto");
+						//avanzar a la siguiente pantalla de usuario
+					}
+				}
+				JOptionPane.showConfirmDialog(null, "Usuario no registrado");
 			}
 		});
-		
+
 		buttonRegistrar.addActionListener(new ActionListener() {
 
 			@Override
