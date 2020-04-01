@@ -129,6 +129,32 @@ public class Conexion {
         return a1;
         
     }
+    public static void insertarLibro(Libro l1) { 
+  	   Connection conn = conectar();
+  	   String sql = "INSERT INTO LIBRO VALUES ('" + l1.getCod_Libro()  + "' , '" + l1.getTitulo() + "' , '" + l1.getAutor() + "' , '" + l1.getGenero() + "' , '" + l1.getReserva_Max() + "')" ;	   
+         try (
+              Statement stmt  = conn.createStatement();
+              ResultSet rs    = stmt.executeQuery(sql)){
+             
+         } catch (SQLException e) {
+//      	   e.printStackTrace();
+//             System.out.println(e.getMessage());
+         }
+  	return;
+     }
+     public static void borrarLibro(Libro l1) { 
+  	   Connection conn = conectar();
+  	   String sql = "DELETE Libro WHERE Cod_Libro ='" + l1.getCod_Libro() + "'";	   
+         try (
+              Statement stmt  = conn.createStatement();
+              ResultSet rs    = stmt.executeQuery(sql)){
+             
+         } catch (SQLException e) {
+//      	   e.printStackTrace();
+//             System.out.println(e.getMessage());
+         }
+  	return;
+     }
     
     private static Logger logger = null;
 
