@@ -13,7 +13,7 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Color;
 
-public class Gestor extends JFrame {
+public class VentanaLibros extends JFrame {
 
 	/**
 	 * 
@@ -22,22 +22,20 @@ public class Gestor extends JFrame {
 
 	private JPanel contentpane;
 	private JButton buttonAtras = new JButton();
-	private JButton buttonLibros = new JButton();
-	private JButton buttonReservas = new JButton();
-	private JButton buttonUsuarios = new JButton();
-	private JButton buttonHistorial = new JButton();
+	private JButton buttonLibroNuevo = new JButton();
+	private JButton buttonModificar = new JButton();
 	private JLabel labelBackGround = new JLabel();
-	private final JLabel lblNewLabel = new JLabel("Biblioteca");
+	private final JLabel lblNewLabel = new JLabel("Gestion de libros");
 
-	public Gestor(int altura, int anchura) {
+	public VentanaLibros(int altura, int anchura) {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentpane);
 		contentpane.setLayout(null);
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 54));
-		lblNewLabel.setBounds(79, 28, 309, 42);
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 40));
+		lblNewLabel.setBounds(70, 28, 309, 42);
 
 		contentpane.add(lblNewLabel);
 		buttonAtras.setBackground(new Color(0, 102, 204));
@@ -46,11 +44,11 @@ public class Gestor extends JFrame {
 		buttonAtras.setBounds(45, 297, 140, 28);
 		buttonAtras.setText("Atrás");
 		contentpane.add(buttonAtras);
-		buttonLibros.setBackground(SystemColor.inactiveCaptionBorder);
+		buttonLibroNuevo.setBackground(SystemColor.inactiveCaptionBorder);
 
-		buttonLibros.setBounds(45, 139, 140, 52);
-		buttonLibros.setText("Gestión de libros");
-		contentpane.add(buttonLibros);
+		buttonLibroNuevo.setBounds(45, 139, 140, 52);
+		buttonLibroNuevo.setText("Añadir nuevo libro");
+		contentpane.add(buttonLibroNuevo);
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca
@@ -60,21 +58,10 @@ public class Gestor extends JFrame {
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
 		labelBiblioteca.setBounds(0, 0, 414, 95);
 		contentpane.add(labelBiblioteca);
-		buttonReservas.setBackground(SystemColor.inactiveCaptionBorder);
 
-		buttonReservas.setBounds(226, 139, 140, 52);
-		buttonReservas.setText("Retrasos y sanciones");
-		contentpane.add(buttonReservas);
-		buttonUsuarios.setBackground(SystemColor.inactiveCaptionBorder);
-
-		buttonUsuarios.setBounds(45, 213, 140, 52);
-		buttonUsuarios.setText("Gestion usuarios");
-		contentpane.add(buttonUsuarios);
-		buttonHistorial.setBackground(SystemColor.inactiveCaptionBorder);
-
-		buttonHistorial.setBounds(226, 213, 140, 52);
-		buttonHistorial.setText("Historial y calificaciones");
-		contentpane.add(buttonHistorial);
+		buttonModificar.setBounds(45, 213, 140, 52);
+		buttonModificar.setText("Modificar estado libros");
+		contentpane.add(buttonModificar);
 
 		labelBackGround.setIcon(new ImageIcon(Gestor.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
@@ -82,7 +69,7 @@ public class Gestor extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(431, 394);
-		setTitle("Area gestor");
+		setTitle("Gestion libros");
 
 		buttonAtras.addActionListener(new ActionListener() {
 
@@ -93,21 +80,7 @@ public class Gestor extends JFrame {
 
 				inicio.setVisible(true);
 
-				Gestor.this.dispose();
-
-			}
-		});
-
-		buttonLibros.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				VentanaLibros ventanaLibros = new VentanaLibros(750, 422);
-
-				ventanaLibros.setVisible(true);
-
-				Gestor.this.dispose();
+				VentanaLibros.this.dispose();
 
 			}
 		});

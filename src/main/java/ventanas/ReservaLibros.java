@@ -96,7 +96,7 @@ public class ReservaLibros extends JFrame{
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(519, 505);
-		setTitle("Area gestor");
+		setTitle("Area usuario");
 		
 		buttonAtras.addActionListener(new ActionListener() {
 			
