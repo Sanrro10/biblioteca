@@ -62,6 +62,7 @@ public class InicioSesion extends JFrame {
 		buttonAceptar.setBounds(214, 243, 143, 32);
 		buttonAceptar.setText("Aceptar");
 		contentpane.add(buttonAceptar);
+		buttonRegistrar.setBackground(SystemColor.inactiveCaptionBorder);
 
 		buttonRegistrar.setBounds(69, 243, 121, 32);
 		buttonRegistrar.setText("Registrar");
@@ -104,6 +105,8 @@ public class InicioSesion extends JFrame {
 
 				gestor.setVisible(true);
 				
+				InicioSesion.this.dispose();
+				
 				/*ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 				usuarios = Conexion.cogerUsuarios();
 
@@ -125,6 +128,8 @@ public class InicioSesion extends JFrame {
 				Registro registro = new Registro(750, 422); // quitar comentario para ver la ventana
 
 				registro.setVisible(true);
+				
+				InicioSesion.this.dispose();
 
 			}
 		});

@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class Registro extends JFrame {
 
@@ -39,44 +41,77 @@ public class Registro extends JFrame {
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentpane);
 		contentpane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Biblioteca");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 54));
+		lblNewLabel.setBounds(80, 26, 309, 42);
+		contentpane.add(lblNewLabel);
+		
+		JLabel labelBiblioteca = new JLabel("");
+		labelBiblioteca.setIcon(new ImageIcon(Registro.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+		labelBiblioteca.setForeground(Color.WHITE);
+		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
+		labelBiblioteca.setBackground(SystemColor.textHighlight);
+		labelBiblioteca.setBounds(0, 0, 414, 95);
+		contentpane.add(labelBiblioteca);
 
 		labelUser.setText("Nombre de Usuario:");
-		labelUser.setBounds(200, 100, 120, 20);
+		labelUser.setBounds(63, 133, 130, 20);
 		labelUser.setBackground(Color.white);
 		labelUser.setOpaque(true);
 		contentpane.add(labelUser, BorderLayout.SOUTH);
 
 		labelPass.setText("Contraseña:");
-		labelPass.setBounds(200, 130, 80, 20);
+		labelPass.setBounds(63, 177, 130, 20);
 		labelPass.setBackground(Color.white);
 		labelPass.setOpaque(true);
 		contentpane.add(labelPass);
 
 		labelConfirmPass.setText("Confirmar contraseña:");
-		labelConfirmPass.setBounds(200, 160, 130, 20);
+		labelConfirmPass.setBounds(63, 222, 130, 20);
 		labelConfirmPass.setBackground(Color.white);
 		labelConfirmPass.setOpaque(true);
 		contentpane.add(labelConfirmPass);
+		buttonAceptar.setForeground(new Color(255, 255, 255));
+		buttonAceptar.setBackground(new Color(0, 102, 204));
 
-		buttonAceptar.setBounds(350, 300, 100, 50);
+		buttonAceptar.setBounds(220, 288, 130, 23);
 		buttonAceptar.setText("Aceptar");
 		contentpane.add(buttonAceptar);
 
-		textUser.setBounds(340, 100, 100, 20);
+		textUser.setBounds(220, 133, 130, 20);
 		contentpane.add(textUser);
 
-		textPass.setBounds(340, 130, 100, 20);
+		textPass.setBounds(220, 177, 130, 20);
 		contentpane.add(textPass);
 
-		textConfirmPass.setBounds(340, 160, 100, 20);
+		textConfirmPass.setBounds(220, 222, 130, 20);
 		contentpane.add(textConfirmPass);
 		
-		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/background.jpg")));
+		JButton btnAtrs = new JButton();
+		btnAtrs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				InicioSesion inicio = new InicioSesion(750, 422); 
+
+				inicio.setVisible(true);
+				
+				Registro.this.dispose();
+				
+			}
+		});
+		btnAtrs.setBackground(SystemColor.inactiveCaptionBorder);
+		btnAtrs.setText("Atrás");
+		btnAtrs.setBounds(63, 288, 130, 23);
+		contentpane.add(btnAtrs);
+		
+		labelBackGround.setIcon(new ImageIcon(Registro.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(altura, anchura);
+		setSize(431, 394);
 		setTitle("Registro biblioteca");
 
 		buttonAceptar.addActionListener(new ActionListener() {
@@ -85,7 +120,13 @@ public class Registro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (textPass.getText().equals(textConfirmPass.getText())) {
 					JOptionPane.showConfirmDialog(null, "Usuario registrado correctamente");
+					
+					InicioSesion inicio = new InicioSesion(750, 422); 
+
+					inicio.setVisible(true);
+					
 					Registro.this.dispose();
+					
 				}else {
 					JOptionPane.showConfirmDialog(null, "Datos incorrectos");
 					Registro.this.repaint();
@@ -95,6 +136,4 @@ public class Registro extends JFrame {
 
 		setLocationRelativeTo(null);
 	}
-
-
 }
