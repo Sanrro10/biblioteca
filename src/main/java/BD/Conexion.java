@@ -1,4 +1,4 @@
-package com.example;
+package BD;
 import java.sql.Connection;
 import java.util.Date;
 import java.sql.DriverManager;
@@ -11,6 +11,11 @@ import java.util.Calendar;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import base.Gestor;
+import base.Libro;
+import base.Reserva;
+import base.Usuario;
  
 public class Conexion {
     private static String url = "jdbc:sqlite:BibliotecaBD";
