@@ -93,6 +93,8 @@ public class Registro extends JFrame {
 			}
 		});
 
+		setLocationRelativeTo(null);
 	}
+
 
 }

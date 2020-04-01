@@ -69,6 +69,7 @@ public class Gestor extends JFrame{
 			}
 		});
 		
+		setLocationRelativeTo(null);
 	}
 
 }
