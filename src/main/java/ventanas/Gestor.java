@@ -60,6 +60,18 @@ public class Gestor extends JFrame {
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
 		labelBiblioteca.setBounds(0, 0, 414, 95);
 		contentpane.add(labelBiblioteca);
+		buttonReservas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Retrasos retrasos = new Retrasos(750, 422);
+
+				retrasos.setVisible(true);
+
+				Gestor.this.dispose();
+				
+				
+			}
+		});
 		buttonReservas.setBackground(SystemColor.inactiveCaptionBorder);
 
 		buttonReservas.setBounds(226, 139, 140, 52);

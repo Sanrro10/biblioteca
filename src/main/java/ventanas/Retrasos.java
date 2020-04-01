@@ -96,8 +96,7 @@ public class Retrasos extends JFrame{
 		
 		setLocationRelativeTo(null);
 		
-		//Prueba
-		System.out.println("prueba commit");
+		
 		
 	}
 }
