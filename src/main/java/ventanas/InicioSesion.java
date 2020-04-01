@@ -35,6 +35,7 @@ public class InicioSesion extends JFrame {
 	private JButton buttonAceptar = new JButton();
 	private JButton buttonRegistrar = new JButton();
 	private JLabel labelBackGround = new JLabel();
+	private final JButton btnNewButton = new JButton("PRUEBA");
 
 	public InicioSesion(int altura, int anchura) {
 		contentpane = new JPanel();
@@ -87,6 +88,22 @@ public class InicioSesion extends JFrame {
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBounds(0, 0, 534, 95);
 		contentpane.add(labelBiblioteca);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ReservaLibros reserva = new ReservaLibros(750, 422);
+
+				reserva.setVisible(true);
+				
+				InicioSesion.this.dispose();
+				
+				
+			}
+		});
+		btnNewButton.setBackground(new Color(102, 204, 102));
+		btnNewButton.setBounds(0, 293, 89, 23);
+		
+		contentpane.add(btnNewButton);
 		
 		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
