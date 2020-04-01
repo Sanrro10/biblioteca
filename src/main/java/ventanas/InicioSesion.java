@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import com.example.Conexion;
-import com.example.Usuario;
+import BD.Conexion;
+import base.Usuario;
+
 import java.awt.Font;
 import java.awt.SystemColor;
 
