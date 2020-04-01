@@ -20,10 +20,10 @@ public class Conexion {
     	if (conexion!=null) return conexion;
     	try {
     		conexion = DriverManager.getConnection(url);
-    		log( Level.INFO, "Conectada base de datos GDT_BD", null );
+    		log( Level.INFO, "Conectada base de datos BibliotecaBD", null );
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            log( Level.WARNING, "Error en la conexi�n a la base de datos GDT_BD", null );
+            log( Level.WARNING, "Error en la conexi�n a la base de datos BibliotecaBD", null );
         }  
         return conexion;
     }
