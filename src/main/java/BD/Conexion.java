@@ -133,11 +133,11 @@ public class Conexion {
     public static void insertarLibro(Libro l1) { 
   	   Connection conn = conectar();
   	   String sql = "INSERT INTO LIBRO(Titulo, Autor, Genero, Reserva_Max) VALUES ('" + l1.getTitulo() + "' , '" + l1.getAutor() + "' , '" + l1.getGenero() + "' , '" + l1.getReserva_Max() + "')" ;	   
-         try (
-              Statement stmt  = conn.createStatement();
-              ResultSet rs    = stmt.executeQuery(sql)){
-             
-         } catch (SQLException e) {
+	  	 try {
+	         Statement stmt  = conn.createStatement();
+	   	 stmt.executeUpdate(sql);
+	        
+	    }catch (SQLException e) {
       	   e.printStackTrace();
            System.out.println(e.getMessage());
          }
