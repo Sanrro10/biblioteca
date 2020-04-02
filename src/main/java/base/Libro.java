@@ -1,5 +1,10 @@
 package base;
 
+import java.awt.Component;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Libro {
 
 	public Libro(int cod_Libro, String titulo, String autor, String genero, int reserva_Max) {
@@ -43,10 +48,27 @@ public class Libro {
 	public void setReserva_Max(int reserva_Max) {
 		this.reserva_Max = reserva_Max;
 	}
+	public Date fechaReserva() {
+		Date today = new Date();
+		 
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(today);
+		cal.add(Calendar.DATE, this.getReserva_Max());
+		 
+		// convert calendar to date
+		Date fecha = cal.getTime();
+		return  fecha;
+	}
 	int cod_Libro;
 	String titulo;
 	String autor;
 	String genero;
 	int reserva_Max;
+	public String toStringResumido() {
+		return this.getTitulo() + "  " + this.getAutor();
+	}
+	public String toString() {
+		return "Título: " + this.getTitulo() + "\n" + "Autor: " + this.getAutor() + "\n" + "Genero: " + this.getGenero() + "\n" + "Reserva hasta: " + this.getReserva_Max();
+	}
 
 }

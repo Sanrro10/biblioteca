@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -93,9 +94,16 @@ public class InicioSesion extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ReservaLibros reserva = new ReservaLibros(750, 422);
+				ReservaLibros reserva;
+				try {
+					reserva = new ReservaLibros(750, 422);
+					reserva.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
-				reserva.setVisible(true);
+				
 				
 				InicioSesion.this.dispose();
 				

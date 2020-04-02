@@ -57,3 +57,222 @@
   <message>Conectada base de datos BibliotecaBD</message>
 </record>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T21:27:43</date>
+  <millis>1585855663129</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T21:29:23</date>
+  <millis>1585855763941</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T21:30:21</date>
+  <millis>1585855821787</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T21:30:35</date>
+  <millis>1585855835369</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T21:47:59</date>
+  <millis>1585856879382</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T21:56:17</date>
+  <millis>1585857377697</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:15:40</date>
+  <millis>1585858540854</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:18:22</date>
+  <millis>1585858702579</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:19:55</date>
+  <millis>1585858795567</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:20:29</date>
+  <millis>1585858829486</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:20:40</date>
+  <millis>1585858840514</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:21:43</date>
+  <millis>1585858903867</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:22:20</date>
+  <millis>1585858940291</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:22:52</date>
+  <millis>1585858972503</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T22:23:30</date>
+  <millis>1585859010517</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>

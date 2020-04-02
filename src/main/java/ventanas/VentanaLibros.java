@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,9 +10,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BD.Conexion;
+import base.Libro;
+
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextPane;
 
 public class VentanaLibros extends JFrame {
 
@@ -66,10 +76,14 @@ public class VentanaLibros extends JFrame {
 		labelBackGround.setIcon(new ImageIcon(Gestor.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
-
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(431, 394);
 		setTitle("Gestion libros");
+		
 
 		buttonAtras.addActionListener(new ActionListener() {
 

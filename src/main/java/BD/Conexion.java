@@ -1,11 +1,15 @@
 package BD;
 import java.sql.Connection;
 import java.util.Date;
+import java.util.Locale;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
@@ -58,7 +62,7 @@ public class Conexion {
         return a1;
         
     }
-    public static ArrayList<Reserva> cogerReservas(){
+    public static ArrayList<Reserva> cogerReservas() throws ParseException{
         ArrayList<Reserva> a1 = new ArrayList<>();
     	
     	String sql = "SELECT Cod_Reserva, Cod_Usuario, Cod_Libro, Fecha_Devolucion FROM Reserva";
@@ -70,7 +74,8 @@ public class Conexion {
             	r1.setCod_Reserva(rs.getInt("Cod_Reserva"));
             	r1.setCod_Usuario(rs.getInt("Cod_Usuario"));
             	r1.setCod_Libro(rs.getInt("Cod_Libro"));
-            	r1.setFecha_Devolución(rs.getDate("Fecha_Devolucion"));
+            	DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+            	r1.setFecha_Devolución(dateFormat.parse(rs.getString("Fecha_Devolucion")));
                 a1.add(r1);
             }
         } catch (SQLException e) {
@@ -143,6 +148,19 @@ public class Conexion {
          }
   	return;
      }
+    public static void insertarReserva(Reserva reserva) { 
+   	   Connection conn = conectar();
+   	   String sql = "INSERT INTO RESERVA (Cod_Usuario, Cod_Libro, Fecha_Devolucion) VALUES ('" + reserva.getCod_Usuario() + "' , '" + reserva.getCod_Libro() + "' , '" + reserva.getFecha_Devolución() + "')" ;	   
+ 	  	 try {
+ 	         Statement stmt  = conn.createStatement();
+ 	   	 stmt.executeUpdate(sql);
+ 	        
+ 	    }catch (SQLException e) {
+       	   e.printStackTrace();
+            System.out.println(e.getMessage());
+          }
+   	return;
+      }
      public static void borrarLibro(Libro l1) { 
   	   Connection conn = conectar();
   	   String sql = "DELETE Libro WHERE Cod_Libro ='" + l1.getCod_Libro() + "'";	   
