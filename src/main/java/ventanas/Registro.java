@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -148,7 +149,19 @@ public class Registro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
+				int correcto= 0;
+				ArrayList<String> emails = new ArrayList<>();
+				for(int i = 0; i<Conexion.cogerUsuarios().size(); i++) {
+					emails.add(Conexion.cogerUsuarios().get(i).getEmail());
+				}if(emails.contains(textEmail.getText())){
+					correcto = 1;
+				}if(!textEmail.getText().contains("@") && !(textEmail.getText().contains(".es") || textEmail.getText().contains(".com"))){
+					correcto = 2;
+				}if (String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
+					correcto = 3;
+				}
+				
+				if (correcto == 0) {
 					Usuario nuevoUsuario = new Usuario();
 					nuevoUsuario.setNombre(textUser.getText());
 					nuevoUsuario.setApellidos(textSurname.getText());
@@ -167,7 +180,13 @@ public class Registro extends JFrame {
 					Registro.this.dispose();
 					
 				}else {
-					JOptionPane.showMessageDialog(null, "Datos incorrectos");
+					if (correcto==3){
+						JOptionPane.showMessageDialog(null, "Error. Las contraseñas no coinciden");
+					}if (correcto==1){
+						JOptionPane.showMessageDialog(null, "Ese email ya ha sido registrado");
+					}if (correcto==2){
+						JOptionPane.showMessageDialog(null, "Email no válido");
+					}
 					Registro.this.repaint();
 				}
 			}
