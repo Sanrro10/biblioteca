@@ -2,19 +2,21 @@ package base;
 
 public class Usuario {
 
-	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono) {
+	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		super();
 		this.cod_Usuario = cod_Usuario;
 		this.email = email;
 		this.nombre = nombre;
-		Apellidos = apellidos;
+		this.apellidos = apellidos;
 		this.telefono = telefono;
+		this.contrasenya = contrasenya;
 	}
 	int cod_Usuario;
 	String email;
 	String nombre;
-	String Apellidos;
+	String apellidos;
 	int telefono;
+	String contrasenya;
 	public Usuario() {
 		
 	}
@@ -37,10 +39,16 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 	public String getApellidos() {
-		return Apellidos;
+		return apellidos;
 	}
 	public void setApellidos(String apellidos) {
-		Apellidos = apellidos;
+		this.apellidos = apellidos;
+	}
+	public String getContrasenya() {
+		return contrasenya;
+	}
+	public void setContrasenya(String contrasenya) {
+		this.contrasenya = contrasenya;
 	}
 	public int getTelefono() {
 		return telefono;

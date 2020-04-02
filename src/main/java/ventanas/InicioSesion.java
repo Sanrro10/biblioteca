@@ -125,17 +125,17 @@ public class InicioSesion extends JFrame {
 				
 				InicioSesion.this.dispose();
 				
-				/*ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 				usuarios = Conexion.cogerUsuarios();
 
 				for (Usuario u : usuarios) {
 				
 					if (textUser.getText().equals(u.getNombre())) {
 						JOptionPane.showConfirmDialog(null, "Usuario correcto");
-						//avanzar a la siguiente pantalla de usuario
+						
 					}
 				}
-				JOptionPane.showConfirmDialog(null, "Usuario no registrado");*/
+				JOptionPane.showConfirmDialog(null, "Usuario no registrado");
 			}
 		});
 

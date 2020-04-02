@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import BD.Conexion;
+import base.Usuario;
+
 import java.awt.SystemColor;
 import java.awt.Font;
 
@@ -119,7 +123,15 @@ public class Registro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (textPass.getText().equals(textConfirmPass.getText())) {
+					Usuario nuevoUsuario = new Usuario();
+//					nuevoUsuario.setApellidos(apellidos);
+					nuevoUsuario.setCod_Usuario(Conexion.cogerUsuarios().size());
+					nuevoUsuario.setContrasenya(textPass.getText());
+//					nuevoUsuario.setEmail(email);
+					nuevoUsuario.setNombre(textUser.getText());
+					Conexion.insertarUsuario(nuevoUsuario);
 					JOptionPane.showConfirmDialog(null, "Usuario registrado correctamente");
+					
 					
 					InicioSesion inicio = new InicioSesion(750, 422); 
 

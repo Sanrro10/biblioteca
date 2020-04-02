@@ -87,7 +87,7 @@ public class Conexion {
     public static ArrayList<Usuario> cogerUsuarios(){
         ArrayList<Usuario> a1 = new ArrayList<>();
     	
-    	String sql = "SELECT Cod_Usuario, email, Nombre, Apellidos, Telefono FROM Usuario";
+    	String sql = "SELECT Cod_Usuario, email, Nombre, Apellidos, Telefono, Contrasenya FROM Usuario";
     	Connection conn = conectar();
         try (Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)) {
@@ -100,6 +100,7 @@ public class Conexion {
             	u1.setNombre(rs.getString("Nombre"));
             	u1.setApellidos(rs.getString("Apellidos"));
             	u1.setTelefono(rs.getInt("Telefono"));
+            	u1.setApellidos(rs.getString("Contrasenya"));
                 a1.add(u1);
             }
         } catch (SQLException e) {
@@ -112,7 +113,7 @@ public class Conexion {
     public static ArrayList<Gestor> cogerGestores(){
         ArrayList<Gestor> a1 = new ArrayList<>();
     	
-    	String sql = "SELECT Cod_Usuario, email, Nombre, Apellidos, Telefono FROM Gestor";
+    	String sql = "SELECT Cod_Usuario, email, Nombre, Apellidos, Telefono, Contrasenya FROM Gestor";
     	Connection conn = conectar();
         try (Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)) {
@@ -125,6 +126,7 @@ public class Conexion {
             	g1.setNombre(rs.getString("Nombre"));
             	g1.setApellidos(rs.getString("Apellidos"));
             	g1.setTelefono(rs.getInt("Telefono"));
+            	g1.setContrasenya(rs.getString("Contrasenya"));
                 a1.add(g1);
             }
         } catch (SQLException e) {
@@ -160,6 +162,19 @@ public class Conexion {
          }
   	return;
      }
+     public static void insertarUsuario(Usuario u1) { 
+    	   Connection conn = conectar();
+    	   String sql = "INSERT INTO USUARIO VALUES ('" + u1.getCod_Usuario()  + "' , '" + u1.getEmail() + "' , '" + u1.getNombre() + "' , '" + u1.getApellidos() + "' , '" + u1.getTelefono() + "' , '" + u1.getContrasenya() + "')" ;	   
+           try (
+                Statement stmt  = conn.createStatement();
+                ResultSet rs    = stmt.executeQuery(sql)){
+               
+           } catch (SQLException e) {
+//        	   e.printStackTrace();
+//               System.out.println(e.getMessage());
+           }
+    	return;
+       }
     
     private static Logger logger = null;
 

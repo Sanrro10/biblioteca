@@ -7,6 +7,13 @@ public class Gestor extends Usuario {
 	String nombre;
 	String Apellidos;
 	int telefono;
+	String contrasenya;
+	public String getContrasenya() {
+		return contrasenya;
+	}
+	public void setContrasenya(String contrasenya) {
+		this.contrasenya = contrasenya;
+	}
 	public int getCod_Usuario() {
 		return cod_Usuario;
 	}
@@ -26,8 +33,8 @@ public class Gestor extends Usuario {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Gestor(int cod_Usuario, String email, String nombre, String apellidos, int telefono) {
-		super(cod_Usuario, email, nombre, apellidos, telefono);
+	public Gestor(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
+		super(cod_Usuario, email, nombre, apellidos, telefono, contrasenya);
 		// TODO Auto-generated constructor stub
 	}
 	public void setNombre(String nombre) {

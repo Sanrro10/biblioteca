@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-02T14:24:40</date>
+  <millis>1585830280189</millis>
+  <sequence>0</sequence>
+  <logger>org.sqlite.SQLiteConnection</logger>
+  <level>INFO</level>
+  <class>BD.Conexion</class>
+  <method>log</method>
+  <thread>24</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
