@@ -18,7 +18,7 @@ import base.Reserva;
 import base.Usuario;
  
 public class Conexion {
-    private static String url = "jdbc:sqlite:BibliotecaBD.db";
+    private static String url = "jdbc:sqlite:BibliotecaBD";
     private static Connection conexion = null;
     
     public static Connection conectar() {
@@ -138,7 +138,7 @@ public class Conexion {
     }
     public static void insertarLibro(Libro l1) { 
   	   Connection conn = conectar();
-  	   String sql = "INSERT INTO LIBRO VALUES ('" + l1.getCod_Libro()  + "' , '" + l1.getTitulo() + "' , '" + l1.getAutor() + "' , '" + l1.getGenero() + "' , '" + l1.getReserva_Max() + "')" ;	   
+  	   String sql = "INSERT INTO LIBRO(Titulo, Autor, Genero, Reserva_Max) VALUES ('" + l1.getTitulo() + "' , '" + l1.getAutor() + "' , '" + l1.getGenero() + "' , '" + l1.getReserva_Max() + "')" ;	   
          try (
               Statement stmt  = conn.createStatement();
               ResultSet rs    = stmt.executeQuery(sql)){
@@ -164,7 +164,7 @@ public class Conexion {
      }
      public static void insertarUsuario(Usuario u1) { 
     	   Connection conn = conectar();
-    	   String sql = "INSERT INTO USUARIO VALUES ('" + u1.getCod_Usuario()  + "' , '" + u1.getEmail() + "' , '" + u1.getNombre() + "' , '" + u1.getApellidos() + "' , '" + u1.getTelefono() + "' , '" + u1.getContrasenya() + "')" ;	   
+    	   String sql = "INSERT INTO USUARIO(email, Nombre, Apellidos, Telefono, Contrasenya) VALUES ('"  + u1.getEmail() + "' , '" + u1.getNombre() + "' , '" + u1.getApellidos() + "' , '" + u1.getTelefono() + "' , '" + u1.getContrasenya() + "')" ;	   
            try (
                 Statement stmt  = conn.createStatement();
                 ResultSet rs    = stmt.executeQuery(sql)){

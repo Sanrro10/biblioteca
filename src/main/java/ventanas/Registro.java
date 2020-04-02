@@ -125,7 +125,6 @@ public class Registro extends JFrame {
 				if (textPass.getText().equals(textConfirmPass.getText())) {
 					Usuario nuevoUsuario = new Usuario();
 //					nuevoUsuario.setApellidos(apellidos);
-					nuevoUsuario.setCod_Usuario(Conexion.cogerUsuarios().size());
 					nuevoUsuario.setContrasenya(textPass.getText());
 //					nuevoUsuario.setEmail(email);
 					nuevoUsuario.setNombre(textUser.getText());

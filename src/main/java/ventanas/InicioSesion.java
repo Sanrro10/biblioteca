@@ -119,23 +119,30 @@ public class InicioSesion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				Gestor gestor = new Gestor(750, 422); // quitar comentario para ver la ventana
-
-				gestor.setVisible(true);
 				
-				InicioSesion.this.dispose();
 				
 				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 				usuarios = Conexion.cogerUsuarios();
-
+				boolean correcto = false;
 				for (Usuario u : usuarios) {
 				
 					if (textUser.getText().equals(u.getNombre())) {
-						JOptionPane.showConfirmDialog(null, "Usuario correcto");
+						correcto = true;
+						break;
 						
 					}
 				}
-				JOptionPane.showConfirmDialog(null, "Usuario no registrado");
+				if(correcto) {
+					JOptionPane.showMessageDialog(null, "Usuario correcto");
+					Gestor gestor = new Gestor(750, 422);
+
+					gestor.setVisible(true);
+					
+					InicioSesion.this.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Usuario incorrecto");
+				}
+				
 			}
 		});
 
