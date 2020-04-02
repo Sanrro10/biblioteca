@@ -130,7 +130,7 @@ public class Registro extends JFrame {
 //					nuevoUsuario.setEmail(email);
 					nuevoUsuario.setNombre(textUser.getText());
 					Conexion.insertarUsuario(nuevoUsuario);
-					JOptionPane.showConfirmDialog(null, "Usuario registrado correctamente");
+					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					
 					
 					InicioSesion inicio = new InicioSesion(750, 422); 
@@ -140,7 +140,7 @@ public class Registro extends JFrame {
 					Registro.this.dispose();
 					
 				}else {
-					JOptionPane.showConfirmDialog(null, "Datos incorrectos");
+					JOptionPane.showMessageDialog(null, "Datos incorrectos");
 					Registro.this.repaint();
 				}
 			}

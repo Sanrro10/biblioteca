@@ -18,7 +18,7 @@ import base.Reserva;
 import base.Usuario;
  
 public class Conexion {
-    private static String url = "jdbc:sqlite:BibliotecaBD";
+    private static String url = "jdbc:sqlite:BibliotecaBD.db";
     private static Connection conexion = null;
     
     public static Connection conectar() {
