@@ -127,6 +127,7 @@ public class Registro extends JFrame {
 		buttonAceptar.setBackground(SystemColor.inactiveCaptionBorder);
 		buttonAceptar.setText("Aceptar");
 		buttonAceptar.setBounds(200, 288, 130, 23);
+		buttonAceptar.setBackground(new Color(0, 102, 204));
 		contentpane.add(buttonAceptar);
 
 		btnAtrs.setBackground(SystemColor.inactiveCaptionBorder);
@@ -147,12 +148,14 @@ public class Registro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (textPass.getText().equals(textConfirmPass.getText())) {
+				if (String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
 					Usuario nuevoUsuario = new Usuario();
-//					nuevoUsuario.setApellidos(apellidos);
-					nuevoUsuario.setContrasenya(textPass.getText());
-//					nuevoUsuario.setEmail(email);
 					nuevoUsuario.setNombre(textUser.getText());
+					nuevoUsuario.setApellidos(textSurname.getText());
+					nuevoUsuario.setEmail(textEmail.getText());
+					nuevoUsuario.setTelefono(Integer.parseInt(textTlfn.getText()));
+					nuevoUsuario.setContrasenya(String.valueOf(textPass.getPassword()));
+					
 					Conexion.insertarUsuario(nuevoUsuario);
 					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					
