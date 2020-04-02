@@ -37,6 +37,7 @@ public class InicioSesion extends JFrame {
 	private JButton buttonRegistrar = new JButton();
 	private JLabel labelBackGround = new JLabel();
 	private final JButton btnNewButton = new JButton("PRUEBA");
+	private final JButton btnNewButtonGestor = new JButton("Gestor");
 
 	public InicioSesion(int altura, int anchura) {
 		contentpane = new JPanel();
@@ -105,6 +106,23 @@ public class InicioSesion extends JFrame {
 		btnNewButton.setBounds(0, 293, 89, 23);
 		
 		contentpane.add(btnNewButton);
+		
+		btnNewButtonGestor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Gestor gestor = new Gestor(750, 422);
+
+				gestor.setVisible(true);
+				
+				InicioSesion.this.dispose();
+				
+				
+			}
+		});
+		btnNewButtonGestor.setBackground(new Color(102, 204, 102));
+		btnNewButtonGestor.setBounds(200, 293, 89, 23);
+		
+		contentpane.add(btnNewButtonGestor);
 		
 		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
