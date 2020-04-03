@@ -109,7 +109,12 @@ public class ReservaLibros extends JFrame{
 				comboBox.addItem(libros.get(i).toStringResumido());
 			}	  
 		}try {
-			txtpnDatos.setText(comboBox.getSelectedItem().toString());
+			for(int i = 0; i<libros.size(); i++) {
+				if((comboBox.getSelectedItem().equals((libros.get(i).toStringResumido())))) {
+					txtpnDatos.setText(libros.get(i).toString());
+				}	  
+			}
+			
 		} catch (java.lang.NullPointerException e) {
 			txtpnDatos.setText("No hay libros disponibles");
 		}
@@ -150,6 +155,16 @@ public class ReservaLibros extends JFrame{
 				Conexion.insertarReserva(reserva);
 				comboBox.remove(comboBox.getSelectedIndex());
 				comboBox.revalidate();
+				try {
+					for(int i = 0; i<libros.size(); i++) {
+						if((comboBox.getSelectedItem().equals((libros.get(i).toStringResumido())))) {
+							txtpnDatos.setText(libros.get(i).toString());
+						}	  
+					}
+					
+				} catch (java.lang.NullPointerException a) {
+					txtpnDatos.setText("No hay libros disponibles");
+				}
 				comboBox.repaint();
 			}
 		});
