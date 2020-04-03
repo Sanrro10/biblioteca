@@ -1,6 +1,7 @@
 package base;
 
 import java.awt.Component;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
@@ -68,7 +69,7 @@ public class Libro {
 		return this.getTitulo() + "  " + this.getAutor();
 	}
 	public String toString() {
-		return "Título: " + this.getTitulo() + "\n" + "Autor: " + this.getAutor() + "\n" + "Genero: " + this.getGenero() + "\n" + "Reserva hasta: " + this.getReserva_Max();
+		return "Título: " + this.getTitulo() + "\n" + "Autor: " + this.getAutor() + "\n" + "Genero: " + this.getGenero() + "\n" + "Reserva hasta: " + new SimpleDateFormat("dd-MM-yyyy").format(this.fechaReserva());
 	}
 
 }
