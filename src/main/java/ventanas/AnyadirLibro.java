@@ -88,7 +88,7 @@ public class AnyadirLibro extends JFrame {
 		buttonAceptar.setText("Aceptar");
 		contentpane.add(buttonAceptar);
 		
-		genero = new JComboBox();
+
 		genero.setBounds(214, 240, 143, 20);
 		genero.addItem("Novela de terror");
 		genero.addItem("Ciencia ficcion");
