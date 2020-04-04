@@ -44,12 +44,12 @@ public class Gestor extends JFrame {
 		buttonAtras.setForeground(Color.WHITE);
 
 		buttonAtras.setBounds(45, 297, 140, 28);
-		buttonAtras.setText("Atrás");
+		buttonAtras.setText("Atras");
 		contentpane.add(buttonAtras);
 		buttonLibros.setBackground(SystemColor.inactiveCaptionBorder);
 
 		buttonLibros.setBounds(45, 139, 140, 52);
-		buttonLibros.setText("Gestión de libros");
+		buttonLibros.setText("Gestion de libros");
 		contentpane.add(buttonLibros);
 
 		JLabel labelBiblioteca = new JLabel("");

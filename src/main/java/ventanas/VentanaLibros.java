@@ -42,12 +42,12 @@ public class VentanaLibros extends JFrame {
 		buttonAtras.setForeground(Color.WHITE);
 
 		buttonAtras.setBounds(45, 297, 140, 28);
-		buttonAtras.setText("AtrÃ¡s");
+		buttonAtras.setText("Atras");
 		contentpane.add(buttonAtras);
 		buttonLibroNuevo.setBackground(SystemColor.inactiveCaptionBorder);
 
 		buttonLibroNuevo.setBounds(45, 139, 140, 52);
-		buttonLibroNuevo.setText("AÃ±adir nuevo libro");
+		buttonLibroNuevo.setText("Añadir nuevo libro");
 		contentpane.add(buttonLibroNuevo);
 
 		JLabel labelBiblioteca = new JLabel("");

@@ -55,7 +55,7 @@ public class Retrasos extends JFrame{
 		buttonAtras.setForeground(new Color(0, 0, 0));
 		
 		buttonAtras.setBounds(53, 357, 76, 28);
-		buttonAtras.setText("Atrás");
+		buttonAtras.setText("Atras");
 		contentpane.add(buttonAtras);
 		
 		JLabel labelBiblioteca = new JLabel("");

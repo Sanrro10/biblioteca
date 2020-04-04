@@ -64,7 +64,7 @@ public class ReservaLibros extends JFrame{
 		buttonAtras.setForeground(new Color(0, 0, 0));
 		
 		buttonAtras.setBounds(45, 407, 161, 28);
-		buttonAtras.setText("Cerrar sesión");
+		buttonAtras.setText("Cerrar sesion");
 		contentpane.add(buttonAtras);
 		buttonLibros.setBackground(SystemColor.inactiveCaption);
 		

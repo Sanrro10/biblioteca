@@ -1,5 +1,6 @@
 package ventanas;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -28,11 +30,11 @@ public class ModificarLibro extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentpane;
-	private JLabel labelUsuario = new JLabel();
+	private JLabel labelDias = new JLabel();
 	private JLabel labelNombre = new JLabel();
 	private JLabel labelAutor = new JLabel();
 	private JLabel labelGenero = new JLabel();
-	private JTextField textUsuario = new JTextField();
+	private JSpinner dias = new JSpinner();
 	private JTextField textNombre = new JTextField();
 	private JTextField textAutor = new JTextField();
 	private JButton buttonAceptar = new JButton();
@@ -47,30 +49,30 @@ public class ModificarLibro extends JFrame {
 		setContentPane(contentpane);
 		contentpane.setLayout(null);
 		
-		labelUsuario.setFont(new Font("Arial", Font.BOLD, 11));
-		labelUsuario.setText("Usuario: ");
-		labelUsuario.setBackground(Color.white);
-		labelUsuario.setOpaque(true);
-		labelUsuario.setBounds(70, 120, 120, 20);
-		contentpane.add(labelUsuario, BorderLayout.SOUTH);
+		labelDias.setFont(new Font("Arial", Font.BOLD, 11));
+		labelDias.setText("Dias: ");
+		labelDias.setBackground(Color.white);
+		labelDias.setOpaque(true);
+		labelDias.setBounds(70, 240, 120, 20);
+		contentpane.add(labelDias, BorderLayout.SOUTH);
 		
 		labelNombre.setFont(new Font("Arial", Font.BOLD, 11));
 		labelNombre.setText("Titulo del libro: ");
-		labelNombre.setBounds(70, 160, 120, 20);
+		labelNombre.setBounds(70, 120, 120, 20);
 		labelNombre.setBackground(Color.white);
 		labelNombre.setOpaque(true);
 		contentpane.add(labelNombre);
 		
 		labelAutor.setFont(new Font("Arial", Font.BOLD, 11));
 		labelAutor.setText("Autor del libro: ");
-		labelAutor.setBounds(70, 200, 120, 20);
+		labelAutor.setBounds(70, 160, 120, 20);
 		labelAutor.setBackground(Color.white);
 		labelAutor.setOpaque(true);
 		contentpane.add(labelAutor);
 		
 		labelGenero.setFont(new Font("Arial", Font.BOLD, 11));
 		labelGenero.setText("Genero del libro: ");
-		labelGenero.setBounds(70, 240, 120, 20);
+		labelGenero.setBounds(70, 200, 120, 20);
 		labelGenero.setBackground(Color.white);
 		labelGenero.setOpaque(true);
 		contentpane.add(labelGenero);
@@ -87,8 +89,8 @@ public class ModificarLibro extends JFrame {
 		buttonAceptar.setText("Aceptar");
 		contentpane.add(buttonAceptar);
 		
-		genero = new JComboBox();
-		genero.setBounds(214, 240, 143, 20);
+
+		genero.setBounds(214, 200, 143, 20);
 		genero.addItem("Novela de terror");
 		genero.addItem("Ciencia ficcion");
 		genero.addItem("Biografia");
@@ -99,13 +101,13 @@ public class ModificarLibro extends JFrame {
 		contentpane.add(genero);
 		
 
-		textUsuario.setBounds(214, 120, 143, 20);
-		contentpane.add(textUsuario);
+		dias.setBounds(214, 240, 120, 20);
+		contentpane.add(dias);
 
-		textNombre.setBounds(214, 160, 143, 20);
+		textNombre.setBounds(214, 120, 120, 20);
 		contentpane.add(textNombre);
 		
-		textAutor.setBounds(214, 200, 143, 20);
+		textAutor.setBounds(214, 160, 120, 20);
 		contentpane.add(textAutor);
 		
 		JLabel lblNewLabel = new JLabel("Biblioteca");
@@ -136,7 +138,7 @@ public class ModificarLibro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				AnyadirLibro anyadir = new AnyadirLibro(750, 422); 
+				ModificarLibro anyadir = new ModificarLibro(750, 422); 
 
 				anyadir.setVisible(true);
 				
@@ -162,6 +164,4 @@ public class ModificarLibro extends JFrame {
 		setLocationRelativeTo(null);
 	}
 }
-
-
 
