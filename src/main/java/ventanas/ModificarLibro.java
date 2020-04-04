@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -14,10 +15,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import BD.Conexion;
+import base.Libro;
+import base.Reserva;
 
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -41,8 +47,9 @@ public class ModificarLibro extends JFrame {
 	private JButton buttonAtras = new JButton();
 	private JLabel labelBackGround = new JLabel();
 	private JComboBox genero = new JComboBox();
+	private final JTextPane txtpnDatos = new JTextPane();
 
-	public ModificarLibro(int altura, int anchura) {
+	public ModificarLibro(int altura, int anchura) throws ParseException {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,9 +110,39 @@ public class ModificarLibro extends JFrame {
 
 		dias.setBounds(214, 240, 120, 20);
 		contentpane.add(dias);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(214, 120, 120, 20);
+		contentpane.add(scrollPane);
 
-		textNombre.setBounds(214, 120, 120, 20);
-		contentpane.add(textNombre);
+		final JComboBox comboBox = new JComboBox();
+		final ArrayList<Libro> libros = Conexion.cogerLibros();
+		ArrayList<Reserva> reservas = Conexion.cogerReservas();
+		ArrayList<Integer> cods_Libro = new ArrayList<>();
+		for(int i = 0; i<reservas.size(); i++) {
+			cods_Libro.add(reservas.get(i).getCod_Libro());
+		}
+		for(int i = 0; i<libros.size(); i++) {
+			if(!cods_Libro.contains(libros.get(i).getCod_Libro())) {
+				comboBox.addItem(libros.get(i).toStringResumido());
+			}	  
+		}try {
+			for(int i = 0; i<libros.size(); i++) {
+				if((comboBox.getSelectedItem().equals((libros.get(i).toStringResumido())))) {
+					txtpnDatos.setText(libros.get(i).toString());
+				}	  
+			}
+			
+		} catch (java.lang.NullPointerException e) {
+			txtpnDatos.setText("No hay libros disponibles");
+		}
+		
+
+		scrollPane.setColumnHeaderView(comboBox);
+		
+		
+		scrollPane.setViewportView(txtpnDatos);
+		
 		
 		textAutor.setBounds(214, 160, 120, 20);
 		contentpane.add(textAutor);
@@ -137,14 +174,18 @@ public class ModificarLibro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				ModificarLibro anyadir = new ModificarLibro(750, 422); 
 
-				anyadir.setVisible(true);
-				
+				ModificarLibro inicio;
+				try {
+					inicio = new ModificarLibro(750, 422);
+					inicio.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				ModificarLibro.this.dispose();
-				
-				
+
 			}
 		});
 
