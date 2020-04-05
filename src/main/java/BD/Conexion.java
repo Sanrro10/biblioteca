@@ -189,6 +189,19 @@ public class Conexion {
          }
   	return;
      }
+     public static void borrarReserva(Reserva r1) { 
+    	   Connection conn = conectar();
+    	   String sql = "DELETE FROM Reserva WHERE Cod_Libro ='" + r1.getCod_Libro() + "'";	   
+           try {
+                Statement stmt  = conn.createStatement();
+          	 stmt.executeUpdate(sql);
+               
+           } catch (SQLException e) {
+          	e.printStackTrace();
+              System.out.println(e.getMessage());
+           }
+    	return;
+       }
      public static void insertarUsuario(Usuario u1) { 
     	   Connection conn = conectar();
     	   String sql = "INSERT INTO USUARIO (email, Nombre, Apellidos, Telefono, Contrasenya) VALUES ('"  + u1.getEmail() + "' , '" + u1.getNombre() + "' , '" + u1.getApellidos() + "' , '" + u1.getTelefono() + "' , '" + u1.getContrasenya() + "')" ;	   
