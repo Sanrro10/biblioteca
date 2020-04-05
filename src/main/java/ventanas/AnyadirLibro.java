@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -14,15 +15,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import BD.Conexion;
+import base.Libro;
+import base.Reserva;
 
 import java.awt.Font;
 import java.awt.SystemColor;
 
 public class AnyadirLibro extends JFrame {
+
+	/**
+	 * 
+	 */
 
 	/**
 	 * 
@@ -35,14 +45,14 @@ public class AnyadirLibro extends JFrame {
 	private JLabel labelAutor = new JLabel();
 	private JLabel labelGenero = new JLabel();
 	private JSpinner dias = new JSpinner();
-	private JTextField textNombre = new JTextField();
 	private JTextField textAutor = new JTextField();
 	private JButton buttonAceptar = new JButton();
 	private JButton buttonAtras = new JButton();
 	private JLabel labelBackGround = new JLabel();
 	private JComboBox genero = new JComboBox();
+	private JTextField textTitulo = new JTextField();
 
-	public AnyadirLibro(int altura, int anchura) {
+	public AnyadirLibro(int altura, int anchura) throws ParseException {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,12 +113,14 @@ public class AnyadirLibro extends JFrame {
 
 		dias.setBounds(214, 240, 120, 20);
 		contentpane.add(dias);
-
-		textNombre.setBounds(214, 120, 120, 20);
-		contentpane.add(textNombre);
+		
+		
 		
 		textAutor.setBounds(214, 160, 120, 20);
 		contentpane.add(textAutor);
+		
+		textTitulo.setBounds(214, 120, 120, 20);
+		contentpane.add(textTitulo);
 		
 		JLabel lblNewLabel = new JLabel("Biblioteca");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 54));
@@ -128,6 +140,7 @@ public class AnyadirLibro extends JFrame {
 		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
+		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(441, 355);
@@ -137,12 +150,25 @@ public class AnyadirLibro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Libro l1 = new Libro();
+				l1.setTitulo(textTitulo.getText());
+				l1.setAutor(textAutor.getText());
+				l1.setGenero(genero.getSelectedItem().toString());
+				l1.setReserva_Max(dias.getComponentCount());
+				Conexion.insertarLibro(l1);
 				
-				AnyadirLibro anyadir = new AnyadirLibro(750, 422); 
+				AnyadirLibro anyadir;
+				try {
+					anyadir = new AnyadirLibro(750, 422);
+					anyadir.setVisible(true);
+					
+					AnyadirLibro.this.dispose();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
 
-				anyadir.setVisible(true);
 				
-				AnyadirLibro.this.dispose();
 				
 				
 			}

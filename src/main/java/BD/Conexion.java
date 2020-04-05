@@ -137,7 +137,7 @@ public class Conexion {
     }
     public static void insertarLibro(Libro l1) { 
   	   Connection conn = conectar();
-  	   String sql = "INSERT INTO LIBRO(Titulo, Autor, Genero, Reserva_Max) VALUES ('" + l1.getTitulo() + "' , '" + l1.getAutor() + "' , '" + l1.getGenero() + "' , '" + l1.getReserva_Max() + "')" ;	   
+  	   String sql = "INSERT INTO Libro(Titulo, Autor, Genero, Reserva_Max) VALUES ('" + l1.getTitulo() + "' , '" + l1.getAutor() + "' , '" + l1.getGenero() + "' , '" + l1.getReserva_Max() + "')" ;	   
 	  	 try {
 	         Statement stmt  = conn.createStatement();
 	   	 stmt.executeUpdate(sql);
@@ -148,9 +148,24 @@ public class Conexion {
          }
   	return;
      }
+    public static void modificararLibro(Libro l1) { 
+   	   Connection conn = conectar();
+   	   String sql = "UPDATE Libro SET Titulo = '" + l1.getTitulo() + "', Autor = '" + l1.getAutor() + "', Genero = '" + l1.getGenero() + "', Reserva_Max = " + l1.getReserva_Max() + " WHERE Cod_Libro = " + l1.getCod_Libro();	   
+ 	  	 try {
+ 	         Statement stmt  = conn.createStatement();
+ 	   	 stmt.executeUpdate(sql);
+ 	        
+ 	    }catch (SQLException e) {
+       	   e.printStackTrace();
+            System.out.println(e.getMessage());
+          }
+   	return;
+      }
+    
+    
     public static void insertarReserva(Reserva reserva) { 
    	   Connection conn = conectar();
-   	   String sql = "INSERT INTO RESERVA (Cod_Usuario, Cod_Libro, Fecha_Devolucion) VALUES ('" + reserva.getCod_Usuario() + "' , '" + reserva.getCod_Libro() + "' , '" + reserva.getFecha_Devolución() + "')" ;	   
+   	   String sql = "INSERT INTO Reserva (Cod_Usuario, Cod_Libro, Fecha_Devolucion) VALUES ('" + reserva.getCod_Usuario() + "' , '" + reserva.getCod_Libro() + "' , '" + reserva.getFecha_Devolución() + "')" ;	   
  	  	 try {
  	         Statement stmt  = conn.createStatement();
  	   	 stmt.executeUpdate(sql);
@@ -163,7 +178,7 @@ public class Conexion {
       }
      public static void borrarLibro(Libro l1) { 
   	   Connection conn = conectar();
-  	   String sql = "DELETE Libro WHERE Cod_Libro ='" + l1.getCod_Libro() + "'";	   
+  	   String sql = "DELETE FROM Libro WHERE Cod_Libro ='" + l1.getCod_Libro() + "'";	   
          try {
               Statement stmt  = conn.createStatement();
         	 stmt.executeUpdate(sql);

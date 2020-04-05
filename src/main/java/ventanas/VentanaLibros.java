@@ -53,7 +53,7 @@ public class VentanaLibros extends JFrame {
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca
-				.setIcon(new ImageIcon(Gestor.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -64,7 +64,7 @@ public class VentanaLibros extends JFrame {
 		buttonModificar.setText("Modificar estado libros");
 		contentpane.add(buttonModificar);
 
-		labelBackGround.setIcon(new ImageIcon(Gestor.class.getResource("/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 
@@ -91,12 +91,19 @@ public class VentanaLibros extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				AnyadirLibro libros = new AnyadirLibro(750, 422);
+				AnyadirLibro libros;
+				try {
+					libros = new AnyadirLibro(750, 422);
+					libros.setVisible(true);
 
-				libros.setVisible(true);
+					VentanaLibros.this.dispose();
 
-				VentanaLibros.this.dispose();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
+				
 			}
 		});
 		
@@ -108,7 +115,7 @@ public class VentanaLibros extends JFrame {
 				ModificarLibro modificar;
 				try {
 					
-					modificar = new ModificarLibro(750, 422);
+					modificar = new ModificarLibro(850, 480);
 					modificar.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block

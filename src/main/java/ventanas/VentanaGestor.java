@@ -13,7 +13,7 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Color;
 
-public class Gestor extends JFrame {
+public class VentanaGestor extends JFrame {
 
 	/**
 	 * 
@@ -29,7 +29,7 @@ public class Gestor extends JFrame {
 	private JLabel labelBackGround = new JLabel();
 	private final JLabel lblNewLabel = new JLabel("Biblioteca");
 
-	public Gestor(int altura, int anchura) {
+	public VentanaGestor(int altura, int anchura) {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,7 +54,7 @@ public class Gestor extends JFrame {
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca
-				.setIcon(new ImageIcon(Gestor.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -67,7 +67,7 @@ public class Gestor extends JFrame {
 
 				retrasos.setVisible(true);
 
-				Gestor.this.dispose();
+				VentanaGestor.this.dispose();
 				
 				
 			}
@@ -88,7 +88,7 @@ public class Gestor extends JFrame {
 		buttonHistorial.setText("Historial y calificaciones");
 		contentpane.add(buttonHistorial);
 
-		labelBackGround.setIcon(new ImageIcon(Gestor.class.getResource("/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 
@@ -105,7 +105,7 @@ public class Gestor extends JFrame {
 
 				inicio.setVisible(true);
 
-				Gestor.this.dispose();
+				VentanaGestor.this.dispose();
 
 			}
 		});
@@ -119,7 +119,7 @@ public class Gestor extends JFrame {
 
 				ventanaLibros.setVisible(true);
 
-				Gestor.this.dispose();
+				VentanaGestor.this.dispose();
 
 			}
 		});
