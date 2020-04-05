@@ -34,7 +34,6 @@ _Hay que explicar como arancar la app y vincular la bd_
 
 ## Documentación 📦
 
-_Aqui explicamos qué hace la aplicación y como se usa_
 La aplicación es capaz de registrar usuarios en una base de datos e iniciar sesión permitiendo el paso solo a aquellos previamente registrados. Al iniciar sesión tenemos la opción de ver todos los libros disponibles que tenemos en la biblioteca, podiendo reservarlo y visualizar el titulo, el genero, el autor y el último día de la reserva. También es posible entrar como gestor y tendremos distintos privilegios. Al entrar tenemos la posibilidad de gestionar un libro, donde nos permite añadir un libro nuevo, donde podemos introducir el nombre, el genero, el autor y un plazo de dias para la reserva o modificar un libro, que en caso de no haber introducido bien algún dato del libro previamente añadido lo podemos modificar, ademas es podible eliminar libros. También es posible visualizar los libro que se han pasado el plazo de la reserva y en un futuro será posible sancionarlos. 
 
 ## Construido con 🛠️
