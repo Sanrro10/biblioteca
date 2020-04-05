@@ -157,7 +157,7 @@ public class Registro extends JFrame {
 					correcto = 1;
 				}if(!textEmail.getText().contains("@") && !(textEmail.getText().contains(".es") || textEmail.getText().contains(".com"))){
 					correcto = 2;
-				}if (String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
+				}if (!String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
 					correcto = 3;
 				}
 				
