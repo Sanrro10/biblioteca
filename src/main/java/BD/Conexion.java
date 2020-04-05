@@ -120,7 +120,7 @@ public class Conexion {
             
             while (rs.next()) {
             	Gestor g1 = new Gestor();
-            	g1.setCod_Usuario(rs.getInt("Cod_Usuario"));
+            	g1.setCod_Usuario(rs.getInt("Cod_Gestor"));
             	g1.setEmail(rs.getString("email"));
             	g1.setNombre(rs.getString("Nombre"));
             	g1.setApellidos(rs.getString("Apellidos"));
