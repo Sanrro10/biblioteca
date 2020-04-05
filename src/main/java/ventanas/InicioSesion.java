@@ -118,7 +118,7 @@ public class InicioSesion extends JFrame {
 		btnNewButtonGestor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Gestor gestor = new Gestor(750, 422);
+				VentanaGestor gestor = new VentanaGestor(750, 422);
 
 				gestor.setVisible(true);
 				
@@ -160,7 +160,7 @@ public class InicioSesion extends JFrame {
 				}
 				if(correcto) {
 					JOptionPane.showMessageDialog(null, "Usuario correcto");
-					Gestor gestor = new Gestor(750, 422);
+					VentanaGestor gestor = new VentanaGestor(750, 422);
 
 					gestor.setVisible(true);
 					
