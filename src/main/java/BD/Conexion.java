@@ -100,7 +100,7 @@ public class Conexion {
             	u1.setNombre(rs.getString("Nombre"));
             	u1.setApellidos(rs.getString("Apellidos"));
             	u1.setTelefono(rs.getInt("Telefono"));
-            	u1.setApellidos(rs.getString("Contrasenya"));
+            	u1.setContrasenya(rs.getString("Contrasenya"));
                 a1.add(u1);
             }
         } catch (SQLException e) {
@@ -113,7 +113,7 @@ public class Conexion {
     public static ArrayList<Gestor> cogerGestores(){
         ArrayList<Gestor> a1 = new ArrayList<>();
     	
-    	String sql = "SELECT Cod_Usuario, email, Nombre, Apellidos, Telefono, Contrasenya FROM Gestor";
+    	String sql = "SELECT Cod_Gestor, email, Nombre, Apellidos, Telefono, Contrasenya FROM Gestor";
     	Connection conn = conectar();
         try (Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)) {

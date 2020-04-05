@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import BD.Conexion;
+import base.Gestor;
 import base.Usuario;
 
 import java.awt.Font;
@@ -48,7 +49,7 @@ public class InicioSesion extends JFrame {
 		contentpane.setLayout(null);
 		labelUser.setFont(new Font("Arial", Font.BOLD, 11));
 
-		labelUser.setText(" Nombre de usuario:");
+		labelUser.setText(" Email:");
 		labelUser.setBackground(Color.white);
 		labelUser.setOpaque(true);
 		labelUser.setBounds(70, 134, 120, 20);
@@ -91,12 +92,13 @@ public class InicioSesion extends JFrame {
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBounds(0, 0, 534, 95);
 		contentpane.add(labelBiblioteca);
+		final Usuario user = new Usuario();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				ReservaLibros reserva;
 				try {
-					reserva = new ReservaLibros(750, 422);
+					reserva = new ReservaLibros(750, 422, user);
 					reserva.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
@@ -149,23 +151,52 @@ public class InicioSesion extends JFrame {
 				
 				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 				usuarios = Conexion.cogerUsuarios();
-				boolean correcto = false;
+				System.out.println(usuarios.size());
+				ArrayList<Gestor> gestores = new ArrayList<Gestor>();
+				gestores = Conexion.cogerGestores();
+				System.out.println(gestores.size());
+				int correcto = 0;
+				Usuario user2 = new Usuario();
 				for (Usuario u : usuarios) {
+				System.out.println(u.getEmail());
+				System.out.println(u.getContrasenya());
+					if (textUser.getText().equals(u.getEmail()) && textPass.getText().equals(u.getContrasenya())) {
+						System.out.println("correcto");
+						user2 = u;
+						correcto = 1;
+						break;
+						
+					}
+				}for (Gestor g : gestores) {
 				
-					if (textUser.getText().equals(u.getNombre())) {
-						correcto = true;
+					if (textUser.getText().equals(g.getEmail()) && textPass.getText().equals(g.getContrasenya())) {
+						
+						correcto = 2;
 						break;
 						
 					}
 				}
-				if(correcto) {
-					JOptionPane.showMessageDialog(null, "Usuario correcto");
+				if(correcto == 1) {
+					ReservaLibros reserva;
+					try {
+						reserva = new ReservaLibros(750, 422, user2);
+						reserva.setVisible(true);
+						InicioSesion.this.dispose();
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+					
+					
+					
+				}else if(correcto == 2) {
 					VentanaGestor gestor = new VentanaGestor(750, 422);
 
 					gestor.setVisible(true);
 					
 					InicioSesion.this.dispose();
-				}else {
+				}else if(correcto == 0) {
 					JOptionPane.showMessageDialog(null, "Usuario incorrecto");
 				}
 				

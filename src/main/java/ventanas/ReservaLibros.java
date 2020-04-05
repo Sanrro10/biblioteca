@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import BD.Conexion;
 import base.Libro;
 import base.Reserva;
+import base.Usuario;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -42,7 +43,7 @@ public class ReservaLibros extends JFrame{
 	private final JTextPane txtpnDatos = new JTextPane();
 	
 
-	public ReservaLibros (int altura, int anchura) throws ParseException {
+	public ReservaLibros (int altura, int anchura, final Usuario user) throws ParseException {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -150,7 +151,7 @@ public class ReservaLibros extends JFrame{
 				Reserva reserva = new Reserva();
 				Libro libro = libros.get(comboBox.getSelectedIndex());
 				reserva.setCod_Libro(libro.getCod_Libro());
-//				reserva.setCod_Usuario(cod_Usuario); //Poner aquí el código del usuario que le llegue del inicio de sesión
+				reserva.setCod_Usuario(user.getCod_Usuario()); //Poner aquí el código del usuario que le llegue del inicio de sesión
 				reserva.setFecha_Devolución(libro.fechaReserva());
 				Conexion.insertarReserva(reserva);
 				comboBox.remove(comboBox.getSelectedIndex());
@@ -166,6 +167,8 @@ public class ReservaLibros extends JFrame{
 					txtpnDatos.setText("No hay libros disponibles");
 				}
 				comboBox.repaint();
+				txtpnDatos.repaint();
+				contentpane.repaint();
 			}
 		});
 		
