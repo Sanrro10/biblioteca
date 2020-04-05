@@ -151,15 +151,11 @@ public class InicioSesion extends JFrame {
 				
 				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 				usuarios = Conexion.cogerUsuarios();
-				System.out.println(usuarios.size());
 				ArrayList<Gestor> gestores = new ArrayList<Gestor>();
 				gestores = Conexion.cogerGestores();
-				System.out.println(gestores.size());
 				int correcto = 0;
 				Usuario user2 = new Usuario();
 				for (Usuario u : usuarios) {
-				System.out.println(u.getEmail());
-				System.out.println(u.getContrasenya());
 					if (textUser.getText().equals(u.getEmail()) && textPass.getText().equals(u.getContrasenya())) {
 						System.out.println("correcto");
 						user2 = u;

@@ -24,6 +24,7 @@ public class VentanaLibros extends JFrame {
 	private JPanel contentpane;
 	private JButton buttonAtras = new JButton();
 	private JButton buttonLibroNuevo = new JButton();
+	private JButton buttonReservas = new JButton();
 	private JButton buttonModificar = new JButton();
 	private JLabel labelBackGround = new JLabel();
 	private final JLabel lblNewLabel = new JLabel("Gestion de libros");
@@ -50,6 +51,10 @@ public class VentanaLibros extends JFrame {
 		buttonLibroNuevo.setBounds(45, 139, 140, 52);
 		buttonLibroNuevo.setText("Añadir nuevo libro");
 		contentpane.add(buttonLibroNuevo);
+		
+		buttonReservas.setBounds(200, 139, 140, 52);
+		buttonReservas.setText("Reservas");
+		contentpane.add(buttonReservas);
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca
@@ -61,7 +66,7 @@ public class VentanaLibros extends JFrame {
 		contentpane.add(labelBiblioteca);
 
 		buttonModificar.setBounds(45, 213, 140, 52);
-		buttonModificar.setText("Modificar estado libros");
+		buttonModificar.setText("Modificar libros");
 		contentpane.add(buttonModificar);
 
 		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/background3.jpg")));
@@ -117,6 +122,28 @@ public class VentanaLibros extends JFrame {
 					
 					modificar = new ModificarLibro(850, 480);
 					modificar.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				
+
+				VentanaLibros.this.dispose();
+
+			}
+		});
+		
+		buttonReservas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				GestorReservas reservas;
+				try {
+					
+					reservas = new GestorReservas(850, 480);
+					reservas.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
