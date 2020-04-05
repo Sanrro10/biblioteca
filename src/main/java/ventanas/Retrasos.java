@@ -83,6 +83,17 @@ public class Retrasos extends JFrame{
 		btnReservarLibro.setBackground(new Color(0, 102, 204));
 		btnReservarLibro.setBounds(312, 357, 132, 28);
 		
+		listado.setBounds(53, 139, 391, 184);
+		//for(int i=0; i< Reserva.lista.size(); i++) {		    
+		  //  listado.add(null, Reserva.lista.get(i));
+		//}
+		DefaultListModel modelo = new DefaultListModel();
+
+		listado.setModel(modelo);
+		modelo.addElement(Reserva.lista.toString());
+
+		contentpane.add(listado);
+		
 		contentpane.add(btnReservarLibro);
 		LabelBackground.setIcon(new ImageIcon(ReservaLibros.class.getResource("/images/background3.jpg")));
 		LabelBackground.setBounds(0, 0, 503, 466);
@@ -94,16 +105,7 @@ public class Retrasos extends JFrame{
 		setTitle("Area gestor");
 		
 		
-		listado.setBounds(53, 139, 391, 184);
-		for(int i=0; i< Reserva.lista.size(); i++) {		    
-		    listado.add(null, Reserva.lista.get(i));
-		}
-		DefaultListModel modelo = new DefaultListModel();
-
-		listado.setModel(modelo);
-		modelo.addElement(Reserva.lista.toString());
-
-		contentpane.add(listado);
+		
 
 		
 		buttonAtras.addActionListener(new ActionListener() {
