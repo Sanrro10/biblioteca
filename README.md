@@ -1,6 +1,6 @@
 # Biblioteca
 
-Esta aplicación es un pequeño gestor de biblioteca donde tanto usuarios como gestores pueden interactuar con los libros de una BD.
+Esta aplicación es un pequeño gestor de biblioteca donde tanto usuarios como gestores pueden interactuar con los libros de una Base de Datos.
 
 ## Comenzando 🚀
 
@@ -30,21 +30,7 @@ _Clonar repositorio_
 
 _Hay que explicar como arancar la app y vincular la bd_
 
-### Analice las pruebas end-to-end 🔩
 
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
 
 ## Documentación 📦
 
