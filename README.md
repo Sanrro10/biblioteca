@@ -47,9 +47,9 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 ## Autores ✒️
 
 * **Kevin Arnaiz**  [kevin.arnaiz@opendeusto.es]
-* **Mikel Gonzalez**  []
+* **Mikel Gonzalez**  [mikel.gonzalez2@opendeusto.es]
 * **Sergio Lopez**  [sergi.lopez@opendeusto.es]
-* **Iñigo Gonzalez de San Román** []
+* **Iñigo Gonzalez de San Román** [i.glzsr@opendeusto.es]
 
 
 
