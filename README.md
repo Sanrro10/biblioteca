@@ -28,7 +28,7 @@ _Clonar repositorio_
 
 ## Setup ⚙️
 
-_Hay que explicar como arancar la app y vincular la bd_
+Para arrancar la aplicación debemos primeramente debemos introducir el .jar de la carpeta BD al build path. Para ello, debemos darle click derecho en el proyecto -> build path -> configure build path -> add JARs -> seleccionar el .jar de la carpeta BD. Para ejecutar el proyecto, tenemos que ejecutar la clase main del proyecto. Para ello debemos darle click derecho en la clase -> run as -> java application. 
 
 
 
