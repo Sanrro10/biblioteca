@@ -28,9 +28,12 @@ _Clonar repositorio_
 
 ## Setup ⚙️
 
-Para arrancar la aplicación primeramente debemos introducir el .jar de la carpeta BD al build path. Para ello, debemos darle click derecho en el proyecto -> build path -> configure build path -> add JARs -> seleccionar el .jar de la carpeta BD. 
-Para ejecutar el proyecto, tenemos que ejecutar la clase main del proyecto. Para ello, debemos darle click derecho en la clase -> run as -> java application. 
-
+Para arrancar el programa será necesario abrir un terminal en la ruta del proyecto donde esté el archivo "pom.xml" y ejecutaremos estos comandos:
+```
+    mvn clean
+    mvn compile
+    mvn exec:java -Pbiblioteca_Main
+```
 
 
 ## Documentación 📦
