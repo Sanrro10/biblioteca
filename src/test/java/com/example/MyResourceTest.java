@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import base.Main;
+import es.deusto.spq.base.Main;
 
 import static org.junit.Assert.assertEquals;
 

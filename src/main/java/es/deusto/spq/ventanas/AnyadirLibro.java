@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 
 import java.awt.BorderLayout;
@@ -21,9 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import BD.Conexion;
-import base.Libro;
-import base.Reserva;
+import es.deusto.spq.BD.Conexion;
+import es.deusto.spq.base.Libro;
+import es.deusto.spq.base.Reserva;
 
 import java.awt.Font;
 import java.awt.SystemColor;

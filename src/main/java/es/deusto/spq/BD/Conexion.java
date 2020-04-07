@@ -1,4 +1,4 @@
-package BD;
+package es.deusto.spq.BD;
 import java.sql.Connection;
 import java.util.Date;
 import java.util.Locale;
@@ -16,10 +16,10 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import base.Gestor;
-import base.Libro;
-import base.Reserva;
-import base.Usuario;
+import es.deusto.spq.base.Gestor;
+import es.deusto.spq.base.Libro;
+import es.deusto.spq.base.Reserva;
+import es.deusto.spq.base.Usuario;
  
 public class Conexion {
     private static String url = "jdbc:sqlite:BibliotecaBD.db";

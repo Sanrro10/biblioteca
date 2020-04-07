@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,8 +17,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import BD.Conexion;
-import base.Usuario;
+import es.deusto.spq.BD.Conexion;
+import es.deusto.spq.base.Usuario;
 
 import java.awt.SystemColor;
 import java.awt.Font;

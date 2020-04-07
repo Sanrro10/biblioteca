@@ -1,4 +1,4 @@
-package base;
+package es.deusto.spq.base;
 
 public class Usuario {
 

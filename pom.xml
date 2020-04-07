@@ -47,6 +47,25 @@
         </dependency>
     </dependencies>
 
+	<profiles>
+		<!-- run as 'mvn exec:java -Pbiblioteca_Main' -->
+		<profile>
+			<id>client</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>es.deusto.epq</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<version>1.2.1</version>
+						<configuration>
+							<mainClass>es.deusto.spq.base.Main</mainClass>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -72,7 +91,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.example.Main</mainClass>
+                    <mainClass>es.deusto.spq.base.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
