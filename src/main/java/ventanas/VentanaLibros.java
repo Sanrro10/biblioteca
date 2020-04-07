@@ -1,4 +1,4 @@
-package es.deusto.spq.ventanas;
+package ventanas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,7 +58,7 @@ public class VentanaLibros extends JFrame {
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca
-				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -69,7 +69,7 @@ public class VentanaLibros extends JFrame {
 		buttonModificar.setText("Modificar libros");
 		contentpane.add(buttonModificar);
 
-		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 

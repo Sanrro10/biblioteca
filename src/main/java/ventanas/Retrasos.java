@@ -1,4 +1,4 @@
-package es.deusto.spq.ventanas;
+package ventanas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,7 +72,7 @@ public class Retrasos extends JFrame{
 		contentpane.add(buttonAtras);
 		
 		JLabel labelBiblioteca = new JLabel("");
-		labelBiblioteca.setIcon(new ImageIcon(VentanaGestor.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+		labelBiblioteca.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -95,7 +95,7 @@ public class Retrasos extends JFrame{
 		contentpane.add(listado);
 		
 		contentpane.add(btnReservarLibro);
-		LabelBackground.setIcon(new ImageIcon(ReservaLibros.class.getResource("/images/background3.jpg")));
+		LabelBackground.setIcon(new ImageIcon(ReservaLibros.class.getResource("/es/deusto/spq/images/background3.jpg")));
 		LabelBackground.setBounds(0, 0, 503, 466);
 		
 		contentpane.add(LabelBackground);

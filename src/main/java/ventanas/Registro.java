@@ -1,4 +1,4 @@
-package es.deusto.spq.ventanas;
+package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -64,7 +64,7 @@ public class Registro extends JFrame {
 		contentpane.add(lblNewLabel);
 		
 		JLabel labelBiblioteca = new JLabel("");
-		labelBiblioteca.setIcon(new ImageIcon(Registro.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+		labelBiblioteca.setIcon(new ImageIcon(Registro.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -136,7 +136,7 @@ public class Registro extends JFrame {
 		btnAtrs.setBounds(63, 288, 130, 23);
 		contentpane.add(btnAtrs);
 		
-		labelBackGround.setIcon(new ImageIcon(Registro.class.getResource("/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(Registro.class.getResource("/es/deusto/spq/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 

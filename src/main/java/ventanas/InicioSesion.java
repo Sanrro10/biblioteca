@@ -1,4 +1,4 @@
-package es.deusto.spq.ventanas;
+package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -86,7 +86,7 @@ public class InicioSesion extends JFrame {
 		contentpane.add(lblNewLabel);
 		
 		JLabel labelBiblioteca = new JLabel("      Biblioteca Deusto");
-		labelBiblioteca.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/065580938b36e4c049ec033745248216.jpg")));
+		labelBiblioteca.setIcon(new ImageIcon(InicioSesion.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(SystemColor.text);
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
@@ -134,7 +134,7 @@ public class InicioSesion extends JFrame {
 		
 		contentpane.add(btnNewButtonGestor);
 		
-		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/es/deusto/spq/images/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 
