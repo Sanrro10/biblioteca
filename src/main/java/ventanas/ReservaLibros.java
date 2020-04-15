@@ -74,8 +74,8 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(buttonLibros);
 
 		JLabel labelBiblioteca = new JLabel("");
-		labelBiblioteca.setIcon(new ImageIcon(
-				VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+		// labelBiblioteca.setIcon(new
+		// ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -99,8 +99,8 @@ public class ReservaLibros extends JFrame {
 		btnReservarSala.setBounds(260, 410, 213, 28);
 		contentpane.add(btnReservarSala);
 
-		LabelBackground
-				.setIcon(new ImageIcon(ReservaLibros.class.getResource("/es/deusto/spq/images/background3.jpg")));
+		// LabelBackground.setIcon(new
+		// ImageIcon(ReservaLibros.class.getResource("/es/deusto/spq/images/background3.jpg")));
 		LabelBackground.setBounds(0, 0, 503, 466);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -186,9 +186,14 @@ public class ReservaLibros extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				CalendarioSalas calendario = new CalendarioSalas(850, 522);
-
-				calendario.setVisible(true);
+				CalendarioSalas calendario;
+				try {
+					calendario = new CalendarioSalas(850, 522, user);
+					calendario.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				ReservaLibros.this.dispose();
 
