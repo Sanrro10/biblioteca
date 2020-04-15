@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -33,12 +34,16 @@ public class CalendarioSalas extends JFrame {
 		calendario.setTodayButtonText("Hoy");
 		calendario.setNullDateButtonVisible(true);
 		calendario.setWeekOfYearVisible(false);
+		calendario.setMaxDayCharacters(1);
+		calendario.setWeekdayForeground(Color.BLUE);
+		calendario.setSundayForeground(Color.RED);
 		calendario.setVisible(true);
 		contentpane.add(calendario);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(441, 355);
 		setTitle("Bilbioteca");
+		setLocationRelativeTo(null);
 	}
 
 }

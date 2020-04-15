@@ -186,7 +186,7 @@ public class ReservaLibros extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				CalendarioSalas calendario = new CalendarioSalas(750, 422);
+				CalendarioSalas calendario = new CalendarioSalas(850, 522);
 
 				calendario.setVisible(true);
 
