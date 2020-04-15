@@ -29,9 +29,9 @@ public class CalendarioSalas extends JFrame {
 	private JCalendar calendario = new JCalendar();
 	private JButton btnreservar = new JButton();
 	private JButton btnratras = new JButton();
-
 	private JComboBox<String> combo = new JComboBox<String>();
-
+	private JComboBox<String> ComboDisponibilidad = new JComboBox<String>();
+	
 	public CalendarioSalas(int altura, int anchura, final Usuario user) throws ParseException {
 		contentpane = new JPanel();
 
@@ -64,6 +64,11 @@ public class CalendarioSalas extends JFrame {
 		combo.addItem("Sala 4 (7)");
 		combo.addItem("Sala 5 (7)");
 		contentpane.add(combo);
+		
+		ComboDisponibilidad.setBounds(320, 40, 90, 25);
+		//añadir metodo que recorra las horas libres de la sala seleccionada en el dia seleccionado y añada al combo los stirng con los horarios disponibles
+		ComboDisponibilidad.addItem("16:00-17:30"); //ejemplo
+		contentpane.add(ComboDisponibilidad);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(441, 355);
@@ -75,8 +80,10 @@ public class CalendarioSalas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// lanzar formulario buscando disponibilidad de la sala seleccionada en la fecha
+				
 				// seleccionada
-				// combo.getSelectedIndex();
+				// combo.getSelectedItem();
+				//ComboDisponibilidad.getSelectedItem();
 				// calendario.getDate();
 			}
 		});
