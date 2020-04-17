@@ -10,24 +10,24 @@ import es.deusto.spq.BD.Conexion;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Reserva {
+public class Reserva_Libro {
 
-	int cod_Reserva;
+	int cod_Reserva_Libro;
 	int cod_Usuario;
 	int cod_Libro;
-	static Date fecha_Devolución;
+	Date fecha_Devolución;
 	
 	public static ArrayList<Integer> lista = new ArrayList<>();
 	
 	
-	public Reserva(int cod_Reserva, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
+	public Reserva_Libro(int cod_Reserva_Libro, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
 		super();
-		this.cod_Reserva = cod_Reserva;
+		this.cod_Reserva_Libro = cod_Reserva_Libro;
 		this.cod_Usuario = cod_Usuario;
 		this.cod_Libro = cod_Libro;
 		this.fecha_Devolución = fecha_Devolución;
 	}
-	public Reserva() {
+	public Reserva_Libro() {
 		
 		
 		
@@ -39,11 +39,11 @@ public class Reserva {
 	public void setLista(ArrayList<Integer> lista) {
 		this.lista = lista;
 	}
-	public int getCod_Reserva() {
-		return cod_Reserva;
+	public int getCod_Reserva_Libro() {
+		return cod_Reserva_Libro;
 	}
-	public void setCod_Reserva(int cod_Reserva) {
-		this.cod_Reserva = cod_Reserva;
+	public void setCod_Reserva_Libro(int cod_Reserva_Libro) {
+		this.cod_Reserva_Libro = cod_Reserva_Libro;
 	}
 	public int getCod_Usuario() {
 		return cod_Usuario;
@@ -67,7 +67,7 @@ public class Reserva {
 	
 	
 public static void main(String[] args) {
-	fecha_Devolución = new Date();
+	Date fecha_Devolución = new Date();
 	SimpleDateFormat formateador1 =new SimpleDateFormat("dd/MM/yyyy");
 	String fechaSistema1 = formateador1.format(fecha_Devolución);
 	
@@ -81,7 +81,7 @@ public static void main(String[] args) {
 		  System.out.println("Parametro String Fecha 1 = "+fecha_Devolución+"\n" +
 		    "Parametro String fechaActual = "+fechaActual1+"\n");  
 		  String resultado="";
-		  final ArrayList<Reserva> reservas = Conexion.cogerReservas();
+		  final ArrayList<Reserva_Libro> reservas = Conexion.cogerReserva_Libros();
 		  try {
 		   /**Obtenemos las fechas enviadas en el formato a comparar*/
 		   SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 

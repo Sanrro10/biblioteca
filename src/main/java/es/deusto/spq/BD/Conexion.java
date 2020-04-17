@@ -18,7 +18,9 @@ import java.util.logging.Logger;
 
 import es.deusto.spq.base.Gestor;
 import es.deusto.spq.base.Libro;
-import es.deusto.spq.base.Reserva;
+import es.deusto.spq.base.Reserva_Libro;
+import es.deusto.spq.base.Reserva_Sala;
+import es.deusto.spq.base.SalaTrabajo;
 import es.deusto.spq.base.Usuario;
  
 public class Conexion {
@@ -62,16 +64,39 @@ public class Conexion {
         return a1;
         
     }
-    public static ArrayList<Reserva> cogerReservas() throws ParseException{
-        ArrayList<Reserva> a1 = new ArrayList<>();
+    public static ArrayList<Reserva_Sala> cogerReserva_Salas() throws ParseException{
+        ArrayList<Reserva_Sala> a1 = new ArrayList<>();
     	
-    	String sql = "SELECT Cod_Reserva, Cod_Usuario, Cod_Libro, Fecha_Devolucion FROM Reserva";
+    	String sql = "SELECT Cod_Reserva, Cod_Usuario, Cod_Sala, Fecha, Calefaccion FROM Reserva_Sala";
     	Connection conn = conectar();
         try (Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)) {
             while (rs.next()) {
-            	Reserva r1 = new Reserva();
-            	r1.setCod_Reserva(rs.getInt("Cod_Reserva"));
+            	Reserva_Sala r1 = new Reserva_Sala();
+            	r1.setCod_Reserva_Sala(rs.getInt("Cod_Reserva"));
+            	r1.setCod_Usuario(rs.getInt("Cod_Usuario"));
+            	r1.setCod_Sala(rs.getInt("Cod_Sala"));
+            	DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+            	r1.setFecha(dateFormat.parse(rs.getString("Fecha")));
+                a1.add(r1);
+            }
+        } catch (SQLException e) {
+        	e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return a1;
+        
+    }
+    public static ArrayList<Reserva_Libro> cogerReserva_Libros() throws ParseException{
+        ArrayList<Reserva_Libro> a1 = new ArrayList<>();
+    	
+    	String sql = "SELECT Cod_Reserva, Cod_Usuario, Cod_Libro, Fecha_Devolucion FROM Reserva_Libro";
+    	Connection conn = conectar();
+        try (Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+            	Reserva_Libro r1 = new Reserva_Libro();
+            	r1.setCod_Reserva_Libro(rs.getInt("Cod_Reserva"));
             	r1.setCod_Usuario(rs.getInt("Cod_Usuario"));
             	r1.setCod_Libro(rs.getInt("Cod_Libro"));
             	DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
@@ -102,6 +127,28 @@ public class Conexion {
             	u1.setTelefono(rs.getInt("Telefono"));
             	u1.setContrasenya(rs.getString("Contrasenya"));
                 a1.add(u1);
+            }
+        } catch (SQLException e) {
+        	e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return a1;
+        
+    }
+    public static ArrayList<SalaTrabajo> cogerSalas(){
+        ArrayList<SalaTrabajo> a1 = new ArrayList<>();
+    	
+    	String sql = "SELECT Cod_Sala, Ubicacion, Usuarios FROM Sala";
+    	Connection conn = conectar();
+        try (Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql)) {
+            
+            while (rs.next()) {
+            	SalaTrabajo s1 = new SalaTrabajo();
+            	s1.setCod_sala(rs.getInt("Cod_Sala"));
+            	s1.setUbicacion(rs.getString("Ubicacion"));
+            	s1.setCod_sala(rs.getInt("Usuarios"));
+                a1.add(s1);
             }
         } catch (SQLException e) {
         	e.printStackTrace();
@@ -163,9 +210,9 @@ public class Conexion {
       }
     
     
-    public static void insertarReserva(Reserva reserva) { 
+    public static void insertarReserva_Libro(Reserva_Libro reserva) { 
    	   Connection conn = conectar();
-   	   String sql = "INSERT INTO Reserva (Cod_Usuario, Cod_Libro, Fecha_Devolucion) VALUES ('" + reserva.getCod_Usuario() + "' , '" + reserva.getCod_Libro() + "' , '" + reserva.getFecha_Devolución() + "')" ;	   
+   	   String sql = "INSERT INTO Reserva_Libro (Cod_Usuario, Cod_Libro, Fecha_Devolucion) VALUES ('" + reserva.getCod_Usuario() + "' , '" + reserva.getCod_Libro() + "' , '" + reserva.getFecha_Devolución() + "')" ;	   
  	  	 try {
  	         Statement stmt  = conn.createStatement();
  	   	 stmt.executeUpdate(sql);
@@ -176,6 +223,19 @@ public class Conexion {
           }
    	return;
       }
+    public static void insertarReserva_Sala(Reserva_Sala reserva) { 
+    	   Connection conn = conectar();
+    	   String sql = "INSERT INTO Reserva_Sala (Cod_Usuario, Cod_Sala, Fecha, Calefaccion) VALUES ('" + reserva.getCod_Usuario() + "' , '" + reserva.getCod_Sala() + "' , '" + reserva.getFecha() + "' , '" + reserva.isCalefaccion() +"')" ;	   
+  	  	 try {
+  	         Statement stmt  = conn.createStatement();
+  	   	 stmt.executeUpdate(sql);
+  	        
+  	    }catch (SQLException e) {
+        	   e.printStackTrace();
+             System.out.println(e.getMessage());
+           }
+    	return;
+       }
      public static void borrarLibro(Libro l1) { 
   	   Connection conn = conectar();
   	   String sql = "DELETE FROM Libro WHERE Cod_Libro ='" + l1.getCod_Libro() + "'";	   
@@ -189,9 +249,9 @@ public class Conexion {
          }
   	return;
      }
-     public static void borrarReserva(Reserva r1) { 
+     public static void borrarReserva_Libro(Reserva_Libro r1) { 
     	   Connection conn = conectar();
-    	   String sql = "DELETE FROM Reserva WHERE Cod_Libro ='" + r1.getCod_Libro() + "'";	   
+    	   String sql = "DELETE FROM Reserva_Libro WHERE Cod_Libro ='" + r1.getCod_Libro() + "'";	   
            try {
                 Statement stmt  = conn.createStatement();
           	 stmt.executeUpdate(sql);

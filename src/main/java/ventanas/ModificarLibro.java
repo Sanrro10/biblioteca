@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 
 import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Libro;
-import es.deusto.spq.base.Reserva;
+import es.deusto.spq.base.Reserva_Libro;
 
 import java.awt.Font;
 import java.awt.SystemColor;

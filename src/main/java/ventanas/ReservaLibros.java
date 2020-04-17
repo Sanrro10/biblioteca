@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Libro;
-import es.deusto.spq.base.Reserva;
+import es.deusto.spq.base.Reserva_Libro;
 import es.deusto.spq.base.Usuario;
 
 import java.awt.SystemColor;
@@ -109,10 +109,10 @@ public class ReservaLibros extends JFrame {
 
 		final JComboBox comboBox = new JComboBox();
 		final ArrayList<Libro> libros = Conexion.cogerLibros();
-		ArrayList<Reserva> reservas = Conexion.cogerReservas();
+		ArrayList<Reserva_Libro> reserva_Libros = Conexion.cogerReserva_Libros();
 		ArrayList<Integer> cods_Libro = new ArrayList<>();
-		for (int i = 0; i < reservas.size(); i++) {
-			cods_Libro.add(reservas.get(i).getCod_Libro());
+		for (int i = 0; i < reserva_Libros.size(); i++) {
+			cods_Libro.add(reserva_Libros.get(i).getCod_Libro());
 		}
 		for (int i = 0; i < libros.size(); i++) {
 			if (!cods_Libro.contains(libros.get(i).getCod_Libro())) {
@@ -156,13 +156,13 @@ public class ReservaLibros extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Reserva reserva = new Reserva();
+				Reserva_Libro reserva_Libro = new Reserva_Libro();
 				Libro libro = libros.get(comboBox.getSelectedIndex());
-				reserva.setCod_Libro(libro.getCod_Libro());
-				reserva.setCod_Usuario(user.getCod_Usuario()); // Poner aquí el código del usuario que le llegue del
+				reserva_Libro.setCod_Libro(libro.getCod_Libro());
+				reserva_Libro.setCod_Usuario(user.getCod_Usuario()); // Poner aquí el código del usuario que le llegue del
 																// inicio de sesión
-				reserva.setFecha_Devolución(libro.fechaReserva());
-				Conexion.insertarReserva(reserva);
+				reserva_Libro.setFecha_Devolución(libro.fechaReserva());
+				Conexion.insertarReserva_Libro(reserva_Libro);
 				comboBox.remove(comboBox.getSelectedIndex());
 				comboBox.revalidate();
 				try {
