@@ -25,6 +25,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JList;
 import javax.swing.JTextPane;
+import javax.swing.JTextField;
 
 public class ReservaLibros extends JFrame {
 
@@ -42,6 +43,7 @@ public class ReservaLibros extends JFrame {
 	private final JButton btnReservarSala = new JButton();
 	private final JLabel LabelBackground = new JLabel("");
 	private final JTextPane txtpnDatos = new JTextPane();
+	private JTextField textField;
 
 	public ReservaLibros(int altura, int anchura, final Usuario user) throws ParseException {
 		contentpane = new JPanel();
@@ -50,6 +52,15 @@ public class ReservaLibros extends JFrame {
 		setContentPane(contentpane);
 		contentpane.setLayout(null);
 		
+		textField = new JTextField();
+		textField.setBounds(96, 131, 139, 20);
+		contentpane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Nombre:");
+		lblNewLabel_3_1.setBounds(45, 129, 60, 25);
+		contentpane.add(lblNewLabel_3_1);
+		
 
 		
 		JLabel lblNewLabel_3 = new JLabel("Género:");
@@ -57,7 +68,7 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("Autor:");
-		lblNewLabel_2.setBounds(45, 135, 60, 14);
+		lblNewLabel_2.setBounds(45, 204, 60, 14);
 		contentpane.add(lblNewLabel_2);
 		
 		JComboBox comboBox_Genero = new JComboBox();
@@ -79,7 +90,7 @@ public class ReservaLibros extends JFrame {
 		JButton btnMiCuenta = new JButton();
 		btnMiCuenta.setText("Mi cuenta");
 		btnMiCuenta.setBackground(SystemColor.inactiveCaption);
-		btnMiCuenta.setBounds(45, 221, 190, 42);
+		btnMiCuenta.setBounds(45, 266, 190, 28);
 		contentpane.add(btnMiCuenta);
 
 		lblNewLabel.setForeground(Color.WHITE);
@@ -95,7 +106,7 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(buttonAtras);
 		buttonLibros.setBackground(SystemColor.inactiveCaption);
 
-		buttonLibros.setBounds(45, 274, 190, 42);
+		buttonLibros.setBounds(45, 305, 190, 25);
 		buttonLibros.setText("Mis libros");
 		contentpane.add(buttonLibros);
 
@@ -109,7 +120,7 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(labelBiblioteca);
 		buttonUsuarios.setBackground(SystemColor.inactiveCaption);
 
-		buttonUsuarios.setBounds(45, 327, 190, 42);
+		buttonUsuarios.setBounds(45, 341, 190, 28);
 		buttonUsuarios.setText("Mi historial");
 		contentpane.add(buttonUsuarios);
 
@@ -162,7 +173,7 @@ public class ReservaLibros extends JFrame {
 		
 		//Combobox que saca los autores
 		JComboBox comboBox_Autor = new JComboBox();
-		comboBox_Autor.setBounds(96, 132, 139, 20);
+		comboBox_Autor.setBounds(96, 201, 139, 20);
 		
 		for (int i = 0; i < libros.size(); i++) {
 			if (!cods_Libro.contains(libros.get(i).getCod_Libro())) {
