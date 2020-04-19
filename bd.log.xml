@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-17T14:25:15</date>
+  <millis>1587126315259</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-17T14:48:18</date>
+  <millis>1587127698908</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-17T15:06:14</date>
+  <millis>1587128774378</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-17T15:07:01</date>
+  <millis>1587128821344</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-17T15:07:38</date>
+  <millis>1587128858860</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-17T15:24:28</date>
+  <millis>1587129868122</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-18T17:00:03</date>
+  <millis>1587222003985</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T13:59:42</date>
+  <millis>1587297582837</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T14:20:27</date>
+  <millis>1587298827172</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T14:20:51</date>
+  <millis>1587298851032</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T14:22:28</date>
+  <millis>1587298948950</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T14:57:21</date>
+  <millis>1587301041411</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T15:03:22</date>
+  <millis>1587301402875</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T15:04:28</date>
+  <millis>1587301468831</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T15:07:49</date>
+  <millis>1587301669508</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T15:43:20</date>
+  <millis>1587303800077</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T19:52:29</date>
+  <millis>1587318749892</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:07:34</date>
+  <millis>1587326854925</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:09:08</date>
+  <millis>1587326948588</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:22:03</date>
+  <millis>1587327723135</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:24:29</date>
+  <millis>1587327869721</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:25:06</date>
+  <millis>1587327906353</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:26:35</date>
+  <millis>1587327995807</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:54:50</date>
+  <millis>1587329690062</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T22:56:36</date>
+  <millis>1587329796796</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T23:00:59</date>
+  <millis>1587330059787</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-19T23:01:58</date>
+  <millis>1587330118343</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>23</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>

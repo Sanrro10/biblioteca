@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -43,7 +44,6 @@ public class ReservaLibros extends JFrame {
 	private final JButton btnReservarSala = new JButton();
 	private final JLabel LabelBackground = new JLabel("");
 	private final JTextPane txtpnDatos = new JTextPane();
-	private JTextField textField;
 
 	public ReservaLibros(int altura, int anchura, final Usuario user) throws ParseException {
 		contentpane = new JPanel();
@@ -51,15 +51,6 @@ public class ReservaLibros extends JFrame {
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentpane);
 		contentpane.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setBounds(96, 131, 139, 20);
-		contentpane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_3_1 = new JLabel("Nombre:");
-		lblNewLabel_3_1.setBounds(45, 129, 60, 25);
-		contentpane.add(lblNewLabel_3_1);
 		
 
 		
@@ -73,6 +64,7 @@ public class ReservaLibros extends JFrame {
 		
 		JComboBox comboBox_Genero = new JComboBox();
 		comboBox_Genero.setBounds(96, 167, 139, 20);
+		comboBox_Genero.addItem(" ");
 		comboBox_Genero.addItem("Terror");
 		comboBox_Genero.addItem("Fantasía");
 		comboBox_Genero.addItem("Ciencia ficción");
@@ -84,7 +76,7 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(comboBox_Genero);
 		
 		JLabel lblNewLabel_1 = new JLabel("Filtrar por:");
-		lblNewLabel_1.setBounds(45, 106, 89, 14);
+		lblNewLabel_1.setBounds(45, 140, 89, 14);
 		contentpane.add(lblNewLabel_1);
 
 		JButton btnMiCuenta = new JButton();
@@ -144,8 +136,9 @@ public class ReservaLibros extends JFrame {
 		scrollPane.setBounds(260, 106, 213, 251);
 		contentpane.add(scrollPane);
 
-		final JComboBox comboBox = new JComboBox();
+		final JComboBox<String> comboBox = new JComboBox();
 		final ArrayList<Libro> libros = Conexion.cogerLibros();
+		ArrayList<Libro> libros2 = new ArrayList<>();
 		ArrayList<Reserva_Libro> reserva_Libros = Conexion.cogerReserva_Libros();
 		ArrayList<Integer> cods_Libro = new ArrayList<>();
 		for (int i = 0; i < reserva_Libros.size(); i++) {
@@ -154,6 +147,7 @@ public class ReservaLibros extends JFrame {
 		for (int i = 0; i < libros.size(); i++) {
 			if (!cods_Libro.contains(libros.get(i).getCod_Libro())) {
 				comboBox.addItem(libros.get(i).toStringResumido());
+				libros2.add(libros.get(i));
 			}
 		}
 		try {
@@ -165,7 +159,7 @@ public class ReservaLibros extends JFrame {
 
 		} catch (java.lang.NullPointerException e) {
 			txtpnDatos.setText("No hay libros disponibles");
-		}
+		}ComboBoxModel modelo = comboBox.getModel();
 
 		scrollPane.setColumnHeaderView(comboBox);
 
@@ -174,11 +168,15 @@ public class ReservaLibros extends JFrame {
 		//Combobox que saca los autores
 		JComboBox comboBox_Autor = new JComboBox();
 		comboBox_Autor.setBounds(96, 201, 139, 20);
+		ArrayList<String> autores = new ArrayList<>();
+		autores.add(" ");
+		comboBox_Autor.addItem(" ");
 		
-		for (int i = 0; i < libros.size(); i++) {
-			if (!cods_Libro.contains(libros.get(i).getCod_Libro())) {
-				comboBox_Autor.addItem(libros.get(i).getAutor());
-			}
+		for (int i = 0; i < libros2.size(); i++) {
+			if(!autores.contains(libros2.get(i).getAutor())) {
+				comboBox_Autor.addItem(libros2.get(i).getAutor());
+				autores.add(libros2.get(i).getAutor());
+				}
 		}
 	
 		contentpane.add(comboBox_Autor);
@@ -188,18 +186,77 @@ public class ReservaLibros extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(519, 505);
 		setTitle("Area usuario");
-		comboBox.addActionListener(new ActionListener() {
+		
+		comboBox_Genero.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				comboBox.removeAllItems();
+				if(comboBox_Genero.getSelectedIndex()!= 0) {
+					for (int i = 0; i < libros2.size(); i++) {
+						if(libros2.get(i).getGenero().toString().equals(comboBox_Genero.getSelectedItem()) && (libros2.get(i).getAutor().toString().equals(comboBox_Autor.getSelectedItem()) | comboBox_Autor.getSelectedItem().equals(" "))) {
+								comboBox.addItem(libros2.get(i).toStringResumido());								
+							}
+						}
+				}else {
+					for (int i = 0; i < libros2.size(); i++) {
+						if(libros2.get(i).getAutor().toString().equals(comboBox_Autor.getSelectedItem()) | comboBox_Autor.getSelectedItem().equals(" ")) {
+								comboBox.addItem(libros2.get(i).toStringResumido());
+					
+					}
+				}
+				comboBox.revalidate();
+				comboBox.repaint();
 				try {
-					txtpnDatos.setText(comboBox.getSelectedItem().toString());
-				} catch (java.lang.NullPointerException e) {
+					txtpnDatos.setText(libros2.get(comboBox.getSelectedIndex()).toString());
+				} catch (java.lang.NullPointerException | java.lang.ArrayIndexOutOfBoundsException e) {
+					txtpnDatos.setText("No hay libros disponibles");
+				}
+
+			}
+			}
+		});
+		comboBox_Autor.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				comboBox.removeAllItems();
+				if(comboBox_Autor.getSelectedIndex()!= 0) {
+					for (int i = 0; i < libros2.size(); i++) {
+						if(libros2.get(i).getAutor().toString().equals(comboBox_Autor.getSelectedItem()) && (libros2.get(i).getGenero().toString().equals(comboBox_Genero.getSelectedItem()) | comboBox_Genero.getSelectedItem().equals(" "))) {
+								comboBox.addItem(libros2.get(i).toStringResumido());
+						}
+					}
+				}else {
+					for (int i = 0; i < libros2.size(); i++) {
+						if(libros2.get(i).getGenero().toString().equals(comboBox_Genero.getSelectedItem()) | comboBox_Genero.getSelectedItem().equals(" ")) {
+								comboBox.addItem(libros2.get(i).toStringResumido());
+						}
+					}
+				}
+				comboBox.revalidate();
+				comboBox.repaint();
+				try {
+					txtpnDatos.setText(libros2.get(comboBox.getSelectedIndex()).toString());
+				} catch (java.lang.NullPointerException | java.lang.ArrayIndexOutOfBoundsException e) {
 					txtpnDatos.setText("No hay libros disponibles");
 				}
 
 			}
 
+		});
+		
+		comboBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					txtpnDatos.setText(libros2.get(comboBox.getSelectedIndex()).toString());
+				} catch (java.lang.NullPointerException | java.lang.ArrayIndexOutOfBoundsException e) {
+					txtpnDatos.setText("No hay libros disponibles");
+				}
+
+			}
 		});
 		btnReservarLibro.addActionListener(new ActionListener() {
 
@@ -213,6 +270,7 @@ public class ReservaLibros extends JFrame {
 				reserva_Libro.setFecha_Devolución(libro.fechaReserva());
 				Conexion.insertarReserva_Libro(reserva_Libro);
 				comboBox.remove(comboBox.getSelectedIndex());
+				comboBox.setSelectedIndex(0);
 				comboBox.revalidate();
 				try {
 					for (int i = 0; i < libros.size(); i++) {

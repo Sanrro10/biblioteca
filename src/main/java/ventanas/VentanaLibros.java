@@ -57,8 +57,7 @@ public class VentanaLibros extends JFrame {
 		contentpane.add(buttonReservas);
 
 		JLabel labelBiblioteca = new JLabel("");
-		labelBiblioteca
-				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+		labelBiblioteca.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);

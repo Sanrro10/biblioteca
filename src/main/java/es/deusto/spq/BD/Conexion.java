@@ -147,7 +147,7 @@ public class Conexion {
             	SalaTrabajo s1 = new SalaTrabajo();
             	s1.setCod_sala(rs.getInt("Cod_Sala"));
             	s1.setUbicacion(rs.getString("Ubicacion"));
-            	s1.setCod_sala(rs.getInt("Usuarios"));
+            	s1.setNumMaxUsuarios(rs.getInt("Usuarios"));
                 a1.add(s1);
             }
         } catch (SQLException e) {

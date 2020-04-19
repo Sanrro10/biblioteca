@@ -40,11 +40,14 @@ public class SalaTrabajo {
 	public void setNumMaxUsuarios(int numMaxUsuarios) {
 		this.numMaxUsuarios = numMaxUsuarios;
 	}
+	public String toCombo() {
+		return "SalaTrabajo" + cod_sala ;
+	}
 
 	@Override
 	public String toString() {
-		return "SalaTrabajo [cod_sala=" + cod_sala + ", ubicacion=" + ubicacion
-				+ ", numMaxUsuarios=" + numMaxUsuarios + "]";
+		return "Ubicacion: " + ubicacion
+				+"\n" + "Límite de Usuarios:" + numMaxUsuarios;
 	}
 
 }
