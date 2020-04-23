@@ -17,7 +17,7 @@ import java.awt.Color;
 public class VentanaGestor extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class VentanaGestor extends JFrame {
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca
-				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+				.setIcon(new ImageIcon(VentanaGestor.class.getResource("/azul.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -63,14 +63,14 @@ public class VentanaGestor extends JFrame {
 		contentpane.add(labelBiblioteca);
 		buttonReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				Retrasos retrasos = new Retrasos(750, 422);
 
 				retrasos.setVisible(true);
 
 				VentanaGestor.this.dispose();
-				
-				
+
+
 			}
 		});
 		buttonReservas.setBackground(SystemColor.inactiveCaptionBorder);
@@ -89,7 +89,7 @@ public class VentanaGestor extends JFrame {
 		buttonHistorial.setText("Historial y calificaciones");
 		contentpane.add(buttonHistorial);
 
-		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 

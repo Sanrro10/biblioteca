@@ -26,7 +26,7 @@ import java.awt.SystemColor;
 public class InicioSesion extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -78,15 +78,15 @@ public class InicioSesion extends JFrame {
 
 		textPass.setBounds(214, 188, 143, 20);
 		contentpane.add(textPass);
-		
+
 		JLabel lblNewLabel = new JLabel("Biblioteca");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 54));
 		lblNewLabel.setForeground(SystemColor.text);
 		lblNewLabel.setBounds(92, 28, 309, 42);
 		contentpane.add(lblNewLabel);
-		
+
 		JLabel labelBiblioteca = new JLabel("      Biblioteca Deusto");
-		//labelBiblioteca.setIcon(new ImageIcon(InicioSesion.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+		labelBiblioteca.setIcon(new ImageIcon(InicioSesion.class.getResource("/azul.jpg")));
 		labelBiblioteca.setForeground(SystemColor.text);
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
@@ -95,7 +95,7 @@ public class InicioSesion extends JFrame {
 		final Usuario user = new Usuario();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				ReservaLibros reserva;
 				try {
 					reserva = new ReservaLibros(750, 422, user);
@@ -105,36 +105,36 @@ public class InicioSesion extends JFrame {
 					e1.printStackTrace();
 				}
 
-				
-				
+
+
 				InicioSesion.this.dispose();
-				
-				
+
+
 			}
 		});
 		btnNewButton.setBackground(new Color(102, 204, 102));
 		btnNewButton.setBounds(0, 293, 89, 23);
-		
+
 		contentpane.add(btnNewButton);
-		
+
 		btnNewButtonGestor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				VentanaGestor gestor = new VentanaGestor(750, 422);
 
 				gestor.setVisible(true);
-				
+
 				InicioSesion.this.dispose();
-				
-				
+
+
 			}
 		});
 		btnNewButtonGestor.setBackground(new Color(102, 204, 102));
 		btnNewButtonGestor.setBounds(200, 293, 89, 23);
-		
+
 		contentpane.add(btnNewButtonGestor);
-		
-		//labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/es/deusto/spq/images/background3.jpg")));
+
+		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 
@@ -146,9 +146,9 @@ public class InicioSesion extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
+
+
+
 				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 				usuarios = Conexion.cogerUsuarios();
 				ArrayList<Gestor> gestores = new ArrayList<Gestor>();
@@ -161,15 +161,15 @@ public class InicioSesion extends JFrame {
 						user2 = u;
 						correcto = 1;
 						break;
-						
+
 					}
 				}for (Gestor g : gestores) {
-				
+
 					if (textUser.getText().equals(g.getEmail()) && textPass.getText().equals(g.getContrasenya())) {
-						
+
 						correcto = 2;
 						break;
-						
+
 					}
 				}
 				if(correcto == 1) {
@@ -183,19 +183,19 @@ public class InicioSesion extends JFrame {
 						e1.printStackTrace();
 					}
 
-					
-					
-					
+
+
+
 				}else if(correcto == 2) {
 					VentanaGestor gestor = new VentanaGestor(750, 422);
 
 					gestor.setVisible(true);
-					
+
 					InicioSesion.this.dispose();
 				}else if(correcto == 0) {
 					JOptionPane.showMessageDialog(null, "Usuario incorrecto");
 				}
-				
+
 			}
 		});
 
@@ -206,13 +206,13 @@ public class InicioSesion extends JFrame {
 				Registro registro = new Registro(750, 422); // quitar comentario para ver la ventana
 
 				registro.setVisible(true);
-				
+
 				InicioSesion.this.dispose();
 
 			}
 		});
-		
-		
+
+
 		setLocationRelativeTo(null);
 	}
 }

@@ -17,7 +17,7 @@ import java.awt.Color;
 public class VentanaLibros extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +27,7 @@ public class VentanaLibros extends JFrame {
 	private JButton buttonReservas = new JButton();
 	private JButton buttonModificar = new JButton();
 	private JLabel labelBackGround = new JLabel();
+	private JLabel labelBiblioteca = new JLabel();
 	private final JLabel lblNewLabel = new JLabel("Gestion de libros");
 
 	public VentanaLibros(int altura, int anchura) {
@@ -51,13 +52,13 @@ public class VentanaLibros extends JFrame {
 		buttonLibroNuevo.setBounds(45, 139, 140, 52);
 		buttonLibroNuevo.setText("Añadir nuevo libro");
 		contentpane.add(buttonLibroNuevo);
-		
+
 		buttonReservas.setBounds(200, 139, 140, 52);
 		buttonReservas.setText("Reservas");
 		contentpane.add(buttonReservas);
 
-		JLabel labelBiblioteca = new JLabel("");
-		labelBiblioteca.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+
+		labelBiblioteca.setIcon(new ImageIcon(VentanaGestor.class.getResource("/azul.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -68,7 +69,7 @@ public class VentanaLibros extends JFrame {
 		buttonModificar.setText("Modificar libros");
 		contentpane.add(buttonModificar);
 
-		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/background3.jpg")));
+		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
 		contentpane.add(labelBackGround);
 
@@ -107,10 +108,10 @@ public class VentanaLibros extends JFrame {
 					e1.printStackTrace();
 				}
 
-				
+
 			}
 		});
-		
+
 		buttonModificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -118,7 +119,7 @@ public class VentanaLibros extends JFrame {
 
 				ModificarLibro modificar;
 				try {
-					
+
 					modificar = new ModificarLibro(850, 480);
 					modificar.setVisible(true);
 				} catch (ParseException e1) {
@@ -126,13 +127,13 @@ public class VentanaLibros extends JFrame {
 					e1.printStackTrace();
 				}
 
-				
+
 
 				VentanaLibros.this.dispose();
 
 			}
 		});
-		
+
 		buttonReservas.addActionListener(new ActionListener() {
 
 			@Override
@@ -140,7 +141,7 @@ public class VentanaLibros extends JFrame {
 
 				GestorReservas reservas;
 				try {
-					
+
 					reservas = new GestorReservas(850, 480);
 					reservas.setVisible(true);
 				} catch (ParseException e1) {
@@ -148,13 +149,13 @@ public class VentanaLibros extends JFrame {
 					e1.printStackTrace();
 				}
 
-				
+
 
 				VentanaLibros.this.dispose();
 
 			}
 		});
-	
+
 		setLocationRelativeTo(null);
 	}
 }

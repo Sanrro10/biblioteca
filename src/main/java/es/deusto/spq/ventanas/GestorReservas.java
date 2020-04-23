@@ -25,7 +25,7 @@ import es.deusto.spq.base.Usuario;
 
 public class GestorReservas extends JFrame{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -57,20 +57,20 @@ public class GestorReservas extends JFrame{
 
 		JLabel labelBiblioteca = new JLabel("");
 		labelBiblioteca.setIcon(
-				new ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+				new ImageIcon(VentanaGestor.class.getResource("/azul.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
 		labelBiblioteca.setBounds(0, 0, 503, 95);
 		contentpane.add(labelBiblioteca);
-	
+
 		btnCancelarReserva.setText("Eliminar reserva");
 		btnCancelarReserva.setForeground(Color.WHITE);
 		btnCancelarReserva.setBackground(new Color(0, 102, 204));
 		btnCancelarReserva.setBounds(260, 407, 213, 28);
 
 		contentpane.add(btnCancelarReserva);
-		LabelBackground.setIcon(new ImageIcon(ReservaLibros.class.getResource("/es/deusto/spq/images/background3.jpg")));
+		LabelBackground.setIcon(new ImageIcon(ReservaLibros.class.getResource("/background3.jpg")));
 		LabelBackground.setBounds(0, 0, 503, 466);
 
 		JScrollPane scrollPane = new JScrollPane();

@@ -104,7 +104,7 @@ public class ReservaLibros extends JFrame {
 
 		JLabel labelBiblioteca = new JLabel("");
 		// labelBiblioteca.setIcon(new
-		// ImageIcon(VentanaGestor.class.getResource("/es/deusto/spq/images/065580938b36e4c049ec033745248216.jpg")));
+		// ImageIcon(VentanaGestor.class.getResource("/azul.jpg")));
 		labelBiblioteca.setForeground(Color.WHITE);
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBackground(SystemColor.textHighlight);
@@ -129,7 +129,7 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(btnReservarSala);
 
 		// LabelBackground.setIcon(new
-		// ImageIcon(ReservaLibros.class.getResource("/es/deusto/spq/images/background3.jpg")));
+		// ImageIcon(ReservaLibros.class.getResource("/background3.jpg")));
 		LabelBackground.setBounds(0, 0, 503, 466);
 
 		JScrollPane scrollPane = new JScrollPane();
