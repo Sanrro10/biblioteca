@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 import es.deusto.spq.BD.Conexion;
+import es.deusto.spq.server.Conexion2;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -81,7 +82,7 @@ public static void main(String[] args) {
 		  System.out.println("Parametro String Fecha 1 = "+fecha_Devolución+"\n" +
 		    "Parametro String fechaActual = "+fechaActual1+"\n");  
 		  String resultado="";
-		  final ArrayList<Reserva_Libro> reservas = Conexion.cogerReserva_Libros();
+		  final ArrayList<Reserva_Libro> reservas = Conexion2.cogerReserva_Libros();
 		  try {
 		   /**Obtenemos las fechas enviadas en el formato a comparar*/
 		   SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 

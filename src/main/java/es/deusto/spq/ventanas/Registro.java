@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Usuario;
+import es.deusto.spq.server.Conexion2;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -151,8 +152,8 @@ public class Registro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int correcto= 0;
 				ArrayList<String> emails = new ArrayList<>();
-				for(int i = 0; i<Conexion.cogerUsuarios().size(); i++) {
-					emails.add(Conexion.cogerUsuarios().get(i).getEmail());
+				for(int i = 0; i<Conexion2.cogerUsuarios().size(); i++) {
+					emails.add(Conexion2.cogerUsuarios().get(i).getEmail());
 				}if(emails.contains(textEmail.getText())){
 					correcto = 1;
 				}if(!textEmail.getText().contains("@") && !(textEmail.getText().contains(".es") || textEmail.getText().contains(".com"))){
@@ -169,7 +170,7 @@ public class Registro extends JFrame {
 					nuevoUsuario.setTelefono(Integer.parseInt(textTlfn.getText()));
 					nuevoUsuario.setContrasenya(String.valueOf(textPass.getPassword()));
 					
-					Conexion.insertarUsuario(nuevoUsuario);
+					Conexion2.insertarUsuario(nuevoUsuario);
 					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					
 					

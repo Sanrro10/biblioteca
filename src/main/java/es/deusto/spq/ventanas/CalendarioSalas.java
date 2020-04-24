@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,13 +21,15 @@ import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Reserva_Sala;
 import es.deusto.spq.base.SalaTrabajo;
 import es.deusto.spq.base.Usuario;
+import es.deusto.spq.server.Conexion2;
+
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
 
 public class CalendarioSalas extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -39,7 +41,7 @@ public class CalendarioSalas extends JFrame {
 	private JComboBox<String> ComboDisponibilidad = new JComboBox<String>();
 	private JTextPane textPane = new JTextPane();
 	private JCheckBox chckbxNewCheckBox = new JCheckBox("Calefacción");
-	
+
 	public CalendarioSalas(int altura, int anchura, final Usuario user) throws ParseException {
 		contentpane = new JPanel();
 
@@ -66,25 +68,25 @@ public class CalendarioSalas extends JFrame {
 		contentpane.add(btnratras);
 
 		combo.setBounds(320, 10, 90, 25);
-		ArrayList<SalaTrabajo> salas = Conexion.cogerSalas();
+		ArrayList<SalaTrabajo> salas = Conexion2.cogerSalas();
 		for(int i = 0; i< salas.size(); i++) {
 			combo.addItem(salas.get(i).toCombo());
 		}
 		contentpane.add(combo);
-		
+
 		ComboDisponibilidad.setBounds(320, 40, 90, 25);
-		ArrayList<Reserva_Sala> reservas = Conexion.cogerReserva_Salas();
+		ArrayList<Reserva_Sala> reservas = Conexion2.cogerReserva_Salas();
 		for(int i = 0; i< reservas.size(); i++) {
 //			if(reservas.get(i).getFecha().) {
 //				for(int a = 0; a < calendario.)
 //			}
 		}
-		
+
 		 //añadir metodo que recorra las horas libres de la sala seleccionada en el dia seleccionado y añada al combo los stirng con los horarios disponibles
 		ComboDisponibilidad.addItem("16:00-17:30"); //ejemplo
 		contentpane.add(ComboDisponibilidad);
-		
-		
+
+
 		textPane.setBounds(320, 76, 95, 137);
 		textPane.setEditable(false);
 		for(int i = 0; i< salas.size(); i++) {
@@ -93,8 +95,8 @@ public class CalendarioSalas extends JFrame {
 			}
 		}
 		contentpane.add(textPane);
-		
-		
+
+
 		chckbxNewCheckBox.setBounds(316, 225, 97, 23);
 		contentpane.add(chckbxNewCheckBox);
 
@@ -103,8 +105,8 @@ public class CalendarioSalas extends JFrame {
 		setTitle("Bilbioteca");
 		setLocationRelativeTo(null);
 
-		
-		
+
+
 //		calendario.addActionListener(new ActionListener() {
 //
 //			@Override
@@ -134,9 +136,9 @@ public class CalendarioSalas extends JFrame {
 				reservaNueva.setCod_Sala(s.getCod_sala());
 				reservaNueva.setFecha(calendario.getDate());
 				reservas.add(reservaNueva);
-				Conexion.insertarReserva_Sala(reservaNueva);
+				Conexion2.insertarReserva_Sala(reservaNueva);
 				btnreservar.setEnabled(false);
-				
+
 			}
 		});
 		combo.addActionListener(new ActionListener() {
@@ -150,8 +152,8 @@ public class CalendarioSalas extends JFrame {
 				}
 			}
 		});
-		
-		
+
+
 
 		btnratras.addActionListener(new ActionListener() {
 

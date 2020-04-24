@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 
 import java.awt.BorderLayout;
@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Libro;
 import es.deusto.spq.base.Reserva_Libro;
+import es.deusto.spq.server.Conexion2;
 
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -155,7 +156,7 @@ public class AnyadirLibro extends JFrame {
 				l1.setAutor(textAutor.getText());
 				l1.setGenero(genero.getSelectedItem().toString());
 				l1.setReserva_Max(dias.getComponentCount());
-				Conexion.insertarLibro(l1);
+				Conexion2.insertarLibro(l1);
 
 				AnyadirLibro anyadir;
 				try {

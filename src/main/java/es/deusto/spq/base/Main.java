@@ -8,8 +8,7 @@ import es.deusto.spq.base.*;
 
 import java.io.IOException;
 import java.net.URI;
-
-import ventanas.InicioSesion;
+import es.deusto.spq.ventanas.InicioSesion;
 
 /**
  * Main class.
@@ -17,7 +16,7 @@ import ventanas.InicioSesion;
  */
 public class Main {
 	// Base URI the Grizzly HTTP server will listen on
-	public static final String BASE_URI = "http://localhost:8080/biblioteca/";
+	
 
 	/**
 	 * Starts Grizzly HTTP server exposing JAX-RS resources defined in this
@@ -32,7 +31,21 @@ public class Main {
 
 		// create and start a new instance of grizzly http server
 		// exposing the Jersey application at BASE_URI
-		return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
+
+		
+		return GrizzlyHttpServerFactory.createHttpServer(URI.create(cogerUrl()), rc);
+	}public static String cogerUrl(){
+		GetPropertyValues properties = new GetPropertyValues();
+		String url = "";
+		
+		try {
+			url = properties.getPropValues();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		return url;
+		
 	}
 
 	/**
@@ -43,6 +56,7 @@ public class Main {
 	 */
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException {
+		
 
 		InicioSesion inicioSesion = new InicioSesion(750, 422); // quitar comentario para ver la ventana
 
@@ -51,7 +65,7 @@ public class Main {
 		final HttpServer server = startServer();
 		System.out.println(String.format(
 				"Jersey app started with WADL available at " + "%sapplication.wadl\nHit enter to stop it...",
-				BASE_URI));
+				cogerUrl()));
 		System.in.read();
 		server.stop();
 

@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -22,6 +22,7 @@ import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Libro;
 import es.deusto.spq.base.Reserva_Libro;
 import es.deusto.spq.base.Usuario;
+import es.deusto.spq.server.Conexion2;
 
 public class GestorReservas extends JFrame{
 	/**
@@ -78,8 +79,8 @@ public class GestorReservas extends JFrame{
 		contentpane.add(scrollPane);
 
 		final JComboBox comboBox = new JComboBox();
-		final ArrayList<Libro> libros = Conexion.cogerLibros();
-		ArrayList<Reserva_Libro> reserva_Libros = Conexion.cogerReserva_Libros();
+		final ArrayList<Libro> libros = Conexion2.cogerLibros();
+		ArrayList<Reserva_Libro> reserva_Libros = Conexion2.cogerReserva_Libros();
 		ArrayList<Integer> cods_Libro = new ArrayList<>();
 		for (int i = 0; i < reserva_Libros.size(); i++) {
 			cods_Libro.add(reserva_Libros.get(i).getCod_Libro());
@@ -129,7 +130,7 @@ public class GestorReservas extends JFrame{
 				Reserva_Libro reserva_Libro = new Reserva_Libro();
 				Libro libro = libros.get(comboBox.getSelectedIndex());
 				reserva_Libro.setCod_Libro(libro.getCod_Libro());
-				Conexion.borrarReserva_Libro(reserva_Libro);
+				Conexion2.borrarReserva_Libro(reserva_Libro);
 				comboBox.remove(comboBox.getSelectedIndex());
 				comboBox.revalidate();
 				try {

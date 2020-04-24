@@ -1,9 +1,10 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -15,10 +16,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 
 import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Gestor;
+import es.deusto.spq.base.GetPropertyValues;
 import es.deusto.spq.base.Usuario;
+import es.deusto.spq.server.Conexion2;
 
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -40,8 +46,20 @@ public class InicioSesion extends JFrame {
 	private JLabel labelBackGround = new JLabel();
 	private final JButton btnNewButton = new JButton("PRUEBA");
 	private final JButton btnNewButtonGestor = new JButton("Gestor");
+	private Client client;
 
 	public InicioSesion(int altura, int anchura) {
+		client = ClientBuilder.newClient();
+		GetPropertyValues properties = new GetPropertyValues();
+		String url = "";
+		try {
+			url = properties.getPropValues();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		WebTarget appTarget = client.target(url);
+		WebTarget inicioSesionTarget = appTarget.path("inicioSesion");
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -150,9 +168,9 @@ public class InicioSesion extends JFrame {
 
 
 				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-				usuarios = Conexion.cogerUsuarios();
+				usuarios = Conexion2.cogerUsuarios();
 				ArrayList<Gestor> gestores = new ArrayList<Gestor>();
-				gestores = Conexion.cogerGestores();
+				gestores = Conexion2.cogerGestores();
 				int correcto = 0;
 				Usuario user2 = new Usuario();
 				for (Usuario u : usuarios) {

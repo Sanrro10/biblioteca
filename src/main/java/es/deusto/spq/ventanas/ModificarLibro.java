@@ -1,4 +1,4 @@
-package ventanas;
+package es.deusto.spq.ventanas;
 
 
 import java.awt.BorderLayout;
@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.base.Libro;
 import es.deusto.spq.base.Reserva_Libro;
+import es.deusto.spq.server.Conexion2;
 
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -115,7 +116,7 @@ public class ModificarLibro extends JFrame {
 
 		dias.setBounds(214, 282, 120, 20);
 		contentpane.add(dias);
-		final ArrayList<Libro> libros = Conexion.cogerLibros();
+		final ArrayList<Libro> libros = Conexion2.cogerLibros();
 		ArrayList<Integer> cods_Libro = new ArrayList<>();
 		for(int i = 0; i<libros.size(); i++) {
 			cods_Libro.add(libros.get(i).getCod_Libro());
@@ -181,11 +182,11 @@ public class ModificarLibro extends JFrame {
 						l1.setTitulo(textTitulo.getText());
 						l1.setAutor(textAutor.getText());
 						l1.setReserva_Max((int) dias.getValue());
-						Conexion.modificararLibro(l1);
+						Conexion2.modificararLibro(l1);
 					}
 					
 				}else{
-					Conexion.borrarLibro(l1);
+					Conexion2.borrarLibro(l1);
 				}
 
 				ModificarLibro inicio;
