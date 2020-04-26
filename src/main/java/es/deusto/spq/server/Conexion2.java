@@ -30,13 +30,13 @@ public class Conexion2 {
         try {
             
             try {
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }
 
             // Conectamos con la base de datos
-            conexion = DriverManager.getConnection("jdbc:mysql:BibliotecaBD.db");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost\\biblioteca;user=root;password=12345");
         } catch (java.sql.SQLException sqle) {
             System.out.println("Error: " + sqle);
         }return conexion;
@@ -59,7 +59,7 @@ public class Conexion2 {
             // We register the MySQL driver
             // Registramos el driver de MySQL
             try {
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al registrar el driver de MySQL: " + ex);
             }

@@ -1,8 +1,19 @@
 package es.deusto.spq.base;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
+
+
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+
+@PersistenceCapable
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Gestor extends Usuario {
 
+	@PrimaryKey
 	int cod_Usuario;
+	
 	String email;
 	String nombre;
 	String Apellidos;

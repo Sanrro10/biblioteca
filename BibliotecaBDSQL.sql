@@ -3,8 +3,8 @@
 --
 -- Text encoding used: System
 --
-PRAGMA foreign_keys = off;
-BEGIN TRANSACTION;
+CREATE SCHEMA biblioteca;
+CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';
 
 -- Table: Gestor
 CREATE TABLE Gestor (Cod_Gestor INTEGER PRIMARY KEY UNIQUE NOT NULL, email CHAR UNIQUE NOT NULL, Nombre CHAR NOT NULL, Apellidos CHAR NOT NULL, Telefono INTEGER, Contrasenya CHAR NOT NULL);
@@ -39,5 +39,3 @@ INSERT INTO Usuario (Cod_Usuario, email, Nombre, Apellidos, Telefono, Contraseny
 INSERT INTO Usuario (Cod_Usuario, email, Nombre, Apellidos, Telefono, Contrasenya) VALUES (2, 'b@b.com', 'BB', 'BB', 1234556, '123');
 INSERT INTO Usuario (Cod_Usuario, email, Nombre, Apellidos, Telefono, Contrasenya) VALUES (3, 'a@aa.com', 'a', 'a', 123, '123');
 
-COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;

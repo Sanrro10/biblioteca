@@ -9,11 +9,11 @@ public class GetPropertyValues {
 	String result = "";
 	InputStream inputStream;
  
-	public String getPropValues() throws IOException {
+	public String getURL() throws IOException {
  
 		try {
 			Properties prop = new Properties();
-			String propFileName = "/config.properties";
+			String propFileName = "config.properties";
  
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
  

@@ -39,7 +39,7 @@ public class Main {
 		String url = "";
 		
 		try {
-			url = properties.getPropValues();
+			url = properties.getURL();
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();

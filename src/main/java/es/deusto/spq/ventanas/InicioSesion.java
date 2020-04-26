@@ -53,7 +53,7 @@ public class InicioSesion extends JFrame {
 		GetPropertyValues properties = new GetPropertyValues();
 		String url = "";
 		try {
-			url = properties.getPropValues();
+			url = properties.getURL();
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();

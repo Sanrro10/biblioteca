@@ -25,6 +25,26 @@
 	</dependencyManagement>
 
 	<dependencies>
+	<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-core</artifactId>
+			<version>[5.1.6, 5.9)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-api-jdo</artifactId>
+			<version>[5.1.4, 5.9)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>datanucleus-rdbms</artifactId>
+			<version>[5.1.6, 5.9)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.datanucleus</groupId>
+			<artifactId>javax.jdo</artifactId>
+			<version>[3.2.0-m8, )</version>
+		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-grizzly2-http</artifactId>
@@ -46,6 +66,30 @@
 		    <artifactId>sqlite-jdbc</artifactId>
 		    <version>3.30.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.19</version>
+		</dependency>
+        <dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.18.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+		</dependency>
 
 
 
@@ -66,7 +110,7 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>es.deusto.epq</groupId>
+						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
 						<version>1.2.1</version>
 						<configuration>
@@ -87,7 +131,6 @@
 		</resources>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<inherited>true</inherited>
@@ -96,6 +139,30 @@
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.datanucleus</groupId>
+				<artifactId>datanucleus-maven-plugin</artifactId>
+				<version>5.0.2</version>
+				<configuration>
+					<log4jConfiguration>${config.files.dir}/log4j.properties</log4jConfiguration>
+					<verbose>true</verbose>
+					<props>${config.files.dir}/datanucleus.properties</props>
+					<fork>false</fork>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>enhance</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -114,6 +181,19 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+        <repository>
+            <id>DN_M2_Repo</id>
+            <name>DataNucleus Repository</name>
+            <url>http://www.datanucleus.org/downloads/maven2</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>DataNucleus_2</id>
+            <url>http://www.datanucleus.org/downloads/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<properties>
 		<jersey.version>2.30.1</jersey.version>
@@ -121,7 +201,8 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<server.hostname>127.0.0.1</server.hostname>
-		<server.port>0000</server.port>
+		<server.port>8080</server.port>
 		<config.files.dir>${basedir}/src/main/resources</config.files.dir>
 	</properties>
 </project>
+
