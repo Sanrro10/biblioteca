@@ -1,8 +1,10 @@
 package es.deusto.spq.server.data;
 
+@PersistenceCapable
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
 
-	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
+	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		super();
 		this.cod_Usuario = cod_Usuario;
 		this.email = email;
@@ -11,7 +13,6 @@ public class Usuario {
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
 	}
-	int cod_Usuario;
 	String email;
 	String nombre;
 	String apellidos;
