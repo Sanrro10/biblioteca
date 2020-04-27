@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 public class UsuarioDTO implements Serializable{
 		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	int cod_Usuario;
 	String email;
 	String nombre;

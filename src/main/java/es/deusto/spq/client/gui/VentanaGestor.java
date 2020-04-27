@@ -1,4 +1,4 @@
-package es.deusto.spq.client.ventanas;
+package es.deusto.spq.client.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

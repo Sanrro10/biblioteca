@@ -1,4 +1,4 @@
-package es.deusto.spq.client.ventanas;
+package es.deusto.spq.client.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

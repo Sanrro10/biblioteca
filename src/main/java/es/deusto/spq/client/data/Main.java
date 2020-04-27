@@ -5,7 +5,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import es.deusto.spq.client.data.*;
-import es.deusto.spq.client.ventanas.InicioSesion;
+import es.deusto.spq.client.gui.InicioSesion;
 
 import java.io.IOException;
 import java.net.URI;
