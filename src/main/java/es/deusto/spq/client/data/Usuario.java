@@ -17,7 +17,10 @@ public class Usuario {
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
 	}
+<<<<<<< HEAD
 	@PrimaryKey
+=======
+>>>>>>> branch 'master' of https://github.com/Sanrro10/biblioteca
 	String email;
 	String nombre;
 	String apellidos;

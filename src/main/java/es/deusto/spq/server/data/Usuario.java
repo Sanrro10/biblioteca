@@ -1,9 +1,11 @@
 package es.deusto.spq.server.data;
 
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
+
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
@@ -17,7 +19,6 @@ public class Usuario {
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
 	}
-	@PrimaryKey
 	String email;
 	String nombre;
 	String apellidos;
