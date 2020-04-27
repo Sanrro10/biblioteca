@@ -49,6 +49,15 @@ public class Solicitud {
 	}
 	
 	
+	
+	public Solicitud(int codigoS, String tituloS, String autorS, String generoS, int cantidadS) {
+		super();
+		this.codigoS = codigoS;
+		this.tituloS = tituloS;
+		this.autorS = autorS;
+		this.generoS = generoS;
+		this.cantidadS = cantidadS;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
