@@ -21,6 +21,7 @@ import es.deusto.spq.base.Libro;
 import es.deusto.spq.base.Reserva_Libro;
 import es.deusto.spq.base.Reserva_Sala;
 import es.deusto.spq.base.SalaTrabajo;
+import es.deusto.spq.base.Solicitud;
 import es.deusto.spq.base.Usuario;
  
 public class Conexion {
@@ -62,6 +63,30 @@ public class Conexion {
             System.out.println(e.getMessage());
         }
         return a1;
+        
+    }
+    
+    public static ArrayList<Solicitud> cogerSolicitud(){
+        ArrayList<Solicitud> s1 = new ArrayList<>();
+    	
+    	String sql = "SELECT codigoS, tituloS, autorS, generoS, cantidadS FROM Solicitud";
+    	Connection conn = conectar();
+        try (Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+            	Solicitud so1 = new Solicitud();
+            	so1.setCodigoS(rs.getInt("codigoS"));
+            	so1.setTituloS(rs.getString("tituloS"));
+            	so1.setAutorS(rs.getString("autorS"));
+            	so1.setGeneroS(rs.getString("generoS"));
+            	so1.setCantidadS(rs.getInt("cantidadS"));
+                s1.add(so1);
+            }
+        } catch (SQLException e) {
+        	e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return s1;
         
     }
     public static ArrayList<Reserva_Sala> cogerReserva_Salas() throws ParseException{
@@ -126,6 +151,7 @@ public class Conexion {
             	u1.setApellidos(rs.getString("Apellidos"));
             	u1.setTelefono(rs.getInt("Telefono"));
             	u1.setContrasenya(rs.getString("Contrasenya"));
+            	u1.setCantReservas(rs.getInt("cantReservas"));
                 a1.add(u1);
             }
         } catch (SQLException e) {
@@ -195,6 +221,21 @@ public class Conexion {
          }
   	return;
      }
+    
+    public static void insertarSolicitud(Solicitud so1) { 
+    	   Connection conn = conectar();
+    	   String sql = "INSERT INTO Solicitud(tituloS, autorS, generoS, cantidadS) VALUES ('" + so1.getTituloS() + "' , '" + so1.getAutorS() + "' , '" + so1.getGeneroS() + "' , '" + so1.getCantidadS() + "')" ;	   
+  	  	 try {
+  	         Statement stmt  = conn.createStatement();
+  	   	 stmt.executeUpdate(sql);
+  	        
+  	    }catch (SQLException e) {
+        	   e.printStackTrace();
+             System.out.println(e.getMessage());
+           }
+    	return;
+       }
+    
     public static void modificararLibro(Libro l1) { 
    	   Connection conn = conectar();
    	   String sql = "UPDATE Libro SET Titulo = '" + l1.getTitulo() + "', Autor = '" + l1.getAutor() + "', Genero = '" + l1.getGenero() + "', Reserva_Max = " + l1.getReserva_Max() + " WHERE Cod_Libro = " + l1.getCod_Libro();	   

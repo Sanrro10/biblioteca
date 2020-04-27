@@ -414,3 +414,18 @@
   <message>Conectada base de datos BibliotecaBD</message>
 </record>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-04-27T17:31:49</date>
+  <millis>1588001509342</millis>
+  <sequence>2</sequence>
+  <logger>org.sqlite.jdbc4.JDBC4Connection</logger>
+  <level>INFO</level>
+  <class>es.deusto.spq.BD.Conexion</class>
+  <method>log</method>
+  <thread>16</thread>
+  <message>Conectada base de datos BibliotecaBD</message>
+</record>
+</log>

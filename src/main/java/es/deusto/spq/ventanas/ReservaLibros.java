@@ -26,6 +26,7 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 
@@ -40,6 +41,7 @@ public class ReservaLibros extends JFrame {
 	private JButton buttonAtras = new JButton();
 	private JButton buttonLibros = new JButton();
 	private JButton buttonUsuarios = new JButton();
+	private JButton buttonSolicitud = new JButton();
 	private final JLabel lblNewLabel = new JLabel("Biblioteca");
 	private final JButton btnReservarLibro = new JButton();
 	private final JButton btnReservarSala = new JButton();
@@ -99,7 +101,7 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(buttonAtras);
 		buttonLibros.setBackground(SystemColor.inactiveCaption);
 
-		buttonLibros.setBounds(45, 305, 190, 25);
+		buttonLibros.setBounds(45, 275, 190, 25);
 		buttonLibros.setText("Mis libros");
 		contentpane.add(buttonLibros);
 
@@ -113,9 +115,13 @@ public class ReservaLibros extends JFrame {
 		contentpane.add(labelBiblioteca);
 		buttonUsuarios.setBackground(SystemColor.inactiveCaption);
 
-		buttonUsuarios.setBounds(45, 341, 190, 28);
+		buttonUsuarios.setBounds(45, 315, 190, 28);
 		buttonUsuarios.setText("Mi historial");
 		contentpane.add(buttonUsuarios);
+		
+		buttonSolicitud.setBounds(45, 355, 190, 28);
+		buttonSolicitud.setText("Solicitar libro ");
+		contentpane.add(buttonSolicitud);
 
 		btnReservarLibro.setText("Reservar libro");
 		btnReservarLibro.setForeground(Color.WHITE);
@@ -263,29 +269,39 @@ public class ReservaLibros extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Reserva_Libro reserva_Libro = new Reserva_Libro();
-				Libro libro = libros.get(comboBox.getSelectedIndex());
-				reserva_Libro.setCod_Libro(libro.getCod_Libro());
-				reserva_Libro.setCod_Usuario(user.getCod_Usuario()); // Poner aquí el código del usuario que le llegue del
+				ArrayList<Usuario> usuario = Conexion.cogerUsuarios();
+				for (int i = 0; i < usuario.size(); i++) {
+					if (Usuario.getCantReservas()<5) {
+						Reserva_Libro reserva_Libro = new Reserva_Libro();
+						Libro libro = libros.get(comboBox.getSelectedIndex());
+						reserva_Libro.setCod_Libro(libro.getCod_Libro());
+						reserva_Libro.setCod_Usuario(user.getCod_Usuario()); // Poner aquí el código del usuario que le llegue del
 																// inicio de sesión
-				reserva_Libro.setFecha_Devolución(libro.fechaReserva());
-				Conexion2.insertarReserva_Libro(reserva_Libro);
-				comboBox.remove(comboBox.getSelectedIndex());
-				comboBox.setSelectedIndex(0);
-				comboBox.revalidate();
-				try {
-					for (int i = 0; i < libros.size(); i++) {
-						if ((comboBox.getSelectedItem().equals((libros.get(i).toStringResumido())))) {
-							txtpnDatos.setText(libros.get(i).toString());
-						}
-					}
+						reserva_Libro.setFecha_Devolución(libro.fechaReserva());
+						Conexion.insertarReserva_Libro(reserva_Libro);
+						comboBox.remove(comboBox.getSelectedIndex());
+						comboBox.revalidate();
+							try {
+								for (int i1 = 0; i1 < libros.size(); i1++) {
+									if ((comboBox.getSelectedItem().equals((libros.get(i1).toStringResumido())))) {
+										txtpnDatos.setText(libros.get(i1).toString());
+									}
+								}
 
-				} catch (java.lang.NullPointerException a) {
-					txtpnDatos.setText("No hay libros disponibles");
+							} catch (java.lang.NullPointerException a) {
+								txtpnDatos.setText("No hay libros disponibles");
+							}
+				
+				
+							comboBox.repaint();
+							txtpnDatos.repaint();
+							contentpane.repaint();		
+					}else {
+						JOptionPane.showInputDialog("Limite de reservas posibles.");
+					}
 				}
-				comboBox.repaint();
-				txtpnDatos.repaint();
-				contentpane.repaint();
+				
+				
 			}
 		});
 
@@ -321,6 +337,29 @@ public class ReservaLibros extends JFrame {
 
 			}
 		});
+		
+		buttonSolicitud.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SolicitarLibros solicitar;
+				try {
+					solicitar = new SolicitarLibros(750, 422);
+					solicitar.setVisible(true);
+					
+					ReservaLibros.this.dispose();
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+
+			
+			
+			
+		
+	});
+
 
 		setLocationRelativeTo(null);
 	}

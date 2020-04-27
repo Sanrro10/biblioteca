@@ -26,6 +26,7 @@ public class VentanaLibros extends JFrame {
 	private JButton buttonLibroNuevo = new JButton();
 	private JButton buttonReservas = new JButton();
 	private JButton buttonModificar = new JButton();
+	private JButton buttonSolicitudes = new JButton();
 	private JLabel labelBackGround = new JLabel();
 	private JLabel labelBiblioteca = new JLabel();
 	private final JLabel lblNewLabel = new JLabel("Gestion de libros");
@@ -68,6 +69,10 @@ public class VentanaLibros extends JFrame {
 		buttonModificar.setBounds(45, 213, 140, 52);
 		buttonModificar.setText("Modificar libros");
 		contentpane.add(buttonModificar);
+		
+		buttonSolicitudes.setBounds(200, 213, 140, 52);
+		buttonSolicitudes.setText("Libros solicitados");
+		contentpane.add(buttonSolicitudes);
 
 		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/background3.jpg")));
 		labelBackGround.setBounds(0, 0, altura, anchura);
@@ -150,6 +155,28 @@ public class VentanaLibros extends JFrame {
 				}
 
 
+
+				VentanaLibros.this.dispose();
+
+			}
+		});
+		
+		buttonSolicitudes.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				Solicitudes solicitudes;
+				try {
+					
+					solicitudes = new Solicitudes(850, 480);
+					solicitudes.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				
 
 				VentanaLibros.this.dispose();
 

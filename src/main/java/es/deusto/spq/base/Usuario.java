@@ -2,7 +2,7 @@ package es.deusto.spq.base;
 
 public class Usuario {
 
-	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
+	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya, int cantReservas) {
 		super();
 		this.cod_Usuario = cod_Usuario;
 		this.email = email;
@@ -10,6 +10,7 @@ public class Usuario {
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
+		this.cantReservas = cantReservas;
 	}
 	int cod_Usuario;
 	String email;
@@ -17,6 +18,7 @@ public class Usuario {
 	String apellidos;
 	int telefono;
 	String contrasenya;
+	static int cantReservas;
 	public Usuario() {
 		
 	}
@@ -55,5 +57,11 @@ public class Usuario {
 	}
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
+	}
+	public static int getCantReservas() {
+		return cantReservas;
+	}
+	public void setCantReservas(int cantReservas) {
+		this.telefono = 0;
 	}
 }
