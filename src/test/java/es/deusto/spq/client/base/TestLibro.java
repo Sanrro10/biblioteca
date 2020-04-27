@@ -9,7 +9,7 @@ import es.deusto.spq.client.data.Libro;
 public class TestLibro {
 
 	@Test
-	public void test() {
+	public void testLibro() {
 		
 		Libro libro1 = new Libro(01, "Harry Potter", "J.K.Rowling", "Fantasía", 10);
 		

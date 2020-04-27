@@ -13,12 +13,12 @@ public class Gestor extends Usuario {
 
 	@PrimaryKey
 	int cod_Usuario;
-	
 	String email;
 	String nombre;
 	String Apellidos;
 	int telefono;
 	String contrasenya;
+	
 	public String getContrasenya() {
 		return contrasenya;
 	}
