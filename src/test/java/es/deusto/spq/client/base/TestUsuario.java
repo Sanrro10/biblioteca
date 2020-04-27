@@ -2,33 +2,41 @@ package es.deusto.spq.client.base;
 
 import static org.junit.Assert.*;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import es.deusto.spq.client.data.Usuario;
 
 public class TestUsuario {
+	private Usuario usuario1;
 
+	@Rule 
+	public ContiPerfRule i = new ContiPerfRule();
+	
+	@Before
+	public void setUp() {
+		usuario1 = new Usuario("a@a.com", "a", "a", 654321987, "123");
+	}
+	
+	
 	@Test
+	@PerfTest(invocations = 1000, threads =20)
+	@Required(max=1200, average=250)
 	public void testUsuario() {
 		
-		Usuario usuario1 = new Usuario("a@a.com", "a", "a", 654321987, "123");
 		
-		String email = "a@a.com";
-		String nombre ="a";
-		String apellidos ="a";
-		int telefono =654321987;
-		String contrasenya = "123";
-		
-		assertTrue(usuario1.getEmail()==email);
-		assertTrue(usuario1.getNombre()==nombre);
-		assertTrue(usuario1.getApellidos()==apellidos);
-		assertTrue(usuario1.getTelefono()==telefono);
-		assertTrue(usuario1.getContrasenya()==contrasenya);
-		
-		
-		
-		
+		assertEquals("a@a.com", usuario1.getEmail());
+		assertEquals("a", usuario1.getNombre());
+		assertEquals("a", usuario1.getApellidos());
+		assertEquals(654321987, usuario1.getTelefono());
+		assertEquals("123", usuario1.getContrasenya());
 		
 	}
+	
+	
 
 }
