@@ -20,11 +20,9 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
-import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.client.data.Gestor;
 import es.deusto.spq.client.data.GetPropertyValues;
 import es.deusto.spq.client.data.Usuario;
-import es.deusto.spq.server.Conexion2;
 
 import java.awt.Font;
 import java.awt.SystemColor;

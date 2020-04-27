@@ -16,8 +16,8 @@ import javax.jdo.Transaction;
 
 import es.deusto.spq.server.data.Gestor;
 import es.deusto.spq.server.data.Libro;
-import es.deusto.spq.server.data.Reserva_Libro;
-import es.deusto.spq.server.data.Reserva_Sala;
+import es.deusto.spq.server.data.ReservaLibro;
+import es.deusto.spq.server.data.ReservaSala;
 import es.deusto.spq.server.data.SalaTrabajo;
 import es.deusto.spq.server.data.Usuario;
 
@@ -99,10 +99,10 @@ public class DBManager {
 	public void store(SalaTrabajo sala) {
 		DBManager.getInstance().storeObjectInDB(sala);
 	}
-	public void store(Reserva_Sala rsala) {
+	public void store(ReservaSala rsala) {
 		DBManager.getInstance().storeObjectInDB(rsala);
 	}
-	public void store(Reserva_Libro rlibro) {
+	public void store(ReservaLibro rlibro) {
 		DBManager.getInstance().storeObjectInDB(rlibro);
 	}
 	
@@ -122,10 +122,10 @@ public class DBManager {
 	public void delete(SalaTrabajo sala) {
 		DBManager.getInstance().deleteObjectFromDB(sala);
 	}
-	public void delete(Reserva_Sala rsala) {
+	public void delete(ReservaSala rsala) {
 		DBManager.getInstance().deleteObjectFromDB(rsala);
 	}
-	public void delete(Reserva_Libro rlibro) {
+	public void delete(ReservaLibro rlibro) {
 		DBManager.getInstance().deleteObjectFromDB(rlibro);
 	}
 	
@@ -153,13 +153,13 @@ public class DBManager {
 		delete(sala2);
 		store(sala);
 	}
-	public void update(Reserva_Sala rsala) {
-		Reserva_Sala rsala2 = getReserva_Sala(""+rsala.getCod_Usuario());
+	public void update(ReservaSala rsala) {
+		ReservaSala rsala2 = getReserva_Sala(""+rsala.getCod_Usuario());
 		delete(rsala2);
 		store(rsala);
 	}
-	public void update(Reserva_Libro rlibro) {
-		Reserva_Libro rlibro2 = getReserva_Libro(""+rlibro.getCod_Reserva_Libro());
+	public void update(ReservaLibro rlibro) {
+		ReservaLibro rlibro2 = getReserva_Libro(""+rlibro.getCod_Reserva_Libro());
 		delete(rlibro2);
 		store(rlibro);
 	}
@@ -268,18 +268,18 @@ public class DBManager {
 
 		return sala;
 	}
-	public Reserva_Libro getReserva_Libro(String cod_Reserva_Libro) {		
+	public ReservaLibro getReserva_Libro(String cod_Reserva_Libro) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
-		Reserva_Libro reserva_Libro = null; 
+		ReservaLibro reservaLibro = null; 
 
 		try {
 			tx.begin();
 			
 			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Libro == '" + cod_Reserva_Libro + "'");
 			query.setUnique(true);
-			reserva_Libro = (Reserva_Libro) query.execute();
+			reservaLibro = (ReservaLibro) query.execute();
 			
 			tx.commit();
 		} catch (Exception ex) {
@@ -292,20 +292,20 @@ public class DBManager {
 			pm.close();
 		}
 
-		return reserva_Libro;
+		return reservaLibro;
 	}
-	public Reserva_Sala getReserva_Sala (String cod_Reserva_Sala) {		
+	public ReservaSala getReserva_Sala (String cod_Reserva_Sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
-		Reserva_Sala reserva_Sala = null; 
+		ReservaSala reservaSala = null; 
 
 		try {
 			tx.begin();
 			
 			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Sala == '" + cod_Reserva_Sala + "'");
 			query.setUnique(true);
-			reserva_Sala = (Reserva_Sala) query.execute();
+			reservaSala = (ReservaSala) query.execute();
 			
 			tx.commit();
 		} catch (Exception ex) {
@@ -318,7 +318,7 @@ public class DBManager {
 			pm.close();
 		}
 
-		return reserva_Sala;
+		return reservaSala;
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -441,8 +441,8 @@ public class DBManager {
 
 		return salas;		
 	}
-	public List<Reserva_Libro> getReserva_Libros() {
-		List<Reserva_Libro> salas = new ArrayList<>();		
+	public List<ReservaLibro> getReserva_Libros() {
+		List<ReservaLibro> salas = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -452,9 +452,9 @@ public class DBManager {
 
 			tx.begin();
 			
-			Extent<Reserva_Libro> extent = pm.getExtent(Reserva_Libro.class, true);
+			Extent<ReservaLibro> extent = pm.getExtent(ReservaLibro.class, true);
 
-			for (Reserva_Libro sala : extent) {
+			for (ReservaLibro sala : extent) {
 				salas.add(sala);
 			}
 
@@ -471,8 +471,8 @@ public class DBManager {
 
 		return salas;		
 	}
-	public List<Reserva_Sala> getReserva_Salas() {
-		List<Reserva_Sala> rsalas = new ArrayList<>();		
+	public List<ReservaSala> getReserva_Salas() {
+		List<ReservaSala> rsalas = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -482,9 +482,9 @@ public class DBManager {
 
 			tx.begin();
 			
-			Extent<Reserva_Sala> extent = pm.getExtent(Reserva_Sala.class, true);
+			Extent<ReservaSala> extent = pm.getExtent(ReservaSala.class, true);
 
-			for (Reserva_Sala rsala : extent) {
+			for (ReservaSala rsala : extent) {
 				rsalas.add(rsala);
 			}
 

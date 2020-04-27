@@ -11,7 +11,7 @@ import es.deusto.spq.server.DAO.DBManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Reserva_Libro {
+public class ReservaLibro {
 
 	int cod_Reserva_Libro;
 	int cod_Usuario;
@@ -21,14 +21,14 @@ public class Reserva_Libro {
 	public static ArrayList<Integer> lista = new ArrayList<>();
 	
 	
-	public Reserva_Libro(int cod_Reserva_Libro, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
+	public ReservaLibro(int cod_Reserva_Libro, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
 		super();
 		this.cod_Reserva_Libro = cod_Reserva_Libro;
 		this.cod_Usuario = cod_Usuario;
 		this.cod_Libro = cod_Libro;
 		this.fecha_Devolución = fecha_Devolución;
 	}
-	public Reserva_Libro() {
+	public ReservaLibro() {
 		
 		
 		

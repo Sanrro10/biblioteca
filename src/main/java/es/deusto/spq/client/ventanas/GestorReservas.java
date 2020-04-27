@@ -18,11 +18,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.client.data.Libro;
-import es.deusto.spq.client.data.Reserva_Libro;
+import es.deusto.spq.client.data.ReservaLibro;
 import es.deusto.spq.client.data.Usuario;
-import es.deusto.spq.server.Conexion2;
 
 public class GestorReservas extends JFrame{
 	/**
@@ -80,10 +78,10 @@ public class GestorReservas extends JFrame{
 
 		final JComboBox comboBox = new JComboBox();
 		final ArrayList<Libro> libros = Conexion2.cogerLibros();
-		ArrayList<Reserva_Libro> reserva_Libros = Conexion2.cogerReserva_Libros();
+		ArrayList<ReservaLibro> reservaLibros = Conexion2.cogerReserva_Libros();
 		ArrayList<Integer> cods_Libro = new ArrayList<>();
-		for (int i = 0; i < reserva_Libros.size(); i++) {
-			cods_Libro.add(reserva_Libros.get(i).getCod_Libro());
+		for (int i = 0; i < reservaLibros.size(); i++) {
+			cods_Libro.add(reservaLibros.get(i).getCod_Libro());
 		}
 		for (int i = 0; i < libros.size(); i++) {
 			if (!cods_Libro.contains(libros.get(i).getCod_Libro())) {
@@ -127,10 +125,10 @@ public class GestorReservas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Reserva_Libro reserva_Libro = new Reserva_Libro();
+				ReservaLibro reservaLibro = new ReservaLibro();
 				Libro libro = libros.get(comboBox.getSelectedIndex());
-				reserva_Libro.setCod_Libro(libro.getCod_Libro());
-				Conexion2.borrarReserva_Libro(reserva_Libro);
+				reservaLibro.setCod_Libro(libro.getCod_Libro());
+				Conexion2.borrarReserva_Libro(reservaLibro);
 				comboBox.remove(comboBox.getSelectedIndex());
 				comboBox.revalidate();
 				try {

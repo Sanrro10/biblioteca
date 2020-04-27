@@ -17,11 +17,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JCalendar;
 
-import es.deusto.spq.BD.Conexion;
-import es.deusto.spq.client.data.Reserva_Sala;
+import es.deusto.spq.client.data.ReservaSala;
 import es.deusto.spq.client.data.SalaTrabajo;
 import es.deusto.spq.client.data.Usuario;
-import es.deusto.spq.server.Conexion2;
 
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
@@ -75,7 +73,7 @@ public class CalendarioSalas extends JFrame {
 		contentpane.add(combo);
 
 		ComboDisponibilidad.setBounds(320, 40, 90, 25);
-		ArrayList<Reserva_Sala> reservas = Conexion2.cogerReserva_Salas();
+		ArrayList<ReservaSala> reservas = Conexion2.cogerReserva_Salas();
 		for(int i = 0; i< reservas.size(); i++) {
 //			if(reservas.get(i).getFecha().) {
 //				for(int a = 0; a < calendario.)
@@ -129,7 +127,7 @@ public class CalendarioSalas extends JFrame {
 						s= salas.get(i);
 					}
 				}
-				Reserva_Sala reservaNueva = new Reserva_Sala();
+				ReservaSala reservaNueva = new ReservaSala();
 				reservaNueva.setCalefaccion(chckbxNewCheckBox.isSelected());
 				reservaNueva.setCod_Usuario(user.getCod_Usuario());
 				reservaNueva.setCod_Reserva_Sala(reservas.size()+1);

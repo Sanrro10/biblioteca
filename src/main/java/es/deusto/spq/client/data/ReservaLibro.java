@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Reserva_Libro {
+public class ReservaLibro {
 
 	int cod_Reserva_Libro;
 	int cod_Usuario;
@@ -19,14 +19,14 @@ public class Reserva_Libro {
 	public static ArrayList<Integer> lista = new ArrayList<>();
 	
 	
-	public Reserva_Libro(int cod_Reserva_Libro, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
+	public ReservaLibro(int cod_Reserva_Libro, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
 		super();
 		this.cod_Reserva_Libro = cod_Reserva_Libro;
 		this.cod_Usuario = cod_Usuario;
 		this.cod_Libro = cod_Libro;
 		this.fecha_Devolución = fecha_Devolución;
 	}
-	public Reserva_Libro() {
+	public ReservaLibro() {
 		
 		
 		
@@ -80,7 +80,7 @@ public static void main(String[] args) {
 		  System.out.println("Parametro String Fecha 1 = "+fecha_Devolución+"\n" +
 		    "Parametro String fechaActual = "+fechaActual1+"\n");  
 		  String resultado="";
-		  final ArrayList<Reserva_Libro> reservas = Conexion2.cogerReserva_Libros();
+		  final ArrayList<ReservaLibro> reservas = Conexion2.cogerReserva_Libros();
 		  try {
 		   /**Obtenemos las fechas enviadas en el formato a comparar*/
 		   SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 

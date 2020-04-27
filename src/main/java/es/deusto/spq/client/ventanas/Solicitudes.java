@@ -20,7 +20,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.client.data.Solicitud;
 
 public class Solicitudes extends JFrame{

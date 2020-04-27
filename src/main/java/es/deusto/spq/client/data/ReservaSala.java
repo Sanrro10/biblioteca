@@ -1,4 +1,4 @@
-package es.deusto.spq.server.data;
+package es.deusto.spq.client.data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 
-public class Reserva_Sala {
+public class ReservaSala {
 
 	int cod_Reserva_Sala;
 	int cod_Usuario;
@@ -21,10 +21,10 @@ public class Reserva_Sala {
 	public void setCalefaccion(boolean calefaccion) {
 		this.calefaccion = calefaccion;
 	}
-	public Reserva_Sala() {
+	public ReservaSala() {
 		super();
 	}
-	public Reserva_Sala(int cod_Reserva_Sala, int cod_Usuario, int cod_Sala, Date fecha, boolean calefaccion) {
+	public ReservaSala(int cod_Reserva_Sala, int cod_Usuario, int cod_Sala, Date fecha, boolean calefaccion) {
 		super();
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
 		this.cod_Usuario = cod_Usuario;

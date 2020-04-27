@@ -17,9 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.client.data.Usuario;
-import es.deusto.spq.server.Conexion2;
 
 import java.awt.SystemColor;
 import java.awt.Font;

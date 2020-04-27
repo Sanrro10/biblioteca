@@ -16,11 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.client.data.Libro;
-import es.deusto.spq.client.data.Reserva_Libro;
+import es.deusto.spq.client.data.ReservaLibro;
 import es.deusto.spq.client.data.Usuario;
-import es.deusto.spq.server.Conexion2;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -146,10 +144,10 @@ public class ReservaLibros extends JFrame {
 		final JComboBox<String> comboBox = new JComboBox();
 		final ArrayList<Libro> libros = Conexion2.cogerLibros();
 		ArrayList<Libro> libros2 = new ArrayList<>();
-		ArrayList<Reserva_Libro> reserva_Libros = Conexion2.cogerReserva_Libros();
+		ArrayList<ReservaLibro> reservaLibros = Conexion2.cogerReserva_Libros();
 		ArrayList<Integer> cods_Libro = new ArrayList<>();
-		for (int i = 0; i < reserva_Libros.size(); i++) {
-			cods_Libro.add(reserva_Libros.get(i).getCod_Libro());
+		for (int i = 0; i < reservaLibros.size(); i++) {
+			cods_Libro.add(reservaLibros.get(i).getCod_Libro());
 		}
 		for (int i = 0; i < libros.size(); i++) {
 			if (!cods_Libro.contains(libros.get(i).getCod_Libro())) {
@@ -272,13 +270,13 @@ public class ReservaLibros extends JFrame {
 				ArrayList<Usuario> usuario = Conexion.cogerUsuarios();
 				for (int i = 0; i < usuario.size(); i++) {
 					if (Usuario.getCantReservas()<5) {
-						Reserva_Libro reserva_Libro = new Reserva_Libro();
+						ReservaLibro reservaLibro = new ReservaLibro();
 						Libro libro = libros.get(comboBox.getSelectedIndex());
-						reserva_Libro.setCod_Libro(libro.getCod_Libro());
-						reserva_Libro.setCod_Usuario(user.getCod_Usuario()); // Poner aquí el código del usuario que le llegue del
+						reservaLibro.setCod_Libro(libro.getCod_Libro());
+						reservaLibro.setCod_Usuario(user.getCod_Usuario()); // Poner aquí el código del usuario que le llegue del
 																// inicio de sesión
-						reserva_Libro.setFecha_Devolución(libro.fechaReserva());
-						Conexion.insertarReserva_Libro(reserva_Libro);
+						reservaLibro.setFecha_Devolución(libro.fechaReserva());
+						Conexion.insertarReserva_Libro(reservaLibro);
 						comboBox.remove(comboBox.getSelectedIndex());
 						comboBox.revalidate();
 							try {

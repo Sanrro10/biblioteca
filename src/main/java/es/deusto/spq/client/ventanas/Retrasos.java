@@ -15,9 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.spq.BD.Conexion;
 import es.deusto.spq.client.data.Libro;
-import es.deusto.spq.client.data.Reserva_Libro;
+import es.deusto.spq.client.data.ReservaLibro;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -90,7 +89,7 @@ public class Retrasos extends JFrame{
 		DefaultListModel modelo = new DefaultListModel();
 
 		listado.setModel(modelo);
-		modelo.addElement(Reserva_Libro.lista.toString());
+		modelo.addElement(ReservaLibro.lista.toString());
 
 		contentpane.add(listado);
 		
