@@ -11,8 +11,7 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+
 public class Libro {
 
 	public Libro(int cod_Libro, String titulo, String autor, String genero, int reserva_Max) {

@@ -15,8 +15,7 @@ import es.deusto.spq.server.DAO.DBManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@PersistenceCapable
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+
 public class ReservaLibro {
 
 	@PrimaryKey

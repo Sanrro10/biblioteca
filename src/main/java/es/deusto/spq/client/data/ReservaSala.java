@@ -11,8 +11,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 import javax.swing.JOptionPane;
 
-@PersistenceCapable
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+
 public class ReservaSala {
 
 	@PrimaryKey

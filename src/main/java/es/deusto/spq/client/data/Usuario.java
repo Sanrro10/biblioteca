@@ -5,8 +5,6 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
 
 	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
@@ -17,10 +15,7 @@ public class Usuario {
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
 	}
-<<<<<<< HEAD
-	@PrimaryKey
-=======
->>>>>>> branch 'master' of https://github.com/Sanrro10/biblioteca
+
 	String email;
 	String nombre;
 	String apellidos;
