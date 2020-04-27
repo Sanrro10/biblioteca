@@ -1,4 +1,4 @@
-package com.example;
+package es.deusto.spq.base;
 
 import static org.junit.Assert.*;
 
