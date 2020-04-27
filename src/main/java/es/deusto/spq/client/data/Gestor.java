@@ -10,14 +10,6 @@ import javax.jdo.annotations.InheritanceStrategy;
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Gestor extends Usuario {
-
-	@PrimaryKey
-	int cod_Usuario;
-	String email;
-	String nombre;
-	String Apellidos;
-	int telefono;
-	String contrasenya;
 	
 	public String getContrasenya() {
 		return contrasenya;
@@ -44,8 +36,8 @@ public class Gestor extends Usuario {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Gestor(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
-		super(cod_Usuario, email, nombre, apellidos, telefono, contrasenya);
+	public Gestor(String email, String nombre, String apellidos, int telefono, String contrasenya) {
+		super(email, nombre, apellidos, telefono, contrasenya);
 		// TODO Auto-generated constructor stub
 	}
 	public void setNombre(String nombre) {
