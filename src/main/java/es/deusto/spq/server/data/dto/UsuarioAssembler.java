@@ -21,7 +21,6 @@ public class UsuarioAssembler {
 		
 		dto.setEmail(user.getEmail());
 		dto.setApellidos(user.getApellidos());
-		dto.setCod_Usuario(user.getCod_Usuario());
 		dto.setNombre(user.getNombre());
 		dto.setTelefono(user.getTelefono());
 		

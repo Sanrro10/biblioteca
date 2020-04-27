@@ -131,13 +131,13 @@ public class DBManager {
 	
 	
 	public void update(Usuario user) {
-		Usuario user2 = getUsuario(""+user.getCod_Usuario());
+		Usuario user2 = getUsuario(""+user.getEmail());
 		delete(user2);
 		store(user);	
 	}
 	
 	public void update(Gestor gestor) {
-		Gestor gestor2 = getGestor(""+gestor.getCod_Usuario());
+		Gestor gestor2 = getGestor(""+gestor.getEmail());
 		delete(gestor2);
 		store(gestor);
 	}
@@ -190,7 +190,7 @@ public class DBManager {
 
 		return libro;
 	}
-	public Usuario getUsuario(String cod_Usuario) {		
+	public Usuario getUsuario(String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -199,7 +199,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Usuario == '" + cod_Usuario + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
 			query.setUnique(true);
 			sala = (Usuario) query.execute();
 			
@@ -216,7 +216,7 @@ public class DBManager {
 
 		return sala;
 	}
-	public Gestor getGestor(String cod_Usuario) {		
+	public Gestor getGestor(String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -225,7 +225,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Usuario == '" + cod_Usuario + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
 			query.setUnique(true);
 			gestor = (Gestor) query.execute();
 			
@@ -504,11 +504,11 @@ public class DBManager {
 
 	
 	
-	private void initializeData() {
+	public void initializeData() {
 		System.out.println(" * Initializing data base");
 		Calendar c = Calendar.getInstance();
-		Usuario u1 = new Usuario(1, "a@a.com", "a", "a", 942687531, "123");
-		Gestor g1 = new Gestor(1, "gestor1@biblioteca.com", "Marcos", "Perez", 945167382, "root");
+		Usuario u1 = new Usuario("a@a.com", "a", "a", 942687531, "123");
+		Gestor g1 = new Gestor("gestor1@biblioteca.com", "Marcos", "Perez", 945167382, "root");
 		Libro el_Quijote = new Libro(1, "Don Quijote de la Mancha", "Miguel de Cervantes", "Novela hitórica", 30);
 		Libro el_Señor_de_los_anillos = new Libro(2, "El Señor de los Anillos", "J. R. R. Tolkien", "Novela fantástica", 25);
 		SalaTrabajo sala1 = new SalaTrabajo(1, "Piso 1", 4);

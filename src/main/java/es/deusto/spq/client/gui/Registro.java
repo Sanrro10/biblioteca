@@ -17,7 +17,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Usuario;
+import es.deusto.spq.client.remote.ServiceLocator;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -47,9 +49,10 @@ public class Registro extends JFrame {
 
 	private JButton buttonAceptar = new JButton();
 	private JButton btnAtrs = new JButton();
+	
 
 
-	public Registro(int altura, int anchura) {
+	public Registro(int altura, int anchura, Controller controller, ServiceLocator servicelocator) {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -148,45 +151,35 @@ public class Registro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int correcto= 0;
-				ArrayList<String> emails = new ArrayList<>();
-				for(int i = 0; i<Conexion2.cogerUsuarios().size(); i++) {
-					emails.add(Conexion2.cogerUsuarios().get(i).getEmail());
-				}if(emails.contains(textEmail.getText())){
-					correcto = 1;
-				}if(!textEmail.getText().contains("@") && !(textEmail.getText().contains(".es") || textEmail.getText().contains(".com"))){
-					correcto = 2;
-				}if (!String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
-					correcto = 3;
+				boolean correcto = false;
+				boolean error = false;
+				if(!textEmail.getText().contains("@") && !(textEmail.getText().contains(".es") || textEmail.getText().contains(".com"))){
+					JOptionPane.showMessageDialog(null, "Email no válido");
+					error = true;
+					Registro.this.repaint();
+				}else if (!String.valueOf(textPass.getPassword()).equals(String.valueOf(textConfirmPass.getPassword()))) {
+					JOptionPane.showMessageDialog(null, "Error. Las contraseñas no coinciden");
+					Registro.this.repaint();
+					error = true;
+				}else if (!error){
+					controller.registrarUsuario(textEmail.getText(), textUser.getText(), textSurname.getText(), Integer.parseInt(textTlfn.getText()), String.valueOf(textPass.getPassword()));
 				}
 				
-				if (correcto == 0) {
-					Usuario nuevoUsuario = new Usuario();
-					nuevoUsuario.setNombre(textUser.getText());
-					nuevoUsuario.setApellidos(textSurname.getText());
-					nuevoUsuario.setEmail(textEmail.getText());
-					nuevoUsuario.setTelefono(Integer.parseInt(textTlfn.getText()));
-					nuevoUsuario.setContrasenya(String.valueOf(textPass.getPassword()));
+				
+				if ( correcto) {
 					
-					Conexion2.insertarUsuario(nuevoUsuario);
 					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					
 					
-					InicioSesion inicio = new InicioSesion(750, 422); 
+					InicioSesion inicio = new InicioSesion(750, 422, controller, servicelocator); 
 
 					inicio.setVisible(true);
 					
 					Registro.this.dispose();
 					
-				}else {
-					if (correcto==3){
-						JOptionPane.showMessageDialog(null, "Error. Las contraseñas no coinciden");
-					}if (correcto==1){
+				}else if (!error){
 						JOptionPane.showMessageDialog(null, "Ese email ya ha sido registrado");
-					}if (correcto==2){
-						JOptionPane.showMessageDialog(null, "Email no válido");
-					}
-					Registro.this.repaint();
+						Registro.this.repaint();
 				}
 			}
 		});
@@ -194,7 +187,7 @@ public class Registro extends JFrame {
 		btnAtrs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				InicioSesion inicio = new InicioSesion(750, 422); 
+				InicioSesion inicio = new InicioSesion(750, 422, controller, servicelocator); 
 
 				inicio.setVisible(true);
 				

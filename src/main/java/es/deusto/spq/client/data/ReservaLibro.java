@@ -2,16 +2,26 @@ package es.deusto.spq.client.data;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 import javax.swing.JOptionPane;
 
+import es.deusto.spq.server.DAO.DBManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+@PersistenceCapable
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class ReservaLibro {
 
+	@PrimaryKey
 	int cod_Reserva_Libro;
+	
 	int cod_Usuario;
 	int cod_Libro;
 	Date fecha_Devolución;
@@ -64,48 +74,6 @@ public class ReservaLibro {
 	}
 	
 	
-	
-public static void main(String[] args) {
-	Date fecha_Devolución = new Date();
-	SimpleDateFormat formateador1 =new SimpleDateFormat("dd/MM/yyyy");
-	String fechaSistema1 = formateador1.format(fecha_Devolución);
-	
-	Date fechaActual = new Date();
-    SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-    String fechaSistema=formateador.format(fechaActual);
-    
 }
 		
-	String compararFechasConDate(String fecha_Devolución, String fechaActual1) throws ParseException {  
-		  System.out.println("Parametro String Fecha 1 = "+fecha_Devolución+"\n" +
-		    "Parametro String fechaActual = "+fechaActual1+"\n");  
-		  String resultado="";
-		  final ArrayList<ReservaLibro> reservas = Conexion2.cogerReserva_Libros();
-		  try {
-		   /**Obtenemos las fechas enviadas en el formato a comparar*/
-		   SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy"); 
-		   Date fechaDate1 = formateador.parse(fecha_Devolución);
-		   Date fechaDate2 = formateador.parse(fechaActual1);
-		    
-		   System.out.println("Parametro Date Fecha 1 = "+fechaDate1+"\n" +
-		     "Parametro Date fechaActual = "+fechaDate2+"\n");
-		    
-		    if (fechaDate2.before(fechaDate1) ){
-		    	for(int i = 0; i<reservas.size(); i++) {
-					lista.add(reservas.get(i).getCod_Libro());
-					JOptionPane.showMessageDialog(null, "La reserva a llegado a su limite de tiempo.");
-				}
-		    }
-		    
-		  } catch (ParseException e) {
-		   System.out.println("Se Produjo un Error!!!  "+e.getMessage());
-		  }  
-		  return resultado;
-		 }
-	 
-	
-	
-	
-	 
-	 }
 	

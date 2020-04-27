@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 import javax.swing.JOptionPane;
 
 import es.deusto.spq.server.DAO.DBManager;
@@ -11,9 +15,13 @@ import es.deusto.spq.server.DAO.DBManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+@PersistenceCapable
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class ReservaLibro {
 
+	@PrimaryKey
 	int cod_Reserva_Libro;
+	
 	int cod_Usuario;
 	int cod_Libro;
 	Date fecha_Devolución;

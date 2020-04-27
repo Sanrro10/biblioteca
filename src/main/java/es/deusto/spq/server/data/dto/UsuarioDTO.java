@@ -11,17 +11,10 @@ public class UsuarioDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	int cod_Usuario;
 	String email;
 	String nombre;
 	String apellidos;
 	int telefono;
-	public int getCod_Usuario() {
-		return cod_Usuario;
-	}
-	public void setCod_Usuario(int cod_Usuario) {
-		this.cod_Usuario = cod_Usuario;
-	}
 	public String getEmail() {
 		return email;
 	}

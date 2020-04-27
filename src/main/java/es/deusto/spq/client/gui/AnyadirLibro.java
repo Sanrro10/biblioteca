@@ -154,7 +154,7 @@ public class AnyadirLibro extends JFrame {
 				l1.setAutor(textAutor.getText());
 				l1.setGenero(genero.getSelectedItem().toString());
 				l1.setReserva_Max(dias.getComponentCount());
-				Conexion2.insertarLibro(l1);
+//				Conexion2.insertarLibro(l1);
 
 				AnyadirLibro anyadir;
 				try {

@@ -1,17 +1,23 @@
 package es.deusto.spq.server.data;
 
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
 
-	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
+	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		super();
-		this.cod_Usuario = cod_Usuario;
 		this.email = email;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
 	}
-	int cod_Usuario;
+	@PrimaryKey
 	String email;
 	String nombre;
 	String apellidos;
@@ -19,12 +25,6 @@ public class Usuario {
 	String contrasenya;
 	public Usuario() {
 		
-	}
-	public int getCod_Usuario() {
-		return cod_Usuario;
-	}
-	public void setCod_Usuario(int cod_Usuario) {
-		this.cod_Usuario = cod_Usuario;
 	}
 	public String getEmail() {
 		return email;

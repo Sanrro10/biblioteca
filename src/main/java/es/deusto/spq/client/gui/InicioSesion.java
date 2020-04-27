@@ -20,9 +20,11 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Gestor;
 import es.deusto.spq.client.data.GetPropertyValues;
 import es.deusto.spq.client.data.Usuario;
+import es.deusto.spq.client.remote.ServiceLocator;
 
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -46,7 +48,7 @@ public class InicioSesion extends JFrame {
 	private final JButton btnNewButtonGestor = new JButton("Gestor");
 	private Client client;
 
-	public InicioSesion(int altura, int anchura) {
+	public InicioSesion(int altura, int anchura, Controller controller, ServiceLocator servicelocator) {
 		client = ClientBuilder.newClient();
 		GetPropertyValues properties = new GetPropertyValues();
 		String url = "";
@@ -163,31 +165,8 @@ public class InicioSesion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-
-
-				ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-				usuarios = Conexion2.cogerUsuarios();
-				ArrayList<Gestor> gestores = new ArrayList<Gestor>();
-				gestores = Conexion2.cogerGestores();
-				int correcto = 0;
+				int correcto = controller.iniciarSesion(textUser.getText(), textPass.getText());
 				Usuario user2 = new Usuario();
-				for (Usuario u : usuarios) {
-					if (textUser.getText().equals(u.getEmail()) && textPass.getText().equals(u.getContrasenya())) {
-						System.out.println("correcto");
-						user2 = u;
-						correcto = 1;
-						break;
-
-					}
-				}for (Gestor g : gestores) {
-
-					if (textUser.getText().equals(g.getEmail()) && textPass.getText().equals(g.getContrasenya())) {
-
-						correcto = 2;
-						break;
-
-					}
-				}
 				if(correcto == 1) {
 					ReservaLibros reserva;
 					try {
@@ -219,7 +198,7 @@ public class InicioSesion extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Registro registro = new Registro(750, 422); // quitar comentario para ver la ventana
+				Registro registro = new Registro(750, 422, controller, servicelocator); // quitar comentario para ver la ventana
 
 				registro.setVisible(true);
 
