@@ -18,9 +18,9 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JCalendar;
 
 import es.deusto.spq.BD.Conexion;
-import es.deusto.spq.client.base.Reserva_Sala;
-import es.deusto.spq.client.base.SalaTrabajo;
-import es.deusto.spq.client.base.Usuario;
+import es.deusto.spq.client.data.Reserva_Sala;
+import es.deusto.spq.client.data.SalaTrabajo;
+import es.deusto.spq.client.data.Usuario;
 import es.deusto.spq.server.Conexion2;
 
 import javax.swing.JTextPane;

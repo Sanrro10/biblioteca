@@ -1,4 +1,4 @@
-package es.deusto.spq.server.DTO;
+package es.deusto.spq.server.data.dto;
 
 import java.io.Serializable;
 

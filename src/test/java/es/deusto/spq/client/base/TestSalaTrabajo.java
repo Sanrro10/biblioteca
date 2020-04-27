@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import es.deusto.spq.client.base.SalaTrabajo;
+import es.deusto.spq.client.data.SalaTrabajo;
 
 public class TestSalaTrabajo {
 

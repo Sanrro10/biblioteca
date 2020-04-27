@@ -1,10 +1,10 @@
-package es.deusto.spq.client.base;
+package es.deusto.spq.client.data;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import es.deusto.spq.client.base.*;
+import es.deusto.spq.client.data.*;
 import es.deusto.spq.client.ventanas.InicioSesion;
 
 import java.io.IOException;

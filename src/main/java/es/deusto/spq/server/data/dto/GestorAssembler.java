@@ -1,9 +1,6 @@
-package es.deusto.spq.server;
+package es.deusto.spq.server.data.dto;
 
-import es.deusto.spq.server.DTO.GestorDTO;
-import es.deusto.spq.server.assembler.UsuarioAssembler;
-import es.deusto.spq.server.base.Gestor;
-import es.deusto.spq.server.base.Usuario;
+import es.deusto.spq.server.data.Gestor;
 
 public class GestorAssembler {
 	private static GestorAssembler instance;

@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import es.deusto.spq.BD.Conexion;
-import es.deusto.spq.client.base.Solicitud;
+import es.deusto.spq.client.data.Solicitud;
 
 public class SolicitarLibros extends JFrame{
 	private static final long serialVersionUID = 1L;

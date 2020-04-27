@@ -1,4 +1,4 @@
-package es.deusto.spq.server.base;
+package es.deusto.spq.server.data;
 
 import java.awt.Component;
 import java.text.SimpleDateFormat;

@@ -1,6 +1,9 @@
-package es.deusto.spq.server.base;
+package es.deusto.spq.client.data;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
+
+
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 

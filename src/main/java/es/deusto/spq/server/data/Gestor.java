@@ -1,9 +1,6 @@
-package es.deusto.spq.client.base;
+package es.deusto.spq.server.data;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
-
-
-
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 
@@ -44,8 +41,8 @@ public class Gestor extends Usuario {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Gestor(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya, int cantResrvas) {
-		super(cod_Usuario, email, nombre, apellidos, telefono, contrasenya, cantReservas);
+	public Gestor(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
+		super(cod_Usuario, email, nombre, apellidos, telefono, contrasenya);
 		// TODO Auto-generated constructor stub
 	}
 	public void setNombre(String nombre) {

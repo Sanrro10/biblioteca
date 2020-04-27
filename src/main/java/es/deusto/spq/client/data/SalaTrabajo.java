@@ -1,4 +1,4 @@
-package es.deusto.spq.server.base;
+package es.deusto.spq.client.data;
 
 public class SalaTrabajo {
 

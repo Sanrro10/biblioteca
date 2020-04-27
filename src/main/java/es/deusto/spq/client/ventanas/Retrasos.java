@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import es.deusto.spq.BD.Conexion;
-import es.deusto.spq.client.base.Libro;
-import es.deusto.spq.client.base.Reserva_Libro;
+import es.deusto.spq.client.data.Libro;
+import es.deusto.spq.client.data.Reserva_Libro;
 
 import java.awt.SystemColor;
 import java.awt.Font;

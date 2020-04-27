@@ -14,12 +14,13 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import es.deusto.spq.client.base.Gestor;
-import es.deusto.spq.client.base.Libro;
-import es.deusto.spq.client.base.Reserva_Libro;
-import es.deusto.spq.client.base.Reserva_Sala;
-import es.deusto.spq.client.base.SalaTrabajo;
-import es.deusto.spq.client.base.Usuario;
+import es.deusto.spq.server.data.Gestor;
+import es.deusto.spq.server.data.Libro;
+import es.deusto.spq.server.data.Reserva_Libro;
+import es.deusto.spq.server.data.Reserva_Sala;
+import es.deusto.spq.server.data.SalaTrabajo;
+import es.deusto.spq.server.data.Usuario;
+
 
 public class DBManager {	
 	private static DBManager instance = null;

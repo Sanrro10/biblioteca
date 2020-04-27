@@ -1,7 +1,6 @@
-package es.deusto.spq.server.assembler;
+package es.deusto.spq.server.data.dto;
 
-import es.deusto.spq.server.DTO.UsuarioDTO;
-import es.deusto.spq.server.base.Usuario;
+import es.deusto.spq.server.data.Usuario;
 
 public class UsuarioAssembler {
 

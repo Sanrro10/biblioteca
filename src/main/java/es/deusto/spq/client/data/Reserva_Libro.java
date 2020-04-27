@@ -1,12 +1,10 @@
-package es.deusto.spq.server.base;
+package es.deusto.spq.client.data;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-import es.deusto.spq.BD.Conexion;
-import es.deusto.spq.server.Conexion2;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,7 +1,6 @@
-package es.deusto.spq.server.assembler;
+package es.deusto.spq.server.data.dto;
 
-import es.deusto.spq.client.base.Libro;
-import es.deusto.spq.server.DTO.LibroDTO;
+import es.deusto.spq.client.data.Libro;
 
 public class LibroAssembler {
 	private static LibroAssembler instance;

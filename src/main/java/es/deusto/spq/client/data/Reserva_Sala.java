@@ -1,4 +1,4 @@
-package es.deusto.spq.server.base;
+package es.deusto.spq.client.data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,7 +7,6 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-import es.deusto.spq.BD.Conexion;
 
 public class Reserva_Sala {
 
