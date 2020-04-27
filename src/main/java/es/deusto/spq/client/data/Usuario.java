@@ -2,16 +2,14 @@ package es.deusto.spq.client.data;
 
 public class Usuario {
 
-	public Usuario(int cod_Usuario, String email, String nombre, String apellidos, int telefono, String contrasenya) {
+	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		super();
-		this.cod_Usuario = cod_Usuario;
 		this.email = email;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
 	}
-	int cod_Usuario;
 	String email;
 	String nombre;
 	String apellidos;
