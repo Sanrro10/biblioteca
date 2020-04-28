@@ -24,7 +24,20 @@ public class UsuarioAssembler {
 		dto.setNombre(user.getNombre());
 		dto.setTelefono(user.getTelefono());
 		dto.setGestor(user.isGestor());
+		dto.setContrasenya(user.getContrasenya());
 		
 		return dto;
+	}
+	public Usuario DTOtoEntity(UsuarioDTO dto) {
+		Usuario user = new Usuario();
+		
+		user.setEmail(dto.getEmail());
+		user.setApellidos(dto.getApellidos());
+		user.setNombre(dto.getNombre());
+		user.setTelefono(dto.getTelefono());
+		user.setGestor(dto.isGestor());
+		user.setContrasenya(dto.getContrasenya());
+		
+		return user;
 	}
 }

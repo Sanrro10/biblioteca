@@ -5,8 +5,8 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import es.deusto.spq.client.controller.Controller;
-import es.deusto.spq.client.data.GetPropertyValues;
 import es.deusto.spq.client.gui.InicioSesion;
+import es.deusto.spq.client.properties.GetPropertyValues;
 import es.deusto.spq.client.remote.ServiceLocator;
 
 import java.io.IOException;

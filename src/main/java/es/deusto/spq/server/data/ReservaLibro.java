@@ -39,8 +39,6 @@ public class ReservaLibro {
 	public ReservaLibro() {
 		
 		
-		
-		
 	}
 	public ArrayList<Integer> getLista() {
 		return lista;

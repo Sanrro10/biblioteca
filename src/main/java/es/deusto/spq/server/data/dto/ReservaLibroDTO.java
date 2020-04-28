@@ -1,6 +1,7 @@
 package es.deusto.spq.server.data.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ReservaLibroDTO implements Serializable {
@@ -9,6 +10,7 @@ public class ReservaLibroDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static ArrayList<Integer> lista = new ArrayList<>();
 
 	private int cod_Reserva_Libro;
 	private int cod_Usuario;

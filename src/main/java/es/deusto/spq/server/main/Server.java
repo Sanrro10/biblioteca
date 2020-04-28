@@ -2,15 +2,19 @@ package es.deusto.spq.server.main;
 
 import java.io.IOException;
 import java.net.URI;
+import java.rmi.Naming;
+import java.rmi.Remote;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import es.deusto.spq.client.data.GetPropertyValues;
 import es.deusto.spq.client.gui.InicioSesion;
+import es.deusto.spq.client.properties.GetPropertyValues;
 import es.deusto.spq.server.DAO.DBManager;
 import es.deusto.spq.server.data.Usuario;
+import es.deusto.spq.server.remote.IRemoteFacade;
+import es.deusto.spq.server.remote.RemoteFacade;
 
 public class Server {
 

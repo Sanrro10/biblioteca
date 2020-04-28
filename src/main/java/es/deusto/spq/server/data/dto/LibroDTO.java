@@ -1,6 +1,9 @@
 package es.deusto.spq.server.data.dto;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class LibroDTO implements Serializable {
 
@@ -53,6 +56,23 @@ public class LibroDTO implements Serializable {
 
 	public void setReserva_Max(int reserva_Max) {
 		this.reserva_Max = reserva_Max;
+	}
+	public String toStringResumido() {
+		return this.getTitulo() + "  " + this.getAutor();
+	}
+	public String toString() {
+		return "Título: " + this.getTitulo() + "\n" + "Autor: " + this.getAutor() + "\n" + "Genero: " + this.getGenero() + "\n" + "Reserva hasta: " + new SimpleDateFormat("dd-MM-yyyy").format(this.fechaReserva());
+	}
+	public Date fechaReserva() {
+		Date today = new Date();
+		 
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(today);
+		cal.add(Calendar.DATE, this.getReserva_Max());
+		 
+		// convert calendar to date
+		Date fecha = cal.getTime();
+		return  fecha;
 	}
 
 	

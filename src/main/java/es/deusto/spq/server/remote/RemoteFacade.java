@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+
 import es.deusto.spq.server.data.Usuario;
 
 @Path("/server")
@@ -26,8 +27,10 @@ public class RemoteFacade implements IRemoteFacade{
 	private int cont = 0;
 	private PersistenceManager pm=null;
 	private Transaction tx=null;
+	private static final long serialVersionUID = 1L;
+	private static RemoteFacade instance;
 
-	public RemoteFacade() {
+	public RemoteFacade(){
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		this.pm = pmf.getPersistenceManager();
 		this.tx = pm.currentTransaction();
@@ -83,6 +86,10 @@ public class RemoteFacade implements IRemoteFacade{
 				System.out.println("Exception launched: " + jonfe.getMessage());
 			}if (user != null) {
 				if(user.getContrasenya().equals(contrasenya)) {
+					if(user.isGestor()) {
+						tx.commit();
+						return Response.accepted().build();
+					}
 					tx.commit();
 					return Response.ok().build();
 				}else {
@@ -102,6 +109,22 @@ public class RemoteFacade implements IRemoteFacade{
 	           }
 	     
 			}
+	}
+
+
+
+
+
+	public static RemoteFacade getInstance() {
+		if (instance == null) {
+			try {
+				instance = new RemoteFacade();
+			} catch (Exception ex) {
+				System.err.println("# Error creating RemoteFacade: " + ex);
+			}
+		}
+		
+		return instance;
 	}
 
 }

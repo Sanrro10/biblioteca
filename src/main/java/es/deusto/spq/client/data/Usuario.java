@@ -1,14 +1,19 @@
 package es.deusto.spq.client.data;
 
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PersistenceCapable;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.jdo.annotations.PrimaryKey;
 
-public class Usuario {
 
+public class Usuario implements Serializable{
+		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya, boolean gestor) {
-		super();
 		this.email = email;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -16,14 +21,19 @@ public class Usuario {
 		this.contrasenya = contrasenya;
 		this.gestor = gestor;
 	}
-
-	
-
+	@PrimaryKey
 	String email;
+	
 	String nombre;
 	String apellidos;
 	int telefono;
 	String contrasenya;
+	public boolean isGestor() {
+		return gestor;
+	}
+	public void setGestor(boolean gestor) {
+		this.gestor = gestor;
+	}
 	boolean gestor;
 	public Usuario() {
 		
@@ -58,10 +68,11 @@ public class Usuario {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	public boolean isGestor() {
-		return gestor;
-	}
-	public void setGestor(boolean gestor) {
-		this.gestor = gestor;
-	}
+	
+	
+		
+		
+
+
+	
 }

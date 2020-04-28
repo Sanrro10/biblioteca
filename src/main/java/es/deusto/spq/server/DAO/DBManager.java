@@ -66,13 +66,12 @@ public class DBManager {
 	}
 	
 	public void storeObjectInDB(Object object) {
-		PersistenceManager pm = null;
-        Transaction tx = null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
 		
 
 		try {
-			pm = pmf.getPersistenceManager();
-			tx = pm.currentTransaction();
 			tx.begin();
 			pm.makePersistent(object);
 			tx.commit();

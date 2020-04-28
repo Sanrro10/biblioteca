@@ -1,4 +1,4 @@
-package es.deusto.spq.client.data;
+package es.deusto.spq.client.properties;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

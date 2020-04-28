@@ -31,5 +31,10 @@ public class SalaTrabajoDTO implements Serializable{
 	public void setNumMaxUsuarios(int numMaxUsuarios) {
 		this.numMaxUsuarios = numMaxUsuarios;
 	}
+	@Override
+	public String toString() {
+		return "Ubicacion: " + ubicacion
+				+"\n" + "Límite de Usuarios:" + numMaxUsuarios;
+	}
 
 }

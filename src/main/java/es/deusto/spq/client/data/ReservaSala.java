@@ -1,42 +1,21 @@
 package es.deusto.spq.client.data;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
-import javax.swing.JOptionPane;
+public class ReservaSala implements Serializable{
 
-
-public class ReservaSala {
-
-	int cod_Reserva_Sala;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
-	int cod_Usuario;
-	int cod_Sala;
-	Date fecha;
-	boolean calefaccion;
-	public boolean isCalefaccion() {
-		return calefaccion;
-	}
-	public void setCalefaccion(boolean calefaccion) {
-		this.calefaccion = calefaccion;
-	}
-	public ReservaSala() {
-		super();
-	}
-	public ReservaSala(int cod_Reserva_Sala, int cod_Usuario, int cod_Sala, Date fecha, boolean calefaccion) {
-		super();
-		this.cod_Reserva_Sala = cod_Reserva_Sala;
-		this.cod_Usuario = cod_Usuario;
-		this.cod_Sala = cod_Sala;
-		this.calefaccion = calefaccion;
-		this.fecha = fecha;
-	}
+	private int cod_Reserva_Sala;
+	private int cod_Usuario;
+	private int cod_Sala;
+	private Date fecha;
+	
+	private boolean calefaccion;
 	public int getCod_Reserva_Sala() {
 		return cod_Reserva_Sala;
 	}
@@ -61,6 +40,12 @@ public class ReservaSala {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	public boolean isCalefaccion() {
+		return calefaccion;
+	}
+	public void setCalefaccion(boolean calefaccion) {
+		this.calefaccion = calefaccion;
+	}
 	
-			
+
 }
