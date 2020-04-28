@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import es.deusto.spq.client.properties.GetPropertyValues;
+import es.deusto.spq.client.resources.GetPropertyValues;
 import es.deusto.spq.server.data.dto.UsuarioDTO;
 import es.deusto.spq.server.remote.IRemoteFacade;
 
@@ -31,8 +31,13 @@ public class ServiceLocator {
 		client = ClientBuilder.newClient();
 		webTarget = client.target(cogerUrl());
 	}
+//	public ServiceLocator(String hostname, String port) { 
+//	client = ClientBuilder.newClient();
+//	webTarget = client.target(String.format("http://%s:%s/rest", hostname, port));
+//}
 	public boolean registrarUsuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		WebTarget registerUserWebTarget = webTarget.path("server/registro");
+		System.out.println(registerUserWebTarget);
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
 		UsuarioDTO u = new UsuarioDTO();
 		u.setEmail(email);
@@ -42,6 +47,7 @@ public class ServiceLocator {
 		u.setContrasenya(contrasenya);
 		
 		Response response = invocationBuilder.post(Entity.entity(u, MediaType.APPLICATION_JSON));
+		System.err.println(response);
 		if (response != Response.ok().build()) {
 			logger.error("Error connecting with the server. Code: " + response.getStatus());
 			return false;
@@ -65,7 +71,8 @@ public class ServiceLocator {
 	}
 
 	public int iniciarSesion(String email, String contrasenya) {
-		WebTarget loginWebTarget = webTarget.path("server/inicioSesion");		
+		WebTarget loginWebTarget = webTarget.path("server/inicioSesion");	
+		System.out.println(loginWebTarget);
 		Invocation.Builder invocationBuilder = loginWebTarget.request(MediaType.APPLICATION_JSON);
 		
 		UsuarioDTO u = new UsuarioDTO();
@@ -73,6 +80,7 @@ public class ServiceLocator {
 		u.setContrasenya(contrasenya);
 
 		Response response = invocationBuilder.post(Entity.entity(u, MediaType.APPLICATION_JSON));
+		System.err.println(response);
 		 if (response == Response.ok().build()) {
 			return 1;
 			

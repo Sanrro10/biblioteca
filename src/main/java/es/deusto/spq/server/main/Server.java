@@ -10,7 +10,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import es.deusto.spq.client.gui.InicioSesion;
-import es.deusto.spq.client.properties.GetPropertyValues;
+import es.deusto.spq.client.resources.GetPropertyValues;
 import es.deusto.spq.server.DAO.DBManager;
 import es.deusto.spq.server.data.Usuario;
 import es.deusto.spq.server.remote.IRemoteFacade;
@@ -31,7 +31,6 @@ public class Server {
 			// create a resource config that scans for JAX-RS resources and providers
 			// in com.example package
 			final ResourceConfig rc = new ResourceConfig().packages("com.example");
-
 			// create and start a new instance of grizzly http server
 			// exposing the Jersey application at BASE_URI
 
@@ -54,23 +53,16 @@ public class Server {
 		@SuppressWarnings("deprecation")
 		public static void main(String[] args) throws IOException {
 			DBManager.getInstance();
-			final HttpServer server = startServer();
-			System.out.println(String.format(
-					"Jersey app started with WADL available at " + "%sapplication.wadl\nHit enter to stop it...",
-					cogerUrl()));
-			System.in.read();
-			server.stop();
 
+				final HttpServer server = startServer();
+				System.out.println(String.format(
+						"Jersey app started with WADL available at " + "%sapplication.wadl\nHit enter to stop it...",
+						cogerUrl()));
+				System.in.read();
+				server.stop();
+
+			}
 			
-
-		}
-//		public static void main(String[] args) {
-//			
-//			Usuario u1 = new Usuario("a@a.com", "a", "a", 942687531, "123", false);
-//			DBManager.getInstance().store(u1);
-//			
-//
-//		}
 		
 		
 		

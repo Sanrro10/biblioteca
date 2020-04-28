@@ -10,6 +10,9 @@ public class SalaTrabajo implements Serializable{
 		this.ubicacion = ubicacion;
 		this.numMaxUsuarios = numMaxUsuarios;
 	}
+	public SalaTrabajo() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 
 	 */
@@ -37,6 +40,10 @@ public class SalaTrabajo implements Serializable{
 	public void setNumMaxUsuarios(int numMaxUsuarios) {
 		this.numMaxUsuarios = numMaxUsuarios;
 	}
+	public String toCombo() {
+		return "SalaTrabajo" + cod_sala ;
+	}
+
 	@Override
 	public String toString() {
 		return "Ubicacion: " + ubicacion

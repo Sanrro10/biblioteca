@@ -30,6 +30,9 @@ public class ReservaSala implements Serializable{
 		this.fecha = fecha;
 		this.calefaccion = calefaccion;
 	}
+	public ReservaSala() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getCod_Usuario() {
 		return cod_Usuario;
 	}

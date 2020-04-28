@@ -31,6 +31,10 @@ public class Libro implements Serializable {
 		this.reserva_Max = reserva_Max;
 	}
 
+	public Libro() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setCod_Libro(int cod_Libro) {
 		this.cod_Libro = cod_Libro;
 	}

@@ -22,8 +22,8 @@ import javax.ws.rs.client.WebTarget;
 
 import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Usuario;
-import es.deusto.spq.client.properties.GetPropertyValues;
 import es.deusto.spq.client.remote.ServiceLocator;
+import es.deusto.spq.client.resources.GetPropertyValues;
 
 import java.awt.Font;
 import java.awt.SystemColor;

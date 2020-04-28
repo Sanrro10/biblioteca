@@ -1,6 +1,6 @@
 package es.deusto.spq.server.data.dto;
 
-import es.deusto.spq.client.data.Libro;
+import es.deusto.spq.server.data.Libro;
 
 public class LibroAssembler {
 	private static LibroAssembler instance;

@@ -6,8 +6,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.gui.InicioSesion;
-import es.deusto.spq.client.properties.GetPropertyValues;
 import es.deusto.spq.client.remote.ServiceLocator;
+import es.deusto.spq.client.resources.GetPropertyValues;
 
 import java.io.IOException;
 import java.net.URI;

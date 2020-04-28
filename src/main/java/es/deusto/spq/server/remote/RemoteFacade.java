@@ -38,11 +38,7 @@ public class RemoteFacade implements IRemoteFacade{
 		}
 			
 	private static final long serialVersionUID = 1L;
-	private static RemoteFacade instance;
-
-	
-	
-	
+	private static RemoteFacade instance;	
 	
 		
 	@POST
