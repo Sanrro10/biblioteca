@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 
 public class ReservaSala {
 
-	@PrimaryKey
 	int cod_Reserva_Sala;
 	
 	int cod_Usuario;

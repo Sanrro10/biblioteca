@@ -8,7 +8,6 @@ import javax.jdo.annotations.PrimaryKey;
 
 public class SalaTrabajo {
 
-	@PrimaryKey
 	int cod_sala;
 	
 	String ubicacion;

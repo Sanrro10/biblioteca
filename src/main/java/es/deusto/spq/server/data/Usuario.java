@@ -11,19 +11,29 @@ import javax.jdo.annotations.PrimaryKey;
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
 
-	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
+	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya, boolean gestor) {
 		super();
 		this.email = email;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
+		this.gestor = gestor;
 	}
+	@PrimaryKey
 	String email;
+	
 	String nombre;
 	String apellidos;
 	int telefono;
 	String contrasenya;
+	public boolean isGestor() {
+		return gestor;
+	}
+	public void setGestor(boolean gestor) {
+		this.gestor = gestor;
+	}
+	boolean gestor;
 	public Usuario() {
 		
 	}

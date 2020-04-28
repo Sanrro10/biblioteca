@@ -7,20 +7,24 @@ import javax.jdo.annotations.PrimaryKey;
 
 public class Usuario {
 
-	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
+	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya, boolean gestor) {
 		super();
 		this.email = email;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
 		this.contrasenya = contrasenya;
+		this.gestor = gestor;
 	}
+
+	
 
 	String email;
 	String nombre;
 	String apellidos;
 	int telefono;
 	String contrasenya;
+	boolean gestor;
 	public Usuario() {
 		
 	}
@@ -53,5 +57,11 @@ public class Usuario {
 	}
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
+	}
+	public boolean isGestor() {
+		return gestor;
+	}
+	public void setGestor(boolean gestor) {
+		this.gestor = gestor;
 	}
 }

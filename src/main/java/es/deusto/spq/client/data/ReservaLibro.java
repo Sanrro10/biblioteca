@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 
 public class ReservaLibro {
 
-	@PrimaryKey
 	int cod_Reserva_Libro;
 	
 	int cod_Usuario;

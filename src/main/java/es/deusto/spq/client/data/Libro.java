@@ -66,7 +66,6 @@ public class Libro {
 		Date fecha = cal.getTime();
 		return  fecha;
 	}
-	@PrimaryKey
 	int cod_Libro;
 	
 	String titulo;

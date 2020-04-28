@@ -1,5 +1,6 @@
 package es.deusto.spq.server.DAO;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,7 +15,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import es.deusto.spq.server.data.Gestor;
+import org.glassfish.grizzly.http.server.HttpServer;
+
 import es.deusto.spq.server.data.Libro;
 import es.deusto.spq.server.data.ReservaLibro;
 import es.deusto.spq.server.data.ReservaSala;
@@ -64,11 +66,13 @@ public class DBManager {
 	}
 	
 	public void storeObjectInDB(Object object) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(4);
-		Transaction tx = pm.currentTransaction();
+		PersistenceManager pm = null;
+        Transaction tx = null;
+		
 
 		try {
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
 			tx.begin();
 			pm.makePersistent(object);
 			tx.commit();
@@ -88,10 +92,6 @@ public class DBManager {
 		DBManager.getInstance().storeObjectInDB(user);	
 	}
 	
-	public void store(Gestor gestor) {
-		DBManager.getInstance().storeObjectInDB(gestor);	
-	}
-
 	public void store(Libro libro) {
 		DBManager.getInstance().storeObjectInDB(libro);	
 	}
@@ -111,9 +111,6 @@ public class DBManager {
 		DBManager.getInstance().deleteObjectFromDB(user);	
 	}
 	
-	public void delete(Gestor gestor) {
-		DBManager.getInstance().deleteObjectFromDB(gestor);	
-	}
 
 	public void delete(Libro libro) {
 		DBManager.getInstance().deleteObjectFromDB(libro);	
@@ -134,12 +131,6 @@ public class DBManager {
 		Usuario user2 = getUsuario(""+user.getEmail());
 		delete(user2);
 		store(user);	
-	}
-	
-	public void update(Gestor gestor) {
-		Gestor gestor2 = getGestor(""+gestor.getEmail());
-		delete(gestor2);
-		store(gestor);
 	}
 
 	public void update(Libro libro) {
@@ -215,32 +206,6 @@ public class DBManager {
 		}
 
 		return sala;
-	}
-	public Gestor getGestor(String email) {		
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(4);
-		Transaction tx = pm.currentTransaction();
-		Gestor gestor = null; 
-
-		try {
-			tx.begin();
-			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
-			query.setUnique(true);
-			gestor = (Gestor) query.execute();
-			
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println(" $ Error cogiendo el gestor de la BD: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return gestor;
 	}
 	public SalaTrabajo getSala(String cod_sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -351,36 +316,7 @@ public class DBManager {
 
 		return usuarios;		
 	}
-	public List<Gestor> getGestores() {
-		List<Gestor> gestores = new ArrayList<>();		
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(4);
-		Transaction tx = pm.currentTransaction();
-
-		try {
-			System.out.println("  * Retrieving all the flights");
-
-			tx.begin();
-			
-			Extent<Gestor> extent = pm.getExtent(Gestor.class, true);
-
-			for (Gestor gestor : extent) {
-				gestores.add(gestor);
-			}
-
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return gestores;		
-	}
+	
 	public List<Libro> getLibros() {
 		List<Libro> libros = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -507,8 +443,8 @@ public class DBManager {
 	public void initializeData() {
 		System.out.println(" * Initializing data base");
 		Calendar c = Calendar.getInstance();
-		Usuario u1 = new Usuario("a@a.com", "a", "a", 942687531, "123");
-		Gestor g1 = new Gestor("gestor1@biblioteca.com", "Marcos", "Perez", 945167382, "root");
+		Usuario u1 = new Usuario("a@a.com", "a", "a", 942687531, "123", false);
+		Usuario g1 = new Usuario("gestor1@biblioteca.com", "Marcos", "Perez", 945167382, "root", true);
 		Libro el_Quijote = new Libro(1, "Don Quijote de la Mancha", "Miguel de Cervantes", "Novela hitórica", 30);
 		Libro el_Señor_de_los_anillos = new Libro(2, "El Señor de los Anillos", "J. R. R. Tolkien", "Novela fantástica", 25);
 		SalaTrabajo sala1 = new SalaTrabajo(1, "Piso 1", 4);

@@ -15,6 +15,13 @@ public class UsuarioDTO implements Serializable{
 	String nombre;
 	String apellidos;
 	int telefono;
+	boolean gestor;
+	public boolean isGestor() {
+		return gestor;
+	}
+	public void setGestor(boolean gestor) {
+		this.gestor = gestor;
+	}
 	public String getEmail() {
 		return email;
 	}

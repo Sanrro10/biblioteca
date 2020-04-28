@@ -19,7 +19,7 @@ public class TestUsuario {
 	
 	@Before
 	public void setUp() {
-		usuario1 = new Usuario("a@a.com", "a", "a", 654321987, "123");
+		usuario1 = new Usuario("a@a.com", "a", "a", 654321987, "123", false);
 	}
 	
 	
@@ -34,6 +34,7 @@ public class TestUsuario {
 		assertEquals("a", usuario1.getApellidos());
 		assertEquals(654321987, usuario1.getTelefono());
 		assertEquals("123", usuario1.getContrasenya());
+		assertEquals(false, usuario1.isGestor());
 		
 	}
 	

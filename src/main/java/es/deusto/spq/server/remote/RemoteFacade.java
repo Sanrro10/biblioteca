@@ -17,7 +17,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import es.deusto.spq.server.data.Gestor;
 import es.deusto.spq.server.data.Usuario;
 
 @Path("/server")
@@ -55,7 +54,7 @@ public class RemoteFacade implements IRemoteFacade{
 				tx.commit();
 				return Response.status(Response.Status.BAD_REQUEST).build();
 			} else {
-				user = new Usuario(email, nombre, apellidos, telefono, contrasenya);
+				user = new Usuario(email, nombre, apellidos, telefono, contrasenya, false);
 				pm.makePersistent(user);					 
 				System.out.println("Usuario registrado: " + user);
 			}
@@ -78,7 +77,6 @@ public class RemoteFacade implements IRemoteFacade{
         {	
             tx.begin();
 			Usuario user = null;
-			Gestor gestor = null;
 			try {
 				user = pm.getObjectById(Usuario.class, email);
 			} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
@@ -88,21 +86,9 @@ public class RemoteFacade implements IRemoteFacade{
 					tx.commit();
 					return Response.ok().build();
 				}else {
-					try {
-						gestor = pm.getObjectById(Gestor.class, email);
-					} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
-						System.out.println("Exception launched: " + jonfe.getMessage());
-					}if (gestor != null) {
-						if(gestor.getContrasenya().equals(contrasenya)) {
-							tx.commit();
-							return Response.accepted().build();
-						}else {
-							tx.commit();
-							return Response.status(Response.Status.BAD_REQUEST).build();
-						}
-						
+					tx.commit();
+					return Response.status(Response.Status.BAD_REQUEST).build();
 					}
-				}
 				
 			}
 			tx.commit();

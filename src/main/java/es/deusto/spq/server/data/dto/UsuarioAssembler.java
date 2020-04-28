@@ -23,6 +23,7 @@ public class UsuarioAssembler {
 		dto.setApellidos(user.getApellidos());
 		dto.setNombre(user.getNombre());
 		dto.setTelefono(user.getTelefono());
+		dto.setGestor(user.isGestor());
 		
 		return dto;
 	}

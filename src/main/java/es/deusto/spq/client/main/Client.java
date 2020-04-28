@@ -35,15 +35,15 @@ public class Client {
 		
 	}
 
-//	public static void main(String[] args) {
-//		ServiceLocator servicelocator = new ServiceLocator();
-//		Controller controller = new Controller(servicelocator);
-//
-//		InicioSesion inicioSesion = new InicioSesion(750, 422, controller, servicelocator); // quitar comentario para ver la ventana
-//
-//		inicioSesion.setVisible(true);
-//
-//		
-//
-//	}
+	public static void main(String[] args) {
+		ServiceLocator servicelocator = new ServiceLocator();
+		Controller controller = new Controller(servicelocator);
+
+		InicioSesion inicioSesion = new InicioSesion(750, 422, controller, servicelocator); // quitar comentario para ver la ventana
+
+		inicioSesion.setVisible(true);
+
+		
+
+	}
 }

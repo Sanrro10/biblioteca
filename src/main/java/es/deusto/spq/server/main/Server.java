@@ -10,6 +10,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import es.deusto.spq.client.data.GetPropertyValues;
 import es.deusto.spq.client.gui.InicioSesion;
 import es.deusto.spq.server.DAO.DBManager;
+import es.deusto.spq.server.data.Usuario;
 
 public class Server {
 
@@ -44,12 +45,11 @@ public class Server {
 			}
 			return url;
 			
-		}@SuppressWarnings("deprecation")
+		}
+		
+		@SuppressWarnings("deprecation")
 		public static void main(String[] args) throws IOException {
-			
-			
-			DBManager.getInstance().initializeData();
-
+			DBManager.getInstance();
 			final HttpServer server = startServer();
 			System.out.println(String.format(
 					"Jersey app started with WADL available at " + "%sapplication.wadl\nHit enter to stop it...",
@@ -60,6 +60,13 @@ public class Server {
 			
 
 		}
+//		public static void main(String[] args) {
+//			
+//			Usuario u1 = new Usuario("a@a.com", "a", "a", 942687531, "123", false);
+//			DBManager.getInstance().store(u1);
+//			
+//
+//		}
 		
 		
 		
