@@ -32,7 +32,18 @@ Para arrancar el programa será necesario abrir un terminal en la ruta del proye
 ```
     mvn clean
     mvn compile
+    mvn datanucleus:schema-create (solo la primera vez)
     mvn exec:java -Pbiblioteca_Main
+    
+```
+En caso de no ser la primera vez que ejecutamos el programa seguiremos estos comandos:
+```
+    mvn clean
+    mvn compile
+    mvn datanucleus:schema-delete
+    mvn datanucleus:schema-create 
+    mvn exec:java -Pbiblioteca_Main
+    
 ```
 
 
