@@ -1,6 +1,7 @@
 package es.deusto.spq.server.data.dto;
 
 import es.deusto.spq.server.data.SalaTrabajo;
+import es.deusto.spq.server.data.Usuario;
 
 public class SalaTrabajoAssembler {
 	private static SalaTrabajoAssembler instance;
@@ -25,4 +26,16 @@ public class SalaTrabajoAssembler {
 
 		return dto;
 	}
+	
+	public SalaTrabajo DTOtoEntity(SalaTrabajoDTO dto) {
+		SalaTrabajo sala = new SalaTrabajo();
+
+		sala.setCod_sala(dto.getCod_sala());
+		sala.setUbicacion(dto.getUbicacion());
+		sala.setNumMaxUsuarios(dto.getNumMaxUsuarios());
+
+		return sala;
+	}
+
 }
+

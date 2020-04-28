@@ -26,4 +26,15 @@ public class ReservaLibroAssembler {
 
 		return dto;
 	}
+	
+	public ReservaLibro DTOtoEntity(ReservaLibroDTO dto) {
+		ReservaLibro rlibro = new ReservaLibro();
+
+		rlibro.setCod_Reserva_Libro(dto.getCod_Reserva_Libro());
+		rlibro.setCod_Libro(dto.getCod_Libro());
+		rlibro.setCod_Usuario(dto.getCod_Usuario());
+		rlibro.setFecha_Devolución(dto.getFecha_Devolución());
+
+		return rlibro;
+	}
 }

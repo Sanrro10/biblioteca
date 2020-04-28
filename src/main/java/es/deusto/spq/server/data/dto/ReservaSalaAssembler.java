@@ -28,4 +28,16 @@ public class ReservaSalaAssembler {
 		return dto;
 	}
 
+	public ReservaSala DTOtoEntity(ReservaSalaDTO dto) {
+		ReservaSala reserva = new ReservaSala();
+
+		reserva.setCod_Reserva_Sala(dto.getCod_Reserva_Sala());
+		reserva.setCod_Sala(dto.getCod_Sala());
+		reserva.setCod_Usuario(dto.getCod_Usuario());
+		reserva.setFecha(dto.getFecha());
+		reserva.setCalefaccion(dto.isCalefaccion());
+
+		return reserva;
+	}
+
 }

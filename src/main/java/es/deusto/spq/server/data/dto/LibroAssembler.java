@@ -27,4 +27,16 @@ public class LibroAssembler {
 
 		return dto;
 	}
+	
+	public Libro DTOtoEntity(LibroDTO dto) {
+		Libro libro = new Libro();
+
+		libro.setCod_Libro(dto.getCod_Libro());
+		libro.setTitulo(dto.getTitulo());
+		libro.setAutor(dto.getAutor());
+		libro.setGenero(dto.getGenero());
+		libro.setReserva_Max(dto.getReserva_Max());
+
+		return libro;
+	}
 }
