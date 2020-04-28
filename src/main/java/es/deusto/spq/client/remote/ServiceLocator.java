@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import es.deusto.spq.client.data.Usuario;
 import es.deusto.spq.client.properties.GetPropertyValues;
+import es.deusto.spq.server.data.dto.UsuarioDTO;
 import es.deusto.spq.server.remote.IRemoteFacade;
 
 public class ServiceLocator {
@@ -34,7 +34,7 @@ public class ServiceLocator {
 	public boolean registrarUsuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		WebTarget registerUserWebTarget = webTarget.path("server/registro");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
-		Usuario u = new Usuario();
+		UsuarioDTO u = new UsuarioDTO();
 		u.setEmail(email);
 		u.setNombre(nombre);
 		u.setApellidos(apellidos);
@@ -42,7 +42,7 @@ public class ServiceLocator {
 		u.setContrasenya(contrasenya);
 		
 		Response response = invocationBuilder.post(Entity.entity(u, MediaType.APPLICATION_JSON));
-		if (response.getStatus() != Status.OK.getStatusCode()) {
+		if (response != Response.ok().build()) {
 			logger.error("Error connecting with the server. Code: " + response.getStatus());
 			return false;
 		} else {
@@ -68,7 +68,7 @@ public class ServiceLocator {
 		WebTarget loginWebTarget = webTarget.path("server/inicioSesion");		
 		Invocation.Builder invocationBuilder = loginWebTarget.request(MediaType.APPLICATION_JSON);
 		
-		Usuario u = new Usuario();
+		UsuarioDTO u = new UsuarioDTO();
 		u.setEmail(email);
 		u.setContrasenya(contrasenya);
 

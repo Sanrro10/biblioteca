@@ -184,14 +184,14 @@ public class DBManager {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
-		Usuario sala = null; 
+		Usuario user = null; 
 
 		try {
 			tx.begin();
 			
 			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
 			query.setUnique(true);
-			sala = (Usuario) query.execute();
+			user = (Usuario) query.execute();
 			
 			tx.commit();
 		} catch (Exception ex) {
@@ -204,7 +204,7 @@ public class DBManager {
 			pm.close();
 		}
 
-		return sala;
+		return user;
 	}
 	public SalaTrabajo getSala(String cod_sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();

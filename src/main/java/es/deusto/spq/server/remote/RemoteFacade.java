@@ -17,24 +17,29 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.log4j.Logger;
 
+import es.deusto.spq.server.DAO.DBManager;
 import es.deusto.spq.server.data.Usuario;
+import es.deusto.spq.server.data.dto.UsuarioAssembler;
+import es.deusto.spq.server.data.dto.UsuarioDTO;
 
 @Path("/server")
 @Produces(MediaType.APPLICATION_JSON)
 public class RemoteFacade implements IRemoteFacade{
 
-	private int cont = 0;
-	private PersistenceManager pm=null;
-	private Transaction tx=null;
+
+		private int cont = 0;
+		private DBManager dbmanager = null;
+		private Logger logger = Logger.getLogger(RemoteFacade.class.getName());
+
+		public RemoteFacade() {
+			this.dbmanager = DBManager.getInstance();
+		}
+			
 	private static final long serialVersionUID = 1L;
 	private static RemoteFacade instance;
 
-	public RemoteFacade(){
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		this.pm = pmf.getPersistenceManager();
-		this.tx = pm.currentTransaction();
-	}
 	
 	
 	
@@ -43,72 +48,22 @@ public class RemoteFacade implements IRemoteFacade{
 	@POST
 	@Path("/registro")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response registrarUsuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
-		try
-        {	
-            tx.begin();
-			Usuario user = null;
-			try {
-				user = pm.getObjectById(Usuario.class, email);
-			} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
-				System.out.println("Exception launched: " + jonfe.getMessage());
-			}
-			if (user != null) {
-				tx.commit();
-				return Response.status(Response.Status.BAD_REQUEST).build();
-			} else {
-				user = new Usuario(email, nombre, apellidos, telefono, contrasenya, false);
-				pm.makePersistent(user);					 
-				System.out.println("Usuario registrado: " + user);
-			}
-			tx.commit();
+	public Response registrarUsuario(UsuarioDTO userDTO) {
+		Usuario user = dbmanager.getUsuario(userDTO.getEmail());
+		if(user== null) {
+			user = UsuarioAssembler.getInstance().DTOtoEntity(userDTO);
+			dbmanager.store(user);
 			return Response.ok().build();
-	       }
-	       finally
-	       {
-	           if (tx.isActive())
-	           {
-	               tx.rollback();
-	           }
-	     
-			}
-	}@POST
+		}return Response.status(Response.Status.BAD_REQUEST).build();
+	}
+	@POST
 	@Path("/inicioSesion")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response iniciarSesion(String email, String contrasenya) {
-		try
-        {	
-            tx.begin();
-			Usuario user = null;
-			try {
-				user = pm.getObjectById(Usuario.class, email);
-			} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
-				System.out.println("Exception launched: " + jonfe.getMessage());
-			}if (user != null) {
-				if(user.getContrasenya().equals(contrasenya)) {
-					if(user.isGestor()) {
-						tx.commit();
-						return Response.accepted().build();
-					}
-					tx.commit();
-					return Response.ok().build();
-				}else {
-					tx.commit();
-					return Response.status(Response.Status.BAD_REQUEST).build();
-					}
-				
-			}
-			tx.commit();
-			return Response.status(Response.Status.BAD_REQUEST).build();
-	       }
-	       finally
-	       {
-	           if (tx.isActive())
-	           {
-	               tx.rollback();
-	           }
-	     
-			}
+	public Response iniciarSesion(UsuarioDTO userDTO) {
+		Usuario user = dbmanager.getUsuario(userDTO.getEmail());
+		if(user!= null && user.getContrasenya().equals(userDTO.getContrasenya())) {
+			return Response.ok().build();
+		}return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 
 
