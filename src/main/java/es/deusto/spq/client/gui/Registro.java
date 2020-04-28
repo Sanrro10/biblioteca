@@ -52,7 +52,7 @@ public class Registro extends JFrame {
 	
 
 
-	public Registro(int altura, int anchura, Controller controller, ServiceLocator servicelocator) {
+	public Registro(int altura, int anchura, Controller controller) {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -171,7 +171,7 @@ public class Registro extends JFrame {
 					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					
 					
-					InicioSesion inicio = new InicioSesion(750, 422, controller, servicelocator); 
+					InicioSesion inicio = new InicioSesion(750, 422, controller); 
 
 					inicio.setVisible(true);
 					
@@ -187,7 +187,7 @@ public class Registro extends JFrame {
 		btnAtrs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				InicioSesion inicio = new InicioSesion(750, 422, controller, servicelocator); 
+				InicioSesion inicio = new InicioSesion(750, 422, controller); 
 
 				inicio.setVisible(true);
 				

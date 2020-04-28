@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Libro;
 import es.deusto.spq.client.data.ReservaLibro;
 
@@ -53,7 +54,7 @@ public class ModificarLibro extends JFrame {
 	private JComboBox comboBox = new JComboBox();
 	private JTextField textTitulo = new JTextField();
 
-	public ModificarLibro(int altura, int anchura) throws ParseException {
+	public ModificarLibro(int altura, int anchura, Controller controller) throws ParseException {
 //		contentpane = new JPanel();
 //
 //		contentpane.setBorder(new EmptyBorder(6, 6, 6, 6));

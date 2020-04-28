@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Libro;
 import es.deusto.spq.client.data.ReservaLibro;
 
@@ -39,7 +40,7 @@ public class Retrasos extends JFrame{
 	private final JButton btnBannearUsuario = new JButton();
 	private JList listado = new JList();
 
-	public Retrasos (int altura, int anchura)  {
+	public Retrasos (int altura, int anchura, Controller controller)  {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -112,7 +113,7 @@ public class Retrasos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				VentanaGestor gestion = new VentanaGestor(750, 422); 
+				VentanaGestor gestion = new VentanaGestor(750, 422, controller); 
 
 				gestion.setVisible(true);
 				

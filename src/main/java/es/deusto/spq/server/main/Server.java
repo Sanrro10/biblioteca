@@ -9,7 +9,6 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import es.deusto.spq.client.gui.InicioSesion;
 import es.deusto.spq.client.resources.GetPropertyValues;
 import es.deusto.spq.server.DAO.DBManager;
 import es.deusto.spq.server.data.Usuario;

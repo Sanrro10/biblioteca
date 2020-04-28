@@ -47,7 +47,7 @@ public class InicioSesion extends JFrame {
 	private final JButton btnNewButtonGestor = new JButton("Gestor");
 	private Client client;
 
-	public InicioSesion(int altura, int anchura, Controller controller, ServiceLocator servicelocator) {
+	public InicioSesion(int altura, int anchura, Controller controller) {
 		client = ClientBuilder.newClient();
 		GetPropertyValues properties = new GetPropertyValues();
 		String url = "";
@@ -137,7 +137,7 @@ public class InicioSesion extends JFrame {
 		btnNewButtonGestor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				VentanaGestor gestor = new VentanaGestor(750, 422);
+				VentanaGestor gestor = new VentanaGestor(750, 422, controller);
 
 				gestor.setVisible(true);
 
@@ -181,7 +181,7 @@ public class InicioSesion extends JFrame {
 
 
 				}else if(correcto == 2) {
-					VentanaGestor gestor = new VentanaGestor(750, 422);
+					VentanaGestor gestor = new VentanaGestor(750, 422, controller);
 
 					gestor.setVisible(true);
 
@@ -197,7 +197,7 @@ public class InicioSesion extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Registro registro = new Registro(750, 422, controller, servicelocator); // quitar comentario para ver la ventana
+				Registro registro = new Registro(750, 422, controller); // quitar comentario para ver la ventana
 
 				registro.setVisible(true);
 

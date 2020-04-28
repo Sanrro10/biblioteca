@@ -17,11 +17,7 @@ import javax.jdo.Transaction;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
-import es.deusto.spq.server.data.Libro;
-import es.deusto.spq.server.data.ReservaLibro;
-import es.deusto.spq.server.data.ReservaSala;
-import es.deusto.spq.server.data.SalaTrabajo;
-import es.deusto.spq.server.data.Usuario;
+import es.deusto.spq.server.data.*;
 
 
 public class DBManager {	
@@ -35,7 +31,11 @@ public class DBManager {
 	public static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();
-			instance.initializeData();
+//			SalaTrabajo sala1 = new SalaTrabajo(1, "Piso 1", 4);
+//			if(instance.getSala(1)==null) {
+				instance.initializeData();
+//			}
+			
 		}		
 		
 		return instance;
@@ -90,6 +90,9 @@ public class DBManager {
 	public void store(Usuario user) {
 		DBManager.getInstance().storeObjectInDB(user);	
 	}
+	public void store(Solicitud solicitud) {
+		DBManager.getInstance().storeObjectInDB(solicitud);	
+	}
 	
 	public void store(Libro libro) {
 		DBManager.getInstance().storeObjectInDB(libro);	
@@ -109,7 +112,9 @@ public class DBManager {
 	public void delete(Usuario user) {
 		DBManager.getInstance().deleteObjectFromDB(user);	
 	}
-	
+	public void delete(Solicitud solicitud) {
+		DBManager.getInstance().deleteObjectFromDB(solicitud);	
+	}
 
 	public void delete(Libro libro) {
 		DBManager.getInstance().deleteObjectFromDB(libro);	
@@ -127,34 +132,34 @@ public class DBManager {
 	
 	
 	public void update(Usuario user) {
-		Usuario user2 = getUsuario(""+user.getEmail());
+		Usuario user2 = getUsuario(user.getEmail());
 		delete(user2);
 		store(user);	
 	}
 
 	public void update(Libro libro) {
-		Libro libro2 = getLibro(""+libro.getCod_Libro());
+		Libro libro2 = getLibro(libro.getCod_Libro());
 		delete(libro2);
 		store(libro);
 	}
 
 	public void update(SalaTrabajo sala) {
-		SalaTrabajo sala2 = getSala(""+sala.getCod_sala());
+		SalaTrabajo sala2 = getSala(sala.getCod_sala());
 		delete(sala2);
 		store(sala);
 	}
 	public void update(ReservaSala rsala) {
-		ReservaSala rsala2 = getReserva_Sala(""+rsala.getCod_Usuario());
+		ReservaSala rsala2 = getReserva_Sala(rsala.getEmail());
 		delete(rsala2);
 		store(rsala);
 	}
 	public void update(ReservaLibro rlibro) {
-		ReservaLibro rlibro2 = getReserva_Libro(""+rlibro.getCod_Reserva_Libro());
+		ReservaLibro rlibro2 = getReserva_Libro(rlibro.getEmail());
 		delete(rlibro2);
 		store(rlibro);
 	}
 
-	public Libro getLibro(String cod_Libro) {		
+	public Libro getLibro(int cod_Libro) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -179,6 +184,32 @@ public class DBManager {
 		}
 
 		return libro;
+	}
+	public Solicitud getSolicitud(int codigoS) {		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+		Solicitud solicitud = null; 
+
+		try {
+			tx.begin();
+			
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE codigoS == '" + codigoS + "'");
+			query.setUnique(true);
+			solicitud = (Solicitud) query.execute();
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println(" $ Error cogiendo el libro de la BD: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return solicitud;
 	}
 	public Usuario getUsuario(String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -206,7 +237,7 @@ public class DBManager {
 
 		return user;
 	}
-	public SalaTrabajo getSala(String cod_sala) {		
+	public SalaTrabajo getSala(int cod_sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -232,7 +263,7 @@ public class DBManager {
 
 		return sala;
 	}
-	public ReservaLibro getReserva_Libro(String cod_Reserva_Libro) {		
+	public ReservaLibro getReserva_Libro(String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -241,7 +272,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Libro == '" + cod_Reserva_Libro + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
 			query.setUnique(true);
 			reservaLibro = (ReservaLibro) query.execute();
 			
@@ -258,7 +289,7 @@ public class DBManager {
 
 		return reservaLibro;
 	}
-	public ReservaSala getReserva_Sala (String cod_Reserva_Sala) {		
+	public ReservaSala getReserva_Sala (String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -267,7 +298,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Sala == '" + cod_Reserva_Sala + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
 			query.setUnique(true);
 			reservaSala = (ReservaSala) query.execute();
 			
@@ -315,7 +346,36 @@ public class DBManager {
 
 		return usuarios;		
 	}
-	
+	public List<Solicitud> getSolicitudes() {
+		List<Solicitud> solicitudes = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+			System.out.println("  * Retrieving all the flights");
+
+			tx.begin();
+			
+			Extent<Solicitud> extent = pm.getExtent(Solicitud.class, true);
+
+			for (Solicitud solicitud : extent) {
+				solicitudes.add(solicitud);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return solicitudes;		
+	}	
 	public List<Libro> getLibros() {
 		List<Libro> libros = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();

@@ -12,7 +12,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Biblioteca</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
+    <url-pattern>/server/*</url-pattern>
   </servlet-mapping>
 </web-app>
-

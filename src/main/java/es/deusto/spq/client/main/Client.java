@@ -39,7 +39,7 @@ public class Client {
 		ServiceLocator servicelocator = new ServiceLocator();
 		Controller controller = new Controller(servicelocator);
 
-		InicioSesion inicioSesion = new InicioSesion(750, 422, controller, servicelocator); // quitar comentario para ver la ventana
+		InicioSesion inicioSesion = new InicioSesion(750, 422, controller); // quitar comentario para ver la ventana
 
 		inicioSesion.setVisible(true);
 

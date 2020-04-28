@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Libro;
 import es.deusto.spq.client.data.ReservaLibro;
 
@@ -51,7 +52,7 @@ public class AnyadirLibro extends JFrame {
 	private JComboBox genero = new JComboBox();
 	private JTextField textTitulo = new JTextField();
 
-	public AnyadirLibro(int altura, int anchura) throws ParseException {
+	public AnyadirLibro(int altura, int anchura, Controller controller) throws ParseException {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -158,7 +159,7 @@ public class AnyadirLibro extends JFrame {
 
 				AnyadirLibro anyadir;
 				try {
-					anyadir = new AnyadirLibro(750, 422);
+					anyadir = new AnyadirLibro(750, 422, controller);
 					anyadir.setVisible(true);
 
 					AnyadirLibro.this.dispose();
@@ -178,7 +179,7 @@ public class AnyadirLibro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				VentanaLibros inicio = new VentanaLibros(750, 422);
+				VentanaLibros inicio = new VentanaLibros(750, 422, controller);
 
 				inicio.setVisible(true);
 

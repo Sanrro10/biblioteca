@@ -18,7 +18,7 @@ public class ReservaSala {
 	@PrimaryKey
 	int cod_Reserva_Sala;
 	
-	int cod_Usuario;
+	String email;
 	int cod_Sala;
 	Date fecha;
 	boolean calefaccion;
@@ -31,10 +31,10 @@ public class ReservaSala {
 	public ReservaSala() {
 		super();
 	}
-	public ReservaSala(int cod_Reserva_Sala, int cod_Usuario, int cod_Sala, Date fecha, boolean calefaccion) {
+	public ReservaSala(int cod_Reserva_Sala, String email, int cod_Sala, Date fecha, boolean calefaccion) {
 		super();
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
-		this.cod_Usuario = cod_Usuario;
+		this.email = email;
 		this.cod_Sala = cod_Sala;
 		this.calefaccion = calefaccion;
 		this.fecha = fecha;
@@ -45,11 +45,11 @@ public class ReservaSala {
 	public void setCod_Reserva_Sala(int cod_Reserva_Sala) {
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
 	}
-	public int getCod_Usuario() {
-		return cod_Usuario;
+	public String getEmail() {
+		return email;
 	}
-	public void setCod_Usuario(int cod_Usuario) {
-		this.cod_Usuario = cod_Usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getCod_Sala() {
 		return cod_Sala;

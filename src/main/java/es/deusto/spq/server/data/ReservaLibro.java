@@ -22,17 +22,17 @@ public class ReservaLibro {
 	@PrimaryKey
 	int cod_Reserva_Libro;
 	
-	int cod_Usuario;
+	String email;
 	int cod_Libro;
 	Date fecha_Devolución;
 	
 	public static ArrayList<Integer> lista = new ArrayList<>();
 	
 	
-	public ReservaLibro(int cod_Reserva_Libro, int cod_Usuario, int cod_Libro, Date fecha_Devolución) {
+	public ReservaLibro(int cod_Reserva_Libro, String email, int cod_Libro, Date fecha_Devolución) {
 		super();
 		this.cod_Reserva_Libro = cod_Reserva_Libro;
-		this.cod_Usuario = cod_Usuario;
+		this.email = email;
 		this.cod_Libro = cod_Libro;
 		this.fecha_Devolución = fecha_Devolución;
 	}
@@ -52,11 +52,11 @@ public class ReservaLibro {
 	public void setCod_Reserva_Libro(int cod_Reserva_Libro) {
 		this.cod_Reserva_Libro = cod_Reserva_Libro;
 	}
-	public int getCod_Usuario() {
-		return cod_Usuario;
+	public String getEmail() {
+		return email;
 	}
-	public void setCod_Usuario(int cod_Usuario) {
-		this.cod_Usuario = cod_Usuario;
+	public void setEmail(String cod_Usuario) {
+		this.email = cod_Usuario;
 	}
 	public int getCod_Libro() {
 		return cod_Libro;

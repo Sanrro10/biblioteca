@@ -11,9 +11,10 @@ public class ReservaSala implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private int cod_Reserva_Sala;
-	private int cod_Usuario;
+	private String email;
 	private int cod_Sala;
 	private Date fecha;
+	private String usuariosExtra;
 	
 	private boolean calefaccion;
 	public int getCod_Reserva_Sala() {
@@ -22,22 +23,29 @@ public class ReservaSala implements Serializable{
 	public void setCod_Reserva_Sala(int cod_Reserva_Sala) {
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
 	}
-	public ReservaSala(int cod_Reserva_Sala, int cod_Usuario, int cod_Sala, Date fecha, boolean calefaccion) {
+	public ReservaSala(int cod_Reserva_Sala, String email, int cod_Sala, Date fecha, boolean calefaccion, String usuariosExtra) {
 		super();
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
-		this.cod_Usuario = cod_Usuario;
+		this.email = email;
 		this.cod_Sala = cod_Sala;
 		this.fecha = fecha;
 		this.calefaccion = calefaccion;
+		this.usuariosExtra = usuariosExtra;
+	}
+	public String getUsuariosExtra() {
+		return usuariosExtra;
+	}
+	public void setUsuariosExtra(String usuariosExtra) {
+		this.usuariosExtra = usuariosExtra;
 	}
 	public ReservaSala() {
 		// TODO Auto-generated constructor stub
 	}
-	public int getCod_Usuario() {
-		return cod_Usuario;
+	public String getEmail() {
+		return email;
 	}
-	public void setCod_Usuario(int cod_Usuario) {
-		this.cod_Usuario = cod_Usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getCod_Sala() {
 		return cod_Sala;
@@ -56,6 +64,10 @@ public class ReservaSala implements Serializable{
 	}
 	public void setCalefaccion(boolean calefaccion) {
 		this.calefaccion = calefaccion;
+	}
+	public String getHorario() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

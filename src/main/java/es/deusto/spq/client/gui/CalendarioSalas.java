@@ -1,4 +1,4 @@
-package es.deusto.spq.ventanas;
+package es.deusto.spq.client.gui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Handler;
 
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDayChooser;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.ReservaSala;
 import es.deusto.spq.client.data.SalaTrabajo;
 import es.deusto.spq.client.data.Usuario;
@@ -42,7 +44,6 @@ public class CalendarioSalas extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentpane;
-	private static JCalendario calendario = new JCalendario();
 	private static JButton btnreservar = new JButton();
 	private JButton btnratras = new JButton();
 	private static JComboBox<String> combo = new JComboBox<String>();
@@ -56,8 +57,10 @@ public class CalendarioSalas extends JFrame {
 	public static String fecha3 = "";
 	public static int maxPerso = 0;
 
-	public CalendarioSalas(int altura, int anchura, final Usuario user) throws ParseException {
+	public CalendarioSalas(int altura, int anchura, final Usuario user, Controller controller) throws ParseException {
 		contentpane = new JPanel();
+
+		JCalendario calendario = new JCalendario(controller);
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentpane);
@@ -82,14 +85,14 @@ public class CalendarioSalas extends JFrame {
 		contentpane.add(btnratras);
 
 		combo.setBounds(320, 10, 90, 25);
-		ArrayList<SalaTrabajo> salas = Conexion.cogerSalas();
+		List<SalaTrabajo> salas = controller.cogerSalas();
 		for (int i = 0; i < salas.size(); i++) {
 			combo.addItem(salas.get(i).toCombo());
 		}
 		contentpane.add(combo);
 
 		ComboDisponibilidad.setBounds(320, 40, 90, 25);
-		ArrayList<ReservaSala> reservas = Conexion.cogerReserva_Salas();
+		List<ReservaSala> reservas = controller.cogerReservasSala();
 		for (int i = 0; i < reservas.size(); i++) {
 //			if(reservas.get(i).getFecha().) {
 //				for(int a = 0; a < calendario.)
@@ -133,7 +136,7 @@ public class CalendarioSalas extends JFrame {
 		} else {
 			btnreservar.setEnabled(true);
 		}
-		actualizar(false, false);
+		actualizar(false, false, controller, calendario);
 
 		btnreservar.addActionListener(new ActionListener() {
 
@@ -147,7 +150,7 @@ public class CalendarioSalas extends JFrame {
 				}
 				ReservaSala reservaNueva = new ReservaSala();
 				reservaNueva.setCalefaccion(chckbxNewCheckBox.isSelected());
-				reservaNueva.setCod_Usuario(user.getCod_Usuario());
+				reservaNueva.setEmail(user.getEmail());
 				reservaNueva.setCod_Reserva_Sala(reservas.size() + 1);
 				reservaNueva.setCod_Sala(s.getCod_sala());
 				SimpleDateFormat sdf1 = new SimpleDateFormat("EEE, dd MMM yyyy");
@@ -203,13 +206,13 @@ public class CalendarioSalas extends JFrame {
 				ReservaSalas reserva;
 
 				try {
-					reserva = new ReservaSalas(426, 463, user, reservaNueva);
+					reserva = new ReservaSalas(426, 463, user, reservaNueva, ComboDisponibilidad.getSelectedItem().toString(), controller, calendario);
 					reserva.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				actualizar(false, false);
+				actualizar(false, false, controller, calendario);
 
 			}
 		});
@@ -234,7 +237,7 @@ public class CalendarioSalas extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				actualizar(true, false);
+				actualizar(true, false, controller, calendario);
 
 			}
 		});
@@ -258,10 +261,10 @@ public class CalendarioSalas extends JFrame {
 		});
 	}
 
-	public static void actualizar(boolean sala, boolean horas) {
+	public static void actualizar(boolean sala, boolean horas, Controller controller, JCalendario calendario) {
 
-		ArrayList<SalaTrabajo> salas = Conexion.cogerSalas();
-		ArrayList<ReservaSala> reservas = new ArrayList<>();
+		List<SalaTrabajo> salas = controller.cogerSalas();
+		List<ReservaSala> reservas = new ArrayList<>();
 		if (sala) {
 			combo.removeAllItems();
 			for (int i = 0; i < salas.size(); i++) {
@@ -276,12 +279,7 @@ public class CalendarioSalas extends JFrame {
 
 		}
 
-		try {
-			reservas = Conexion.cogerReserva_Salas();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		reservas = controller.cogerReservasSala();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy");
 		String fechaString = sdf.format(calendario.getDate());
@@ -316,7 +314,7 @@ public class CalendarioSalas extends JFrame {
 				textPane.setText("No hay salas disponibles este día");
 			} else {
 				ComboDisponibilidad.removeItem(ComboDisponibilidad.getSelectedItem());
-				actualizar(false, false);
+				actualizar(false, false, controller, calendario);
 			}
 
 		} else {

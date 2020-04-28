@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Libro;
 import es.deusto.spq.client.data.ReservaLibro;
 import es.deusto.spq.client.data.Usuario;
@@ -35,7 +36,7 @@ public class GestorReservas extends JFrame{
 	private final JLabel LabelBackground = new JLabel("");
 	private final JTextPane txtpnDatos = new JTextPane();
 
-	public GestorReservas(int altura, int anchura) throws ParseException {
+	public GestorReservas(int altura, int anchura, Controller controller) throws ParseException {
 //		contentpane = new JPanel();
 //
 //		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));

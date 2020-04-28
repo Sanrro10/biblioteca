@@ -22,7 +22,7 @@ public class TestReservaSala {
 	@Before
 	public void setUp() {
 		Date d = null;
-		reservaSala1 = new ReservaSala(01, 01, 01, d, true);
+		reservaSala1 = new ReservaSala(01, "a@a.com", 01, d, true, "");
 	}
 	
 	
@@ -33,10 +33,11 @@ public class TestReservaSala {
 		
 		
 		assertEquals(01, reservaSala1.getCod_Reserva_Sala());
-		assertEquals(01, reservaSala1.getCod_Usuario());
+		assertEquals("a@a.com", reservaSala1.getEmail());
 		assertEquals(01, reservaSala1.getCod_Sala());
 		assertEquals(null, reservaSala1.getFecha());
 		assertEquals(true, reservaSala1.isCalefaccion());
+		assertEquals("", reservaSala1.getUsuariosExtra());
 		
 		
 	}

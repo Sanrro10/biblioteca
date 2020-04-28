@@ -1,7 +1,8 @@
 package es.deusto.spq.client.data;
 
+import java.io.Serializable;
 
-public class Solicitud {
+public class Solicitud implements Serializable{
 	int codigoS;
 	String tituloS;
 	String autorS;
@@ -58,9 +59,6 @@ public class Solicitud {
 		this.generoS = generoS;
 		this.cantidadS = cantidadS;
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

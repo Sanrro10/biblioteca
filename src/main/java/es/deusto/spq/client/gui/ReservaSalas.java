@@ -1,4 +1,4 @@
-package es.deusto.spq.ventanas;
+package es.deusto.spq.client.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,11 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.spq.BD.Conexion;
-import es.deusto.spq.base.Libro;
-import es.deusto.spq.base.Reserva_Libro;
-import es.deusto.spq.base.Reserva_Sala;
-import es.deusto.spq.base.Usuario;
+import es.deusto.spq.client.controller.Controller;
+import es.deusto.spq.client.data.ReservaSala;
+import es.deusto.spq.client.data.Usuario;
+import es.deusto.spq.client.resources.JCalendario;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -75,8 +74,8 @@ public class ReservaSalas extends JFrame {
 		
 	}
 
-	public ReservaSalas(int altura, int anchura, final Usuario user, final Reserva_Sala reservaNueva) throws ParseException {
-		lblHora.setText(reservaNueva.getHorario());
+	public ReservaSalas(int altura, int anchura, final Usuario user, final ReservaSala reservaNueva, String horario, Controller controller, JCalendario jcalendario) throws ParseException {
+		lblHora.setText(horario);
 		textField.setText(user.getEmail());
 		textField.setEditable(false);
 		textField.setBounds(130, 167, 221, 20);
@@ -218,13 +217,13 @@ public class ReservaSalas extends JFrame {
 				usuarios.add(textField_5.getText());
 				usuarios.add(textField_6.getText());
 				reservaNueva.setUsuariosExtra(usuariosExtra(usuarios));
-				Conexion.insertarReserva_Sala(reservaNueva);
+				controller.insertarReservaSala(reservaNueva);
 				CalendarioSalas calendario;
 
 				
 
 				ReservaSalas.this.dispose();
-				CalendarioSalas.actualizar(false, false);
+				CalendarioSalas.actualizar(false, false, controller, jcalendario);
 
 			}
 		});

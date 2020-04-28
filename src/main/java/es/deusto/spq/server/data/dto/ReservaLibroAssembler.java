@@ -21,7 +21,7 @@ public class ReservaLibroAssembler {
 
 		dto.setCod_Reserva_Libro(libro.getCod_Reserva_Libro());
 		dto.setCod_Libro(libro.getCod_Libro());
-		dto.setCod_Usuario(libro.getCod_Usuario());
+		dto.setEmail(libro.getEmail());
 		dto.setFecha_Devolución(libro.getFecha_Devolución());
 
 		return dto;
@@ -32,7 +32,7 @@ public class ReservaLibroAssembler {
 
 		rlibro.setCod_Reserva_Libro(dto.getCod_Reserva_Libro());
 		rlibro.setCod_Libro(dto.getCod_Libro());
-		rlibro.setCod_Usuario(dto.getCod_Usuario());
+		rlibro.setEmail(dto.getEmail());
 		rlibro.setFecha_Devolución(dto.getFecha_Devolución());
 
 		return rlibro;

@@ -21,7 +21,7 @@ public class ReservaSalaAssembler {
 
 		dto.setCod_Reserva_Sala(sala.getCod_Reserva_Sala());
 		dto.setCod_Sala(sala.getCod_Sala());
-		dto.setCod_Usuario(sala.getCod_Usuario());
+		dto.setEmail(sala.getEmail());
 		dto.setCalefaccion(sala.isCalefaccion());
 		dto.setFecha(sala.getFecha());
 
@@ -33,7 +33,7 @@ public class ReservaSalaAssembler {
 
 		reserva.setCod_Reserva_Sala(dto.getCod_Reserva_Sala());
 		reserva.setCod_Sala(dto.getCod_Sala());
-		reserva.setCod_Usuario(dto.getCod_Usuario());
+		reserva.setEmail(dto.getEmail());
 		reserva.setFecha(dto.getFecha());
 		reserva.setCalefaccion(dto.isCalefaccion());
 

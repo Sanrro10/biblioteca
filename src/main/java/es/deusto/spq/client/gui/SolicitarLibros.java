@@ -20,6 +20,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.Solicitud;
 
 public class SolicitarLibros extends JFrame{
@@ -38,7 +39,7 @@ public class SolicitarLibros extends JFrame{
 	private JComboBox generoS = new JComboBox();
 	private JTextField textTituloS = new JTextField();
 
-	public SolicitarLibros(int altura, int anchura) throws ParseException {
+	public SolicitarLibros(int altura, int anchura, Controller controller) throws ParseException {
 //		contentpane = new JPanel();
 //
 //		contentpane.setBorder(new EmptyBorder(6, 6, 6, 6));

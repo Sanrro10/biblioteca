@@ -13,7 +13,7 @@ public class ReservaLibroDTO implements Serializable {
 	public static ArrayList<Integer> lista = new ArrayList<>();
 
 	private int cod_Reserva_Libro;
-	private int cod_Usuario;
+	private String email;
 	private int cod_Libro;
 	private Date fecha_Devolución;
 
@@ -25,12 +25,12 @@ public class ReservaLibroDTO implements Serializable {
 		this.cod_Reserva_Libro = cod_Reserva_Libro;
 	}
 
-	public int getCod_Usuario() {
-		return cod_Usuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCod_Usuario(int cod_Usuario) {
-		this.cod_Usuario = cod_Usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getCod_Libro() {
