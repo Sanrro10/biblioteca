@@ -22,6 +22,15 @@ public class Libro implements Serializable {
 		return cod_Libro;
 	}
 
+	public Libro(int cod_Libro, String titulo, String autor, String genero, int reserva_Max) {
+		super();
+		this.cod_Libro = cod_Libro;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.genero = genero;
+		this.reserva_Max = reserva_Max;
+	}
+
 	public void setCod_Libro(int cod_Libro) {
 		this.cod_Libro = cod_Libro;
 	}

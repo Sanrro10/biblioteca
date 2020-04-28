@@ -21,7 +21,7 @@ public class TestSalaTrabajo {
 	
 	@Before
 	public void setUp() {
-		salatrabajo1 = new SalaTrabajo(01, "Piso 1", 5);
+		salatrabajo1 = new SalaTrabajo(1, "Piso 1", 5);
 	}
 	
 	

@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 public class SalaTrabajo implements Serializable{
 	
+	public SalaTrabajo(int cod_sala, String ubicacion, int numMaxUsuarios) {
+		super();
+		this.cod_sala = cod_sala;
+		this.ubicacion = ubicacion;
+		this.numMaxUsuarios = numMaxUsuarios;
+	}
 	/**
 	 * 
 	 */

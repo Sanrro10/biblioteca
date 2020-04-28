@@ -22,6 +22,14 @@ public class ReservaSala implements Serializable{
 	public void setCod_Reserva_Sala(int cod_Reserva_Sala) {
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
 	}
+	public ReservaSala(int cod_Reserva_Sala, int cod_Usuario, int cod_Sala, Date fecha, boolean calefaccion) {
+		super();
+		this.cod_Reserva_Sala = cod_Reserva_Sala;
+		this.cod_Usuario = cod_Usuario;
+		this.cod_Sala = cod_Sala;
+		this.fecha = fecha;
+		this.calefaccion = calefaccion;
+	}
 	public int getCod_Usuario() {
 		return cod_Usuario;
 	}

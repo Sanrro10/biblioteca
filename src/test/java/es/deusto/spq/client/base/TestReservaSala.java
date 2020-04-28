@@ -21,7 +21,8 @@ public class TestReservaSala {
 	
 	@Before
 	public void setUp() {
-		reservaSala1 = new ReservaSala(01, 01, 01, null, true);
+		Date d = null;
+		reservaSala1 = new ReservaSala(01, 01, 01, d, true);
 	}
 	
 	
