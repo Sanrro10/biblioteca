@@ -9,10 +9,10 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
+
 import es.deusto.spq.client.resources.GetPropertyValues;
 import es.deusto.spq.server.DAO.DBManager;
 import es.deusto.spq.server.data.Usuario;
-import es.deusto.spq.server.remote.IRemoteFacade;
 import es.deusto.spq.server.remote.RemoteFacade;
 
 public class Server {
@@ -29,7 +29,7 @@ public class Server {
 		public static HttpServer startServer() {
 			// create a resource config that scans for JAX-RS resources and providers
 			// in com.example package
-			final ResourceConfig rc = new ResourceConfig().packages("com.example");
+			final ResourceConfig rc = new ResourceConfig().packages("es.deusto.spq");
 			// create and start a new instance of grizzly http server
 			// exposing the Jersey application at BASE_URI
 

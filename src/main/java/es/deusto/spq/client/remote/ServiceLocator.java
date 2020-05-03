@@ -30,14 +30,14 @@ public class ServiceLocator {
 	private WebTarget webTarget; 
 	private static Logger logger = Logger.getLogger(ServiceLocator.class.getName());
 
-	public ServiceLocator() { 
-		client = ClientBuilder.newClient();
-		webTarget = client.target(cogerUrl());
-	}
-//	public ServiceLocator(String hostname, String port) { 
-//	client = ClientBuilder.newClient();
-//	webTarget = client.target(String.format("http://%s:%s/rest", hostname, port));
-//}
+//	public ServiceLocator() { 
+//		client = ClientBuilder.newClient();
+//		webTarget = client.target(cogerUrl());
+//	}
+	public ServiceLocator(String hostname, String port) { 
+	client = ClientBuilder.newClient();
+	webTarget = client.target(String.format("http://%s:%s/rest", hostname, port));
+}
 	public boolean registrarUsuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		WebTarget registerUserWebTarget = webTarget.path("server/registro");
 		System.out.println(registerUserWebTarget);
