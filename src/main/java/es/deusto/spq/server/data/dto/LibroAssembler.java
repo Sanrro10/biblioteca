@@ -5,7 +5,7 @@ import es.deusto.spq.server.data.Libro;
 public class LibroAssembler {
 	private static LibroAssembler instance;
 
-	private LibroAssembler() {
+	LibroAssembler() {
 	}
 
 	public static LibroAssembler getInstance() {
