@@ -32,17 +32,19 @@ Para arrancar el programa será necesario abrir un terminal en la ruta del proye
 ```
     mvn clean
     mvn compile
-    mvn datanucleus:schema-create (solo la primera vez)
-    mvn exec:java -Pbiblioteca_Main
+    mvn datanucleus:schema-create
+    mvn exec:java -PServer
+    
+    ¡Importante no cerrar este terminal mientars usamos la aplicación! Podemos minimizarla para que no nos moleste
     
 ```
-En caso de no ser la primera vez que ejecutamos el programa seguiremos estos comandos:
+Abrimos de nuevo otra consola y la ruta del proyecto donde esté el archivo "pom.xml" y ejecutaremos estos comandos:
 ```
     mvn clean
     mvn compile
     mvn datanucleus:schema-delete
     mvn datanucleus:schema-create 
-    mvn exec:java -Pbiblioteca_Main
+    mvn exec:java -PClient
     
 ```
 
