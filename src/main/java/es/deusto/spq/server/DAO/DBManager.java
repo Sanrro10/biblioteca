@@ -149,7 +149,7 @@ public class DBManager {
 		store(sala);
 	}
 	public void update(ReservaSala rsala) {
-		ReservaSala rsala2 = getReserva_Sala(rsala.getEmail());
+		ReservaSala rsala2 = getReserva_Sala(rsala.getCod_Reserva_Sala());
 		delete(rsala2);
 		store(rsala);
 	}
@@ -289,7 +289,7 @@ public class DBManager {
 
 		return reservaLibro;
 	}
-	public ReservaSala getReserva_Sala (String email) {		
+	public ReservaSala getReserva_Sala (int cod_Reserva_Sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -298,7 +298,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Sala == '" + cod_Reserva_Sala + "'");
 			query.setUnique(true);
 			reservaSala = (ReservaSala) query.execute();
 			
