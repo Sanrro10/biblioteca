@@ -90,14 +90,15 @@ public class DBManager {
 	public void store(Usuario user) {
 		DBManager.getInstance().storeObjectInDB(user);	
 	}
+	public void store(Actividad actividad) {
+		DBManager.getInstance().storeObjectInDB(actividad);	
+	}
 	public void store(Solicitud solicitud) {
 		DBManager.getInstance().storeObjectInDB(solicitud);	
-	}
-	
+	}	
 	public void store(Libro libro) {
 		DBManager.getInstance().storeObjectInDB(libro);	
 	}
-
 	public void store(SalaTrabajo sala) {
 		DBManager.getInstance().storeObjectInDB(sala);
 	}
@@ -112,14 +113,15 @@ public class DBManager {
 	public void delete(Usuario user) {
 		DBManager.getInstance().deleteObjectFromDB(user);	
 	}
+	public void delete(Actividad actividad) {
+		DBManager.getInstance().deleteObjectFromDB(actividad);	
+	}
 	public void delete(Solicitud solicitud) {
 		DBManager.getInstance().deleteObjectFromDB(solicitud);	
 	}
-
 	public void delete(Libro libro) {
 		DBManager.getInstance().deleteObjectFromDB(libro);	
 	}
-
 	public void delete(SalaTrabajo sala) {
 		DBManager.getInstance().deleteObjectFromDB(sala);
 	}
@@ -136,13 +138,11 @@ public class DBManager {
 		delete(user2);
 		store(user);	
 	}
-
 	public void update(Libro libro) {
 		Libro libro2 = getLibro(libro.getCod_Libro());
 		delete(libro2);
 		store(libro);
 	}
-
 	public void update(SalaTrabajo sala) {
 		SalaTrabajo sala2 = getSala(sala.getCod_sala());
 		delete(sala2);
@@ -154,7 +154,7 @@ public class DBManager {
 		store(rsala);
 	}
 	public void update(ReservaLibro rlibro) {
-		ReservaLibro rlibro2 = getReserva_Libro(rlibro.getEmail());
+		ReservaLibro rlibro2 = getReserva_Libro(rlibro.getCod_Reserva_Libro());
 		delete(rlibro2);
 		store(rlibro);
 	}
@@ -263,7 +263,7 @@ public class DBManager {
 
 		return sala;
 	}
-	public ReservaLibro getReserva_Libro(String email) {		
+	public ReservaLibro getReserva_Libro(int cod_Reserva_Libro) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
 		Transaction tx = pm.currentTransaction();
@@ -272,7 +272,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Libro == '" + cod_Reserva_Libro + "'");
 			query.setUnique(true);
 			reservaLibro = (ReservaLibro) query.execute();
 			
@@ -323,7 +323,7 @@ public class DBManager {
 		Transaction tx = pm.currentTransaction();
 
 		try {
-			System.out.println("  * Retrieving all the flights");
+			
 
 			tx.begin();
 			
@@ -353,7 +353,7 @@ public class DBManager {
 		Transaction tx = pm.currentTransaction();
 
 		try {
-			System.out.println("  * Retrieving all the flights");
+			
 
 			tx.begin();
 			
@@ -383,7 +383,7 @@ public class DBManager {
 		Transaction tx = pm.currentTransaction();
 
 		try {
-			System.out.println("  * Retrieving all the flights");
+			
 
 			tx.begin();
 			
@@ -413,7 +413,7 @@ public class DBManager {
 		Transaction tx = pm.currentTransaction();
 
 		try {
-			System.out.println("  * Retrieving all the flights");
+			
 
 			tx.begin();
 			
@@ -443,7 +443,6 @@ public class DBManager {
 		Transaction tx = pm.currentTransaction();
 
 		try {
-			System.out.println("  * Retrieving all the flights");
 
 			tx.begin();
 			
@@ -473,7 +472,6 @@ public class DBManager {
 		Transaction tx = pm.currentTransaction();
 
 		try {
-			System.out.println("  * Retrieving all the flights");
 
 			tx.begin();
 			
@@ -496,6 +494,35 @@ public class DBManager {
 
 		return rsalas;		
 	}
+	public List<Actividad> getActividades() {
+		List<Actividad> actividades = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+
+			tx.begin();
+			
+			Extent<Actividad> extent = pm.getExtent(Actividad.class, true);
+
+			for (Actividad rsala : extent) {
+				actividades.add(rsala);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return actividades;		
+	}
 
 	
 	
@@ -511,6 +538,18 @@ public class DBManager {
 		SalaTrabajo sala3 = new SalaTrabajo(3, "Piso 2", 4);
 		SalaTrabajo sala4 = new SalaTrabajo(4, "Piso 2", 5);
 		SalaTrabajo sala5 = new SalaTrabajo(5, "Piso 3", 10);
+		Actividad a1 = new Actividad(1, "12:00-13:30", "Cuentacuentos");
+		Actividad a2 = new Actividad(2, "12:00-13:30", "Cuentacuentos");
+		Actividad a3 = new Actividad(3, "12:00-13:30", "Cuentacuentos");
+		Actividad a4 = new Actividad(4, "12:00-13:30", "Cuentacuentos");
+		Actividad a5 = new Actividad(5, "12:00-13:30", "Cuentacuentos");
+		Actividad a6 = new Actividad(1, "17:00-18:30", "Cuentacuentos");
+		Actividad a7 = new Actividad(2, "17:00-18:30", "Cuentacuentos");
+		Actividad a8 = new Actividad(3, "17:00-18:30", "Cuentacuentos");
+		Actividad a9 = new Actividad(4, "17:00-18:30", "Cuentacuentos");
+		Actividad a10 = new Actividad(5, "17:00-18:30", "Cuentacuentos");
+		Actividad a11 = new Actividad(6, "10:00-14:00", "Apoyo escolar");
+		Actividad a12 = new Actividad(6, "18:00-20:30", "Club del cómic");
 		
 		try {
 			store(u1);
@@ -522,6 +561,18 @@ public class DBManager {
 			store(sala3);
 			store(sala4);
 			store(sala5);
+			store(a1);
+			store(a2);
+			store(a3);
+			store(a4);
+			store(a5);
+			store(a6);
+			store(a7);
+			store(a8);
+			store(a9);
+			store(a10);
+			store(a11);
+			store(a12);
 		} catch (Exception ex) {
 			System.out.println(" $ Error initializing data: " + ex.getMessage());
 			ex.printStackTrace();

@@ -77,6 +77,9 @@ public class Controller {
 	public List<Libro> cogerLibros() {
 		return serviceLocator.cogerLibros();
 	}
+	public List<Actividad> cogerActividades(){
+		return serviceLocator.cogerActividades();
+	}
 
 
 

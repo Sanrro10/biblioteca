@@ -20,6 +20,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import es.deusto.spq.client.data.*;
 import es.deusto.spq.client.resources.GetPropertyValues;
+import es.deusto.spq.server.data.dto.ActividadDTO;
 
 
 
@@ -30,14 +31,14 @@ public class ServiceLocator {
 	private WebTarget webTarget; 
 	private static Logger logger = Logger.getLogger(ServiceLocator.class.getName());
 
-//	public ServiceLocator() { 
-//		client = ClientBuilder.newClient();
-//		webTarget = client.target(cogerUrl());
-//	}
-	public ServiceLocator(String hostname, String port) { 
-	client = ClientBuilder.newClient();
-	webTarget = client.target(String.format("http://%s:%s/rest", hostname, port));
-}
+	public ServiceLocator() { 
+		client = ClientBuilder.newClient();
+		webTarget = client.target(cogerUrl());
+	}
+//	public ServiceLocator(String hostname, String port) { 
+//	client = ClientBuilder.newClient();
+//	webTarget = client.target(String.format("http://%s:%s/rest", hostname, port));
+//}
 	public boolean registrarUsuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		WebTarget registerUserWebTarget = webTarget.path("server/registro");
 		System.out.println(registerUserWebTarget);
@@ -169,6 +170,15 @@ public class ServiceLocator {
 
 		List<Libro> list = new ArrayList<Libro>();
 		GenericType<List<Libro>> genericType = new GenericType<List<Libro>>(){}; 
+		list = webTarget1.request(MediaType.APPLICATION_JSON).get(genericType);
+		return list;
+	}
+	public List<Actividad> cogerActividades(){
+		WebTarget webTarget1 = webTarget.path("server/cogerActividades");	
+		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
+
+		List<Actividad> list = new ArrayList<Actividad>();
+		GenericType<List<Actividad>> genericType = new GenericType<List<Actividad>>(){}; 
 		list = webTarget1.request(MediaType.APPLICATION_JSON).get(genericType);
 		return list;
 	}

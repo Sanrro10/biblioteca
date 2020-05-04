@@ -22,12 +22,15 @@ import org.apache.log4j.Logger;
 
 
 import es.deusto.spq.server.DAO.DBManager;
+import es.deusto.spq.server.data.Actividad;
 import es.deusto.spq.server.data.Libro;
 import es.deusto.spq.server.data.ReservaLibro;
 import es.deusto.spq.server.data.ReservaSala;
 import es.deusto.spq.server.data.SalaTrabajo;
 import es.deusto.spq.server.data.Solicitud;
 import es.deusto.spq.server.data.Usuario;
+import es.deusto.spq.server.data.dto.ActividadAssembler;
+import es.deusto.spq.server.data.dto.ActividadDTO;
 import es.deusto.spq.server.data.dto.LibroAssembler;
 import es.deusto.spq.server.data.dto.LibroDTO;
 import es.deusto.spq.server.data.dto.ReservaLibroAssembler;
@@ -182,6 +185,19 @@ public class RemoteFacade implements IRemoteFacade{
 		}
 		return salasTrabajoDTO;
 	}
+	@GET
+	@Path("/cogerActividades")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ActividadDTO> cogerActividades() {
+		List<Actividad> actividades = dbmanager.getActividades();
+		List<ActividadDTO> actividadesDTO = new ArrayList<>();
+		for(int i = 0; i < actividades.size(); i++) {
+			ActividadDTO uDTO = ActividadAssembler.getInstance().entityToDTO(actividades.get(i));
+			actividadesDTO.add(uDTO);
+		}
+		return actividadesDTO;
+	}
+	
 
 
 

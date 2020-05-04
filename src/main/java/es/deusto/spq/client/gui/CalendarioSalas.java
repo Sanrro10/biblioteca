@@ -248,7 +248,7 @@ public class CalendarioSalas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ReservaLibros reservalibros;
 				try {
-					reservalibros = new ReservaLibros(750, 422, user);
+					reservalibros = new ReservaLibros(750, 422, user, controller);
 					reservalibros.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block

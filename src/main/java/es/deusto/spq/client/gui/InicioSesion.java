@@ -115,7 +115,7 @@ public class InicioSesion extends JFrame {
 
 				ReservaLibros reserva;
 				try {
-					reserva = new ReservaLibros(750, 422, user);
+					reserva = new ReservaLibros(750, 422, user, controller);
 					reserva.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
@@ -169,7 +169,7 @@ public class InicioSesion extends JFrame {
 				if(correcto == 1) {
 					ReservaLibros reserva;
 					try {
-						reserva = new ReservaLibros(750, 422, user2);
+						reserva = new ReservaLibros(750, 422, user2, controller);
 						reserva.setVisible(true);
 						InicioSesion.this.dispose();
 					} catch (ParseException e1) {

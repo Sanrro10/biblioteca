@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import es.deusto.spq.server.data.*;
+import es.deusto.spq.server.data.dto.ActividadDTO;
 import es.deusto.spq.server.data.dto.LibroDTO;
 import es.deusto.spq.server.data.dto.ReservaLibroDTO;
 import es.deusto.spq.server.data.dto.ReservaSalaDTO;
@@ -32,4 +33,5 @@ public interface IRemoteFacade{
 	public List<ReservaLibroDTO> cogerReservasLibro();
 	public List<LibroDTO> cogerLibros();
 	public List<SalaTrabajoDTO> cogerSalasTrabajo();
+	public List<ActividadDTO> cogerActividades();
 }
