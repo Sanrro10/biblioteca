@@ -21,6 +21,7 @@ import org.apache.log4j.PropertyConfigurator;
 import es.deusto.spq.client.data.*;
 import es.deusto.spq.client.resources.GetPropertyValues;
 import es.deusto.spq.server.data.dto.ActividadDTO;
+import es.deusto.spq.server.data.dto.UsuarioDTO;
 
 
 
@@ -117,6 +118,14 @@ public class ServiceLocator {
 		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
 
 		Response response = invocationBuilder.post(Entity.entity(rsala, MediaType.APPLICATION_JSON));
+		return response;
+	}
+
+	public Response editarUsuario(Usuario user) {
+		WebTarget webTarget1 = webTarget.path("server/editarUsuario");	
+		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
+
+		Response response = invocationBuilder.post(Entity.entity(user, MediaType.APPLICATION_JSON));
 		return response;
 	}
 	public List<Usuario> cogerUsuarios() {

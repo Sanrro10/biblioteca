@@ -59,6 +59,12 @@ public class Controller {
 		}
 		return false;
 	}
+	public boolean editarUsuario(Usuario user) {
+		if(serviceLocator.editarUsuario(user).equals(Response.ok().build())) {
+			return true;
+		}
+		return false;
+	}
 	public List<Usuario> cogerUsuarios() {
 		return serviceLocator.cogerUsuarios();
 	}

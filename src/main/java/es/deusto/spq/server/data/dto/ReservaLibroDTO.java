@@ -16,6 +16,15 @@ public class ReservaLibroDTO implements Serializable {
 	private String email;
 	private int cod_Libro;
 	private Date fecha_Devolución;
+	private int estado_Libro;
+
+	public int getEstado_Libro() {
+		return estado_Libro;
+	}
+
+	public void setEstado_Libro(int estado_Libro) {
+		this.estado_Libro = estado_Libro;
+	}
 
 	public int getCod_Reserva_Libro() {
 		return cod_Reserva_Libro;

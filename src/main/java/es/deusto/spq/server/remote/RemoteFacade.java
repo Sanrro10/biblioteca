@@ -113,6 +113,14 @@ public class RemoteFacade implements IRemoteFacade{
 		dbmanager.store(libro);
 		return Response.ok().build();
 	}
+	@POST
+	@Path("/editarUsuario")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response editarUsuario(UsuarioDTO userDTO) {
+		Usuario user = UsuarioAssembler.getInstance().DTOtoEntity(userDTO);
+		dbmanager.update(user);
+		return Response.ok().build();
+	}
 	@GET
 	@Path("/cogerUsuarios")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -25,16 +25,24 @@ public class ReservaLibro {
 	String email;
 	int cod_Libro;
 	Date fecha_Devolución;
+	int estado_Libro;
 	
 	public static ArrayList<Integer> lista = new ArrayList<>();
 	
 	
-	public ReservaLibro(int cod_Reserva_Libro, String email, int cod_Libro, Date fecha_Devolución) {
+	public ReservaLibro(int cod_Reserva_Libro, String email, int cod_Libro, Date fecha_Devolución, int estado_Libro) {
 		super();
 		this.cod_Reserva_Libro = cod_Reserva_Libro;
 		this.email = email;
 		this.cod_Libro = cod_Libro;
 		this.fecha_Devolución = fecha_Devolución;
+		this.estado_Libro = estado_Libro;
+	}
+	public int getEstado_Libro() {
+		return estado_Libro;
+	}
+	public void setEstado_Libro(int estado_Libro) {
+		this.estado_Libro = estado_Libro;
 	}
 	public ReservaLibro() {
 		

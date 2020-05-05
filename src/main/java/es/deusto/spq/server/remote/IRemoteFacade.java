@@ -27,6 +27,7 @@ public interface IRemoteFacade{
 	public Response insertarReservaLibro(ReservaLibroDTO rlibroDTO);
 	public Response insertarLibro(LibroDTO libroDTO);
 	public Response insertarSolicitud(SolicitudDTO solicitudDTO);
+	public Response editarUsuario(UsuarioDTO userDTO);
 	public List<UsuarioDTO> cogerUsuarios();
 	public List<SolicitudDTO> cogerSolicitudes();
 	public List<ReservaSalaDTO> cogerReservasSala();
