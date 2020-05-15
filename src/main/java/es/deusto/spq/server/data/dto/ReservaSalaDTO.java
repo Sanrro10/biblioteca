@@ -65,10 +65,6 @@ public class ReservaSalaDTO implements Serializable{
 	public void setCalefaccion(boolean calefaccion) {
 		this.calefaccion = calefaccion;
 	}
-	public String getHorario() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 
 }

@@ -42,15 +42,10 @@ public class Client {
 		Controller controller = new Controller(servicelocator);
 
 //		InicioSesion inicioSesion = new InicioSesion(750, 422, controller);
-		Actividades actividades = null;
-		try {
-			actividades = new Actividades(controller);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		InicioSesion inicio = null;
+		inicio = new InicioSesion(controller);
 
-		actividades.setVisible(true);
+		inicio.setVisible(true);
 
 		
 

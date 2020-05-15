@@ -171,7 +171,7 @@ public class Registro extends JFrame {
 					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					
 					
-					InicioSesion inicio = new InicioSesion(750, 422, controller); 
+					InicioSesion inicio = new InicioSesion(controller); 
 
 					inicio.setVisible(true);
 					
@@ -187,7 +187,7 @@ public class Registro extends JFrame {
 		btnAtrs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				InicioSesion inicio = new InicioSesion(750, 422, controller); 
+				InicioSesion inicio = new InicioSesion(controller); 
 
 				inicio.setVisible(true);
 				

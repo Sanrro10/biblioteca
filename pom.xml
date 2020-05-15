@@ -206,12 +206,12 @@
 										<limit>
 											<counter>LINE</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.01</minimum>
+											<minimum>0</minimum>
 										</limit>
 										<limit>
 											<counter>BRANCH</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.01</minimum>
+											<minimum>0</minimum>
 										</limit>
 									</limits>
 								</rule>
@@ -257,6 +257,13 @@
 				</executions>
 				<configuration>
 					<mainClass>es.deusto.spq.client.main.Client</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>

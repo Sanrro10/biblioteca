@@ -22,6 +22,7 @@ public class ReservaSala {
 	int cod_Sala;
 	Date fecha;
 	boolean calefaccion;
+	private String usuariosExtra;
 	public boolean isCalefaccion() {
 		return calefaccion;
 	}
@@ -31,13 +32,20 @@ public class ReservaSala {
 	public ReservaSala() {
 		super();
 	}
-	public ReservaSala(int cod_Reserva_Sala, String email, int cod_Sala, Date fecha, boolean calefaccion) {
+	public ReservaSala(int cod_Reserva_Sala, String email, int cod_Sala, Date fecha, boolean calefaccion, String usuariosExtra) {
 		super();
 		this.cod_Reserva_Sala = cod_Reserva_Sala;
 		this.email = email;
 		this.cod_Sala = cod_Sala;
 		this.calefaccion = calefaccion;
 		this.fecha = fecha;
+		this.usuariosExtra = usuariosExtra;
+	}
+	public String getUsuariosExtra() {
+		return usuariosExtra;
+	}
+	public void setUsuariosExtra(String usuariosExtra) {
+		this.usuariosExtra = usuariosExtra;
 	}
 	public int getCod_Reserva_Sala() {
 		return cod_Reserva_Sala;

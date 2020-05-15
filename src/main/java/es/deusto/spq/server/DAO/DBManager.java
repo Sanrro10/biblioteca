@@ -31,10 +31,10 @@ public class DBManager {
 	public static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();
-//			SalaTrabajo sala1 = new SalaTrabajo(1, "Piso 1", 4);
-//			if(instance.getSala(1)==null) {
+			SalaTrabajo sala1 = new SalaTrabajo(1, "Piso 1", 4);
+			if(instance.getSala(1)==null) {
 				instance.initializeData();
-//			}
+			}
 			
 		}		
 		

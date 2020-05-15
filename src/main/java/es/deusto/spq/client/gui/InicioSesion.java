@@ -47,7 +47,7 @@ public class InicioSesion extends JFrame {
 	private final JButton btnNewButtonGestor = new JButton("Gestor");
 	private Client client;
 
-	public InicioSesion(int altura, int anchura, Controller controller) {
+	public InicioSesion(Controller controller) {
 		client = ClientBuilder.newClient();
 		GetPropertyValues properties = new GetPropertyValues();
 		String url = "";
@@ -152,7 +152,7 @@ public class InicioSesion extends JFrame {
 		contentpane.add(btnNewButtonGestor);
 
 		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/background3.jpg")));
-		labelBackGround.setBounds(0, 0, altura, anchura);
+		labelBackGround.setBounds(0, 0, 750, 422);
 		contentpane.add(labelBackGround);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -377,7 +377,7 @@ public class ReservaLibros extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				InicioSesion inicio = new InicioSesion(750, 422, controller);
+				InicioSesion inicio = new InicioSesion(controller);
 
 				inicio.setVisible(true);
 

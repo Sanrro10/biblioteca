@@ -16,13 +16,10 @@ public class LibroAssemblerTest {
 	LibroDTO libroDTO2;
 	
 	LibroAssembler libroAs1;
-	LibroAssembler libroAs2;
 
 	@Before
 	public void setUp() {
 		libro1 = new Libro();
-		libroAs1 = new LibroAssembler();
-		libroAs2 = new LibroAssembler();
 
 		libro1.setTitulo("Titulo");
 		libro1.setAutor("Kevin");
@@ -30,17 +27,18 @@ public class LibroAssemblerTest {
 		libro1.setGenero("Infantil");
 		libro1.setReserva_Max(2);
 		
-		libro2.setTitulo("Test");
-		libro2.setAutor("Eneko");
-		libro2.setCod_Libro(02);
-		libro2.setGenero("Infantil");
-		libro2.setReserva_Max(3);
+		libroDTO2 = new LibroDTO();
+		libroDTO2.setTitulo("Test");
+		libroDTO2.setAutor("Eneko");
+		libroDTO2.setCod_Libro(02);
+		libroDTO2.setGenero("Infantil");
+		libroDTO2.setReserva_Max(3);
 
 	}
 	
 	@Test
 	public void EntityToDTOTest() {
-		libroDTO1 = libroAs1.entityToDTO(libro1);
+		libroDTO1 = LibroAssembler.getInstance().entityToDTO(libro1);
 		
 		assertEquals(libroDTO1.getCod_Libro(), libro1.getCod_Libro());
 		assertEquals(libroDTO1.getTitulo(), libro1.getTitulo());
@@ -52,7 +50,7 @@ public class LibroAssemblerTest {
 	
 	@Test
 	public void DTOToEntityTest() {
-		libro2 = libroAs2.DTOtoEntity(libroDTO2);
+		libro2 = LibroAssembler.getInstance().DTOtoEntity(libroDTO2);
 		
 		assertEquals(libroDTO2.getCod_Libro(), libro2.getCod_Libro());
 		assertEquals(libroDTO2.getTitulo(), libro2.getTitulo());
