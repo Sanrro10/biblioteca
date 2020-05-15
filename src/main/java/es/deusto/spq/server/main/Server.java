@@ -51,7 +51,7 @@ public class Server {
 		
 		@SuppressWarnings("deprecation")
 		public static void main(String[] args) throws IOException {
-			DBManager.getInstance();
+			//DBManager.getInstance();
 
 				final HttpServer server = startServer();
 				System.out.println(String.format(

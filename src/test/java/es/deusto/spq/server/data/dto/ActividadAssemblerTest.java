@@ -14,8 +14,7 @@ public class ActividadAssemblerTest {
 	
 	Actividad actividad2;
 	ActividadDTO actividadDTO2;
-	
-	ActividadAssembler actividadAs1;
+
 
 	@Before
 	public void setUp() {

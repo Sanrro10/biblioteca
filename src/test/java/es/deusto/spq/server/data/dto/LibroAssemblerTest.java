@@ -15,7 +15,6 @@ public class LibroAssemblerTest {
 	Libro libro2;
 	LibroDTO libroDTO2;
 	
-	LibroAssembler libroAs1;
 
 	@Before
 	public void setUp() {

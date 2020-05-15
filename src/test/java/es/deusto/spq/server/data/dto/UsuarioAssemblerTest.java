@@ -15,7 +15,6 @@ public class UsuarioAssemblerTest {
 	Usuario usuario2;
 	UsuarioDTO usuarioDTO2;
 	
-	UsuarioAssembler usuarioAs1;
 
 	@Before
 	public void setUp() {
