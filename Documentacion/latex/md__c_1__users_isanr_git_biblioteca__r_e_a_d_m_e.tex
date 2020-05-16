@@ -1,0 +1,54 @@
+Esta aplicación es un pequeño gestor de biblioteca donde tanto usuarios como gestores pueden interactuar con los libros de una Base de Datos.\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Comenzando 🚀}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md1}
+{\itshape A continuación, se explican los pasos a seguir para la correcta utilización de la aplicación.}\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{Pre-\/requisitos 📋}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md2}
+Para el funcionamiento correcto de la aplicación, es necesario tener instalado\+:
+\begin{DoxyItemize}
+\item apache-\/maven-\/3.\+6.\+3
+\item Java jdk1.\+8.\+0\+\_\+241
+\end{DoxyItemize}\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{Instalación 🔧}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md3}
+{\itshape Clonar repositorio} Primero habrá que clonar el repositorio de github desde este link\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{https://github.com/Sanrro10/biblioteca}
+\end{DoxyCode}
+
+
+En caso de querer clonar desde la consola, utilizaremos estos comandos\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git remote add origin https://github.com/Sanrro10/biblioteca.git}
+\DoxyCodeLine{git push -\/u origin master}
+\end{DoxyCode}
+\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md4}{}\doxysection{Setup ⚙️}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md4}
+Para arrancar el programa será necesario abrir un terminal en la ruta del proyecto donde esté el archivo \char`\"{}pom.\+xml\char`\"{} y ejecutaremos estos comandos\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mvn clean}
+\DoxyCodeLine{mvn compile}
+\DoxyCodeLine{mvn datanucleus:schema-\/create}
+\DoxyCodeLine{mvn exec:java -\/PServer}
+\DoxyCodeLine{}
+\DoxyCodeLine{¡Importante no cerrar este terminal mientars usamos la aplicación! Podemos minimizarla para que no nos moleste}
+\end{DoxyCode}
+
+
+Abrimos de nuevo otra consola y la ruta del proyecto donde esté el archivo \char`\"{}pom.\+xml\char`\"{} y ejecutaremos estos comandos\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mvn clean}
+\DoxyCodeLine{mvn compile}
+\DoxyCodeLine{mvn datanucleus:schema-\/delete}
+\DoxyCodeLine{mvn datanucleus:schema-\/create }
+\DoxyCodeLine{mvn exec:java -\/PClient}
+\end{DoxyCode}
+\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md5}{}\doxysection{Documentación 📦}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md5}
+La aplicación es capaz de registrar usuarios en una base de datos e iniciar sesión permitiendo el paso solo a aquellos previamente registrados. Al iniciar sesión tenemos la opción de ver todos los libros disponibles que tenemos en la biblioteca, pudiendo reservarlo y visualizar el titulo, el genero, el autor y el último día de la reserva. También es posible entrar como gestor y tendremos distintos privilegios. Al entrar tenemos la posibilidad de gestionar un libro, donde nos permite añadir un libro nuevo, donde podemos introducir el nombre, el genero, el autor y un plazo de dias para la reserva o modificar un libro, que en caso de no haber introducido bien algún dato del libro previamente añadido lo podemos modificar, ademas es podible eliminar libros. También es posible visualizar los libros que se han pasado el plazo de la reserva y en un futuro será posible sancionarlos.\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md6}{}\doxysection{Construido con 🛠️}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md6}
+{\itshape Menciona las herramientas que utilizaste para crear tu proyecto}
+
+
+\begin{DoxyItemize}
+\item \href{https://www.eclipse.org/}{\texttt{ Eclipse}} -\/ El framework web usado
+\item \href{https://maven.apache.org/}{\texttt{ Maven}} -\/ Manejador de dependencias
+\end{DoxyItemize}\hypertarget{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md7}{}\doxysection{Autores ✒️}\label{md__c_1__users_isanr_git_biblioteca__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item {\bfseries{Kevin Arnaiz}} \mbox{[}\href{mailto:kevin.arnaiz@opendeusto.es}{\texttt{ kevin.\+arnaiz@opendeusto.\+es}}\mbox{]}
+\item {\bfseries{Mikel Gonzalez}} \mbox{[}\href{mailto:mikel.gonzalez2@opendeusto.es}{\texttt{ mikel.\+gonzalez2@opendeusto.\+es}}\mbox{]}
+\item {\bfseries{Sergio Lopez}} \mbox{[}\href{mailto:sergi.lopez@opendeusto.es}{\texttt{ sergi.\+lopez@opendeusto.\+es}}\mbox{]}
+\item {\bfseries{Iñigo Gonzalez de San Román}} \mbox{[}\href{mailto:i.glzsr@opendeusto.es}{\texttt{ i.\+glzsr@opendeusto.\+es}}\mbox{]} 
+\end{DoxyItemize}
