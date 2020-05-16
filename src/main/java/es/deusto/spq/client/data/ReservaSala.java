@@ -3,11 +3,14 @@ package es.deusto.spq.client.data;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Clase ReservaSala en el cliente.
+ * Equivalente a ReservaSalaDTO en Server.
+ * Como se utiliza en el intercambio de información entre el lado servidor y el cliente, implementa serializable
+ *@author isanr
+ */
 public class ReservaSala implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private int cod_Reserva_Sala;

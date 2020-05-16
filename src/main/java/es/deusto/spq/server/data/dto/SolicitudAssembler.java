@@ -2,6 +2,11 @@ package es.deusto.spq.server.data.dto;
 
 import es.deusto.spq.server.data.Solicitud;
 
+/**
+ * Clase Assembler de Solicitud
+ * Se encarga de convertir los objetos Solicitud en SolicitudDTO y viceversa
+ *@author isanr
+ */
 public class SolicitudAssembler {
 
 	private static SolicitudAssembler instance;

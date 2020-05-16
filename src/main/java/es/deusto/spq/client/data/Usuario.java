@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 import javax.jdo.annotations.PrimaryKey;
 
-
+/**
+ * Clase Usuario en el cliente.
+ * Equivalente a UsuarioDTO en Server.
+ * Como se utiliza en el intercambio de información entre el lado servidor y el cliente, implementa serializable
+ *@author isanr
+ */
 public class Usuario implements Serializable{
 		
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public Usuario(String email, String nombre, String apellidos, int telefono, String contrasenya, boolean gestor) {

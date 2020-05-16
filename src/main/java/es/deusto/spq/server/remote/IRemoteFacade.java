@@ -20,6 +20,11 @@ import es.deusto.spq.server.data.dto.SalaTrabajoDTO;
 import es.deusto.spq.server.data.dto.SolicitudDTO;
 import es.deusto.spq.server.data.dto.UsuarioDTO;
 
+/**
+ * Interfaz de la fachada.
+ * Contiene los métodos de la fachada
+ *@author isanr
+ */
 public interface IRemoteFacade{
 	public Response registrarUsuario(UsuarioDTO userDTO);
 	public Response iniciarSesion(UsuarioDTO userDTO);

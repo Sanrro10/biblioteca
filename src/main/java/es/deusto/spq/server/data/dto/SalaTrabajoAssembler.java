@@ -3,6 +3,11 @@ package es.deusto.spq.server.data.dto;
 import es.deusto.spq.server.data.SalaTrabajo;
 import es.deusto.spq.server.data.Usuario;
 
+/**
+ * Clase Assembler de SalaTrabajo
+ * Se encarga de convertir los objetos SalaTrabajo en SalaTrabajoDTO y viceversa
+ *@author isanr kevin31000 
+ */
 public class SalaTrabajoAssembler {
 	private static SalaTrabajoAssembler instance;
 

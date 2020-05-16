@@ -1,8 +1,13 @@
 package es.deusto.spq.server.data.dto;
 
 import es.deusto.spq.server.data.ReservaSala;
-
+/**
+ * Clase Assembler de ReservaSala
+ * Se encarga de convertir los objetos ReservaSala en ReservaSalaDTO y viceversa
+ *@author isanr kevin31000 
+ */
 public class ReservaSalaAssembler {
+	
 	private static ReservaSalaAssembler instance;
 
 	private ReservaSalaAssembler() {

@@ -3,7 +3,12 @@ package es.deusto.spq.client.data;
 
 import java.io.Serializable;
 
-
+/**
+ * Clase Actividad en el cliente.
+ * Equivalente a ActividadDTO en Server.
+ * Como se utiliza en el intercambio de información entre el lado servidor y el cliente, implementa serializable
+ *@author isanr
+ */
 public class Actividad implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int dia;

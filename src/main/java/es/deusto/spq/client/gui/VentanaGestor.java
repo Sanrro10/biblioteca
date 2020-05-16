@@ -119,7 +119,7 @@ public class VentanaGestor extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				VentanaLibros ventanaLibros = new VentanaLibros(750, 422, controller);
+				VentanaLibros ventanaLibros = new VentanaLibros(controller);
 
 				ventanaLibros.setVisible(true);
 

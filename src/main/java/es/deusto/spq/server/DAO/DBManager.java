@@ -19,15 +19,26 @@ import org.glassfish.grizzly.http.server.HttpServer;
 
 import es.deusto.spq.server.data.*;
 
-
+/**
+ * Clase DBManager en el Servidor.
+ * Se encarga de la gestión de la BD
+ *@author isanr
+ */
 public class DBManager {	
 	private static DBManager instance = null;
 	private PersistenceManagerFactory pmf = null;
 	
+	
 	private DBManager() {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");		
 	}
-	
+	/**
+	  * Método para obtener la instancia del DBManager. 
+	  * En caso de no existir la crea
+	  * Si ya existe la devuelve
+	  *
+	  * @return la instancia de DBManager
+	  */
 	public static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();
@@ -41,7 +52,10 @@ public class DBManager {
 		return instance;
 	}
 	
-	
+	/**
+	  * Método para borrar un objeto de la BD
+	  * @param object Object a borrar en la BD
+	   */
 	public void deleteObjectFromDB(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -64,7 +78,10 @@ public class DBManager {
 			pm.close();
 		}
 	}
-	
+	/**
+	  * Método para insertar un objeto de la BD
+	  * @param object Object a insertar en la BD
+	   */
 	public void storeObjectInDB(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -86,79 +103,175 @@ public class DBManager {
 		}
 	}
 	
-
+	/**
+	  * Método para insertar un Usuario de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param user Usuario a insertar en la BD
+	   */
 	public void store(Usuario user) {
 		DBManager.getInstance().storeObjectInDB(user);	
 	}
+	/**
+	  * Método para insertar una Actividad de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param actividad Actividad a insertar en la BD
+	   */
 	public void store(Actividad actividad) {
 		DBManager.getInstance().storeObjectInDB(actividad);	
 	}
+	/**
+	  * Método para insertar una Solicitud de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param solicitud Solicitud a insertar en la BD
+	   */
 	public void store(Solicitud solicitud) {
 		DBManager.getInstance().storeObjectInDB(solicitud);	
-	}	
+	}
+	/**
+	  * Método para insertar un Libro de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param libro Libro a insertar en la BD
+	   */
 	public void store(Libro libro) {
 		DBManager.getInstance().storeObjectInDB(libro);	
 	}
+	/**
+	  * Método para insertar una SalaTrabajo de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param sala SalaTrabajo a insertar en la BD
+	   */
 	public void store(SalaTrabajo sala) {
 		DBManager.getInstance().storeObjectInDB(sala);
 	}
+	/**
+	  * Método para insertar una ReservaSala de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param rsala ReservaSala a insertar en la BD
+	   */
 	public void store(ReservaSala rsala) {
 		DBManager.getInstance().storeObjectInDB(rsala);
 	}
+	/**
+	  * Método para insertar un ReservaLibro de la BD
+	  * Para ello llama a storeObjectInDB
+	  * @param rlibro ReservaLibro a insertar en la BD
+	   */
 	public void store(ReservaLibro rlibro) {
 		DBManager.getInstance().storeObjectInDB(rlibro);
 	}
-	
-	
+	/**
+	  * Método para borrar un Usuario de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param user Usuario a borrar en la BD
+	   */
 	public void delete(Usuario user) {
 		DBManager.getInstance().deleteObjectFromDB(user);	
 	}
+	/**
+	  * Método para borrar una Actividad de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param actividad Actividad a borrar en la BD
+	   */
 	public void delete(Actividad actividad) {
 		DBManager.getInstance().deleteObjectFromDB(actividad);	
 	}
+	/**
+	  * Método para borrar una Solicitud de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param solicitud Solicitud a borrar en la BD
+	   */
 	public void delete(Solicitud solicitud) {
 		DBManager.getInstance().deleteObjectFromDB(solicitud);	
 	}
+	/**
+	  * Método para borrar un Libro de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param libro Libro a borrar en la BD
+	   */
 	public void delete(Libro libro) {
 		DBManager.getInstance().deleteObjectFromDB(libro);	
 	}
+	/**
+	  * Método para borrar una SalaTrabajo de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param sala SalaTrabajo a borrar en la BD
+	   */
 	public void delete(SalaTrabajo sala) {
 		DBManager.getInstance().deleteObjectFromDB(sala);
 	}
+	/**
+	  * Método para borrar una ReservaSala de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param rsala ReservaSala a borrar en la BD
+	   */
 	public void delete(ReservaSala rsala) {
 		DBManager.getInstance().deleteObjectFromDB(rsala);
 	}
+	/**
+	  * Método para borrar una ReservaLibro de la BD
+	  * Para ello llama a deleteObjectFromDB
+	  * @param rlibro ReservaLibro a borrar en la BD
+	   */
 	public void delete(ReservaLibro rlibro) {
 		DBManager.getInstance().deleteObjectFromDB(rlibro);
 	}
 	
-	
+	/**
+	  * Método para actualizar un Usuario de la BD
+	  * Para ello llama a getUsuario, lo borra con delete() e inserta el nuevo con store()
+	  * @param user Usuario a actualizar en la BD
+	   */
 	public void update(Usuario user) {
 		Usuario user2 = getUsuario(user.getEmail());
 		delete(user2);
 		store(user);	
 	}
+	/**
+	  * Método para actualizar un Libro de la BD
+	  * Para ello llama a getLibro, lo borra con delete() e inserta el nuevo con store()
+	  * @param libro Libro a actualizar en la BD
+	   */
 	public void update(Libro libro) {
 		Libro libro2 = getLibro(libro.getCod_Libro());
 		delete(libro2);
 		store(libro);
 	}
+	/**
+	  * Método para actualizar una SalaTrabajo de la BD
+	  * Para ello llama a getSala, la borra con delete() e inserta la nueva con store()
+	  * @param sala SalaTrabajo a actualizar en la BD
+	   */
 	public void update(SalaTrabajo sala) {
 		SalaTrabajo sala2 = getSala(sala.getCod_sala());
 		delete(sala2);
 		store(sala);
 	}
+	/**
+	  * Método para actualizar una ReservaSala de la BD
+	  * Para ello llama a getReserva_Sala, la borra con delete() e inserta la nueva con store()
+	  * @param rsala ReservaSala a actualizar en la BD
+	   */
 	public void update(ReservaSala rsala) {
 		ReservaSala rsala2 = getReserva_Sala(rsala.getCod_Reserva_Sala());
 		delete(rsala2);
 		store(rsala);
 	}
+	/**
+	  * Método para actualizar una ReservaLibro de la BD
+	  * Para ello llama a getReserva_Libro, la borra con delete() e inserta la nueva con store()
+	  * @param rlibro ReservaLibro a actualizar en la BD
+	   */	
 	public void update(ReservaLibro rlibro) {
 		ReservaLibro rlibro2 = getReserva_Libro(rlibro.getCod_Reserva_Libro());
 		delete(rlibro2);
 		store(rlibro);
 	}
 
+	/**
+	  * Método para coger un Libro de la BD
+	  * @param cod_Libro Código del Libro a coger de la BD
+	  * @return el Libro a devolver
+	   */
 	public Libro getLibro(int cod_Libro) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -185,6 +298,11 @@ public class DBManager {
 
 		return libro;
 	}
+	/**
+	  * Método para coger una Solicitud de la BD
+	  * @param codigoS Código de la Solicitud a coger de la BD
+	  * @return la Solicitud a devolver
+	   */
 	public Solicitud getSolicitud(int codigoS) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -211,6 +329,11 @@ public class DBManager {
 
 		return solicitud;
 	}
+	/**
+	  * Método para coger un Usuario de la BD
+	  * @param email email del Usuario a coger de la BD
+	  * @return el Usuario a devolver
+	   */
 	public Usuario getUsuario(String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -237,6 +360,11 @@ public class DBManager {
 
 		return user;
 	}
+	/**
+	  * Método para coger una SalaTrabajo de la BD
+	  * @param cod_sala Código de la SalaTrabajo a coger de la BD
+	  * @return la SalaTrabajo a devolver
+	   */
 	public SalaTrabajo getSala(int cod_sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -263,6 +391,11 @@ public class DBManager {
 
 		return sala;
 	}
+	/**
+	  * Método para coger una ReservaLibro de la BD
+	  * @param cod_Reserva_Libro Código de la ReservaLibro a coger de la BD
+	  * @return la ReservaLibro a devolver
+	   */
 	public ReservaLibro getReserva_Libro(int cod_Reserva_Libro) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -289,6 +422,11 @@ public class DBManager {
 
 		return reservaLibro;
 	}
+	/**
+	  * Método para coger una ReservaSala de la BD
+	  * @param cod_Reserva_Sala Código de la ReservaSala a coger de la BD
+	  * @return la ReservaSala a devolver
+	   */
 	public ReservaSala getReserva_Sala (int cod_Reserva_Sala) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(4);
@@ -316,6 +454,10 @@ public class DBManager {
 		return reservaSala;
 	}
 
+	/**
+	  * Método para coger la Lista de Usuarios de la BD
+	  * @return la Lista de Usuarios a devolver
+	   */
 	public List<Usuario> getUsuarios() {
 		List<Usuario> usuarios = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -346,6 +488,10 @@ public class DBManager {
 
 		return usuarios;		
 	}
+	/**
+	  * Método para coger la Lista de Solicitudes de la BD
+	  * @return la Lista de Solicitudes a devolver
+	   */
 	public List<Solicitud> getSolicitudes() {
 		List<Solicitud> solicitudes = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -375,7 +521,11 @@ public class DBManager {
 		}
 
 		return solicitudes;		
-	}	
+	}
+	/**
+	  * Método para coger la Lista de libros de la BD
+	  * @return la Lista de Libros a devolver
+	   */
 	public List<Libro> getLibros() {
 		List<Libro> libros = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -406,6 +556,10 @@ public class DBManager {
 
 		return libros;		
 	}
+	/**
+	  * Método para coger la Lista de SalaTrabajos de la BD
+	  * @return la Lista de SalaTrabajos a devolver
+	   */
 	public List<SalaTrabajo> getSalaTrabajos() {
 		List<SalaTrabajo> salas = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -436,6 +590,10 @@ public class DBManager {
 
 		return salas;		
 	}
+	/**
+	  * Método para coger la Lista de ReservaLibros de la BD
+	  * @return la Lista de ReservaLibros a devolver
+	   */
 	public List<ReservaLibro> getReserva_Libros() {
 		List<ReservaLibro> salas = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -465,6 +623,10 @@ public class DBManager {
 
 		return salas;		
 	}
+	/**
+	  * Método para coger la Lista de ReservaSalas de la BD
+	  * @return la Lista de ReservaSalas a devolver
+	   */
 	public List<ReservaSala> getReserva_Salas() {
 		List<ReservaSala> rsalas = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -494,6 +656,10 @@ public class DBManager {
 
 		return rsalas;		
 	}
+	/**
+	  * Método para coger la Lista de Actividades de la BD
+	  * @return la Lista de Actividades a devolver
+	   */
 	public List<Actividad> getActividades() {
 		List<Actividad> actividades = new ArrayList<>();		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -525,7 +691,9 @@ public class DBManager {
 	}
 
 	
-	
+	/**
+	  * Método para inicializar los datos de la BD
+	   */
 	public void initializeData() {
 		System.out.println(" * Initializing data base");
 		Calendar c = Calendar.getInstance();

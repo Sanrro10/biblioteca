@@ -3,6 +3,11 @@ package es.deusto.spq.server.data.dto;
 import es.deusto.spq.server.data.Actividad;
 import es.deusto.spq.server.data.Libro;
 
+/**
+ * Clase Assembler de Actividad
+ * Se encarga de convertir los objetos Actividad en ActividadDTO y viceversa
+ *@author isanr 
+ */
 public class ActividadAssembler {
 	private static ActividadAssembler instance;
 

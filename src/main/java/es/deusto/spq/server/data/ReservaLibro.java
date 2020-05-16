@@ -15,6 +15,11 @@ import es.deusto.spq.server.DAO.DBManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * Clase ReservaLibro en el Servidor.
+ * Como se utiliza en el intercambio de información entre el lado servidor y la BD es persistente
+ *@author isanr
+ */
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class ReservaLibro {

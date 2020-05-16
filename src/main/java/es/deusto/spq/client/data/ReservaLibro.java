@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Clase ReservaLibro en el cliente.
+ * Equivalente a ReservaLibroDTO en Server.
+ * Como se utiliza en el intercambio de información entre el lado servidor y el cliente, implementa serializable
+ *@author isanr
+ */
 public class ReservaLibro implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public static ArrayList<Integer> lista = new ArrayList<>();
 

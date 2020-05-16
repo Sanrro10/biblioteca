@@ -15,6 +15,11 @@ import es.deusto.spq.server.DAO.DBManager;
 import es.deusto.spq.server.data.Usuario;
 import es.deusto.spq.server.remote.RemoteFacade;
 
+/**
+ * Main class.
+ * Lanza servidor con la URL adecuada
+ *@author isanr
+ */
 public class Server {
 
 	// Base URI the Grizzly HTTP server will listen on
@@ -35,7 +40,13 @@ public class Server {
 
 			
 			return GrizzlyHttpServerFactory.createHttpServer(URI.create(cogerUrl()), rc);
-		}public static String cogerUrl(){
+		}
+		/**
+		 * Coge la URL de el archivo .properties
+		 *@author isanr
+		 * @return URL del server
+		 */
+		public static String cogerUrl(){
 			GetPropertyValues properties = new GetPropertyValues();
 			String url = "";
 			

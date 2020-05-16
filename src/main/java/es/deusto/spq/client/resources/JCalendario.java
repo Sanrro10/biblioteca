@@ -32,7 +32,7 @@ import es.deusto.spq.client.gui.CalendarioSalas;
 /**
  * JCalendario is a bean for entering a date by choosing the year, month and day.
  * 
- * @author Kai Toedter
+ * @author Kai Toedter, isanr
  * @version $LastChangedRevision: 159 $
  * @version $LastChangedDate: 2011-06-22 21:07:24 +0200 (Mi, 22 Jun 2011) $
  */
@@ -840,7 +840,11 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 			this.nullDateButtonText = nullDateButtonText;
 		}
 		relayoutSpecialButtonPanel();
-	}public class DayChooser extends JDayChooser{
+	}
+	/**
+	 @author isanr
+	 */
+	public class DayChooser extends JDayChooser{
 		Controller controller;
 		JCalendario calendario;
 		public DayChooser(boolean weekOfYearVisible, Controller controller, JCalendario Calendario) {

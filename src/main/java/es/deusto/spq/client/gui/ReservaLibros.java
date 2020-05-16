@@ -27,11 +27,13 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
+/**
+ * Ventana para reservar libros
+ * @author isanr
+ */
 public class ReservaLibros extends JFrame {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentpane;

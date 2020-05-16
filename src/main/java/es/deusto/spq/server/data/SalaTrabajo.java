@@ -5,6 +5,11 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
+/**
+ * Clase SalaTrabajo en el Servidor.
+ * Como se utiliza en el intercambio de información entre el lado servidor y la BD es persistente
+ *@author isanr
+ */
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class SalaTrabajo {

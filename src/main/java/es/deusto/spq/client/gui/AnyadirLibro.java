@@ -52,7 +52,7 @@ public class AnyadirLibro extends JFrame {
 	private JComboBox genero = new JComboBox();
 	private JTextField textTitulo = new JTextField();
 
-	public AnyadirLibro(int altura, int anchura, Controller controller) throws ParseException {
+	public AnyadirLibro(Controller controller) throws ParseException {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -138,7 +138,7 @@ public class AnyadirLibro extends JFrame {
 
 
 		labelBackGround.setIcon(new ImageIcon(InicioSesion.class.getResource("/background3.jpg")));
-		labelBackGround.setBounds(0, 0, altura, anchura);
+		labelBackGround.setBounds(0, 0, 850, 480);
 		contentpane.add(labelBackGround);
 
 
@@ -159,7 +159,7 @@ public class AnyadirLibro extends JFrame {
 
 				AnyadirLibro anyadir;
 				try {
-					anyadir = new AnyadirLibro(750, 422, controller);
+					anyadir = new AnyadirLibro(controller);
 					anyadir.setVisible(true);
 
 					AnyadirLibro.this.dispose();
@@ -179,7 +179,7 @@ public class AnyadirLibro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				VentanaLibros inicio = new VentanaLibros(750, 422, controller);
+				VentanaLibros inicio = new VentanaLibros(controller);
 
 				inicio.setVisible(true);
 

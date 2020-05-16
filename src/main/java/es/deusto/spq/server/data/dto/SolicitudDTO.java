@@ -2,6 +2,12 @@ package es.deusto.spq.server.data.dto;
 
 import java.io.Serializable;
 
+/**
+ * Clase SolicitudDTO en el Servidor.
+ * Equivalente a Solicitud en Cliente.
+ * Como se utiliza en el intercambio de información entre el lado servidor y el cliente, implementa serializable
+ *@author isanr 
+ */
 public class SolicitudDTO implements Serializable{
 	int codigoS;
 	String tituloS;

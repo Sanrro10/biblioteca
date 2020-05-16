@@ -57,8 +57,6 @@ public class InicioSesion extends JFrame {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		WebTarget appTarget = client.target(url);
-		WebTarget inicioSesionTarget = appTarget.path("inicioSesion");
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));

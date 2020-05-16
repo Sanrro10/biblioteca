@@ -2,6 +2,11 @@ package es.deusto.spq.server.data.dto;
 
 import es.deusto.spq.server.data.Usuario;
 
+/**
+ * Clase Assembler de Usuario
+ * Se encarga de convertir los objetos Usuario en UsuarioDTO y viceversa
+ *@author isanr kevin31000
+ */
 public class UsuarioAssembler {
 
 	private static UsuarioAssembler instance;

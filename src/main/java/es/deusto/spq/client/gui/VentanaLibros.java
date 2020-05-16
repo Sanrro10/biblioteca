@@ -34,7 +34,7 @@ public class VentanaLibros extends JFrame {
 	private JLabel labelBiblioteca = new JLabel();
 	private final JLabel lblNewLabel = new JLabel("Gestion de libros");
 
-	public VentanaLibros(int altura, int anchura, Controller controller) {
+	public VentanaLibros(Controller controller) {
 		contentpane = new JPanel();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -78,7 +78,7 @@ public class VentanaLibros extends JFrame {
 		contentpane.add(buttonSolicitudes);
 
 		labelBackGround.setIcon(new ImageIcon(VentanaGestor.class.getResource("/background3.jpg")));
-		labelBackGround.setBounds(0, 0, altura, anchura);
+		labelBackGround.setBounds(0, 0, 750, 422);
 		contentpane.add(labelBackGround);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,7 +106,7 @@ public class VentanaLibros extends JFrame {
 
 				AnyadirLibro libros;
 				try {
-					libros = new AnyadirLibro(750, 422, controller);
+					libros = new AnyadirLibro(controller);
 					libros.setVisible(true);
 
 					VentanaLibros.this.dispose();
@@ -128,7 +128,7 @@ public class VentanaLibros extends JFrame {
 				ModificarLibro modificar;
 				try {
 
-					modificar = new ModificarLibro(850, 480, controller);
+					modificar = new ModificarLibro(controller);
 					modificar.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block

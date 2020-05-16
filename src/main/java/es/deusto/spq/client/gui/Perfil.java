@@ -29,11 +29,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 
+/**
+ * Ventana para ver o modificar el perfil
+ * @author isanr
+ */
 public class Perfil extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentpane;

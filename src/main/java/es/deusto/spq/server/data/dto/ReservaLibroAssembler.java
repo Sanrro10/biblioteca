@@ -2,6 +2,11 @@ package es.deusto.spq.server.data.dto;
 
 import es.deusto.spq.server.data.ReservaLibro;
 
+/**
+ * Clase Assembler de ReservaLibro
+ * Se encarga de convertir los objetos ReservaLibro en ReservaLibroDTO y viceversa
+ *@author isanr kevin31000 
+ */
 public class ReservaLibroAssembler {
 	private static ReservaLibroAssembler instance;
 
