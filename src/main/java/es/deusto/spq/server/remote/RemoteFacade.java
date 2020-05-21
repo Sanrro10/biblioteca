@@ -53,7 +53,6 @@ import es.deusto.spq.server.data.dto.UsuarioDTO;
 public class RemoteFacade implements IRemoteFacade{
 
 
-		private int cont = 0;
 		private DBManager dbmanager = null;
 		private Logger logger = Logger.getLogger(RemoteFacade.class.getName());
 
@@ -74,13 +73,13 @@ public class RemoteFacade implements IRemoteFacade{
 	  */	
 	@POST
 	@Path("/registro")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response registrarUsuario(UsuarioDTO userDTO) {
 		Usuario user = dbmanager.getUsuario(userDTO.getEmail());
 		if(user== null) {
 			user = UsuarioAssembler.getInstance().DTOtoEntity(userDTO);
 			dbmanager.store(user);
-			return Response.ok().build();
+			return Response.status(Response.Status.OK).build();
 		}return Response.status(Response.Status.BAD_REQUEST).build();
 	}
 	/**
@@ -94,14 +93,14 @@ public class RemoteFacade implements IRemoteFacade{
 	  */
 	@POST
 	@Path("/inicioSesion")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response iniciarSesion(UsuarioDTO userDTO) {
 		Usuario user = dbmanager.getUsuario(userDTO.getEmail());
 		if(user!= null && user.getContrasenya().equals(userDTO.getContrasenya())) {
 			if(user.isGestor()) {
-				return Response.accepted().build();
+				return Response.status(Response.Status.ACCEPTED).build();
 			}else {
-				return Response.ok().build();
+				return Response.status(Response.Status.OK).build();
 			}	
 		}return Response.status(Response.Status.BAD_REQUEST).build();
 	}
@@ -114,11 +113,11 @@ public class RemoteFacade implements IRemoteFacade{
 	  */
 	@POST
 	@Path("/insertarReservaSala")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertarReservaSala(ReservaSalaDTO rsalaDTO) {
 		ReservaSala rsala = ReservaSalaAssembler.getInstance().DTOtoEntity(rsalaDTO);
 		dbmanager.store(rsala);
-		return Response.ok().build();
+		return Response.status(Response.Status.OK).build();
 	}
 	/**
 	  * Método para insertar una solicitud en la BD. 
@@ -130,11 +129,11 @@ public class RemoteFacade implements IRemoteFacade{
 	
 	@POST
 	@Path("/insertarSolicitud")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertarSolicitud(SolicitudDTO solicitudDTO) {
 		Solicitud solicitud = SolicitudAssembler.getInstance().DTOtoEntity(solicitudDTO);
 		dbmanager.store(solicitud);
-		return Response.ok().build();
+		return Response.status(Response.Status.OK).build();
 	}
 	/**
 	  * Método para insertar una reserva de un libro en la BD. 
@@ -145,11 +144,11 @@ public class RemoteFacade implements IRemoteFacade{
 	  */
 	@POST
 	@Path("/insertarReservaLibro")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertarReservaLibro(ReservaLibroDTO rlibroDTO) {
 		ReservaLibro rlibro = ReservaLibroAssembler.getInstance().DTOtoEntity(rlibroDTO);
 		dbmanager.store(rlibro);
-		return Response.ok().build();
+		return Response.status(Response.Status.OK).build();
 	}
 	/**
 	  * Método para insertar un libro en la BD. 
@@ -160,11 +159,11 @@ public class RemoteFacade implements IRemoteFacade{
 	  */
 	@POST
 	@Path("/insertarLibro")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertarLibro(LibroDTO libroDTO) {
 		Libro libro = LibroAssembler.getInstance().DTOtoEntity(libroDTO);
 		dbmanager.store(libro);
-		return Response.ok().build();
+		return Response.status(Response.Status.OK).build();
 	}
 	/**
 	  * Método para editar los datos de un usuario en la BD. 
@@ -175,11 +174,11 @@ public class RemoteFacade implements IRemoteFacade{
 	  */
 	@POST
 	@Path("/editarUsuario")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	public Response editarUsuario(UsuarioDTO userDTO) {
 		Usuario user = UsuarioAssembler.getInstance().DTOtoEntity(userDTO);
 		dbmanager.update(user);
-		return Response.ok().build();
+		return Response.status(Response.Status.OK).build();
 	}
 	/**
 	  * Método para obtener la lista de los usuarios de la BD. 

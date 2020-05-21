@@ -49,7 +49,6 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	private final String defaultNullDateButtonText = "No Date";
 	private String todayButtonText;
 	private String nullDateButtonText;
-	private Controller controller;
 
 	/** the day chooser */
 	protected DayChooser dayChooser;
@@ -74,7 +73,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 * Default JCalendario constructor.
 	 */
 	public JCalendario() {
-		this(null, null, true, true, null);
+		this(null, null, true, true);
 	}
 
 	/**
@@ -84,10 +83,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            the date
 	 */
 	public JCalendario(Date date) {
-		this(date, null, true, true, null);
-	}
-	public JCalendario(Controller controller) {
-		this(null, null, true, true, controller);
+		this(date, null, true, true);
 	}
 
 	/**
@@ -97,7 +93,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            the calendar
 	 */
 	public JCalendario(Calendar calendar) {
-		this(null, null, true, true, null);
+		this(null, null, true, true);
 		setCalendar(calendar);
 	}
 
@@ -108,7 +104,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            the new locale
 	 */
 	public JCalendario(Locale locale) {
-		this(null, locale, true, true, null);
+		this(null, locale, true, true);
 	}
 
 	/**
@@ -120,7 +116,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            the new locale
 	 */
 	public JCalendario(Date date, Locale locale) {
-		this(date, locale, true, true, null);
+		this(date, locale, true, true);
 	}
 
 	/**
@@ -133,7 +129,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            false, if no month spinner should be used
 	 */
 	public JCalendario(Date date, boolean monthSpinner) {
-		this(date, null, monthSpinner, true, null);
+		this(date, null, monthSpinner, true);
 	}
 
 	/**
@@ -145,7 +141,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            false, if no month spinner should be used
 	 */
 	public JCalendario(Locale locale, boolean monthSpinner) {
-		this(null, locale, monthSpinner, true, null);
+		this(null, locale, monthSpinner, true);
 	}
 
 	/**
@@ -155,7 +151,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            false, if no month spinner should be used
 	 */
 	public JCalendario(boolean monthSpinner) {
-		this(null, null, monthSpinner, true, null);
+		this(null, null, monthSpinner, true);
 	}
 
 	/**
@@ -171,12 +167,10 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 *            true, if weeks of year shall be visible
 	 */
 	public JCalendario(Date date, Locale locale, boolean monthSpinner,
-			boolean weekOfYearVisible, Controller controller) {
+			boolean weekOfYearVisible) {
 
 		setName("JCalendario");
-		if(controller != null) {
-			this.controller = controller;
-		}
+		
 
 		// needed for setFont() etc.
 		dayChooser = null;
@@ -205,7 +199,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 		monthYearPanel.add(yearChooser, BorderLayout.CENTER);
 		monthYearPanel.setBorder(BorderFactory.createEmptyBorder());
 
-		dayChooser = new DayChooser(weekOfYearVisible, controller, this);
+		dayChooser = new DayChooser(weekOfYearVisible, this);
 		dayChooser.addPropertyChangeListener(this);
 		dayChooser.setLocale(this.locale);
 
@@ -845,11 +839,10 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 @author isanr
 	 */
 	public class DayChooser extends JDayChooser{
-		Controller controller;
 		JCalendario calendario;
-		public DayChooser(boolean weekOfYearVisible, Controller controller, JCalendario Calendario) {
+		public DayChooser(boolean weekOfYearVisible, JCalendario calendario) {
 			super();
-			this.controller = controller;
+			this.calendario = calendario;
 		}
 
 		@Override
@@ -858,7 +851,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 			String buttonText = button.getText();
 			int day = new Integer(buttonText).intValue();
 			setDay(day);
-			CalendarioSalas.actualizar(true, true, controller, calendario);
+			CalendarioSalas.actualizar(true, true, calendario);
 		}
 	}
 }

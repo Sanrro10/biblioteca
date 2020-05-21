@@ -18,8 +18,8 @@ public class ReservaSala implements Serializable{
 	private int cod_Sala;
 	private Date fecha;
 	private String usuariosExtra;
-	
 	private boolean calefaccion;
+	
 	public int getCod_Reserva_Sala() {
 		return cod_Reserva_Sala;
 	}
@@ -68,10 +68,7 @@ public class ReservaSala implements Serializable{
 	public void setCalefaccion(boolean calefaccion) {
 		this.calefaccion = calefaccion;
 	}
-	public String getHorario() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 
 }

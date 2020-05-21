@@ -38,7 +38,7 @@ public class SalaTrabajo implements Serializable{
 		this.numMaxUsuarios = numMaxUsuarios;
 	}
 	public String toCombo() {
-		return "SalaTrabajo" + cod_sala ;
+		return "Sala" + cod_sala ;
 	}
 
 	@Override

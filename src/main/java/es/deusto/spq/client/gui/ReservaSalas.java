@@ -74,7 +74,7 @@ public class ReservaSalas extends JFrame {
 		
 	}
 
-	public ReservaSalas(int altura, int anchura, final Usuario user, final ReservaSala reservaNueva, String horario, Controller controller, JCalendario jcalendario) throws ParseException {
+	public ReservaSalas(final Usuario user, final ReservaSala reservaNueva, String horario, Controller controller, JCalendario jcalendario) throws ParseException {
 		lblHora.setText(horario);
 		textField.setText(user.getEmail());
 		textField.setEditable(false);
@@ -218,12 +218,18 @@ public class ReservaSalas extends JFrame {
 				usuarios.add(textField_6.getText());
 				reservaNueva.setUsuariosExtra(usuariosExtra(usuarios));
 				controller.insertarReservaSala(reservaNueva);
-				CalendarioSalas calendario;
 
+				CalendarioSalas calendario;
+				try {
+					calendario = new CalendarioSalas(user, controller);
+					calendario.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 
 				ReservaSalas.this.dispose();
-				CalendarioSalas.actualizar(false, false, controller, jcalendario);
 
 			}
 		});
@@ -234,6 +240,13 @@ public class ReservaSalas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				CalendarioSalas calendario;
+				try {
+					calendario = new CalendarioSalas(user, controller);
+					calendario.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				
 

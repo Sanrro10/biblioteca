@@ -1,5 +1,7 @@
 package es.deusto.spq.server.data.dto;
 
+import java.util.Date;
+
 import es.deusto.spq.server.data.ReservaSala;
 /**
  * Clase Assembler de ReservaSala
@@ -29,6 +31,7 @@ public class ReservaSalaAssembler {
 		dto.setEmail(sala.getEmail());
 		dto.setCalefaccion(sala.isCalefaccion());
 		dto.setFecha(sala.getFecha());
+		dto.setUsuariosExtra(sala.getUsuariosExtra());
 
 		return dto;
 	}
@@ -41,6 +44,7 @@ public class ReservaSalaAssembler {
 		reserva.setEmail(dto.getEmail());
 		reserva.setFecha(dto.getFecha());
 		reserva.setCalefaccion(dto.isCalefaccion());
+		reserva.setUsuariosExtra(dto.getUsuariosExtra());
 
 		return reserva;
 	}

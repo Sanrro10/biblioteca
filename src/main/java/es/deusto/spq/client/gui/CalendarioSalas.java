@@ -31,6 +31,7 @@ import es.deusto.spq.client.controller.Controller;
 import es.deusto.spq.client.data.ReservaSala;
 import es.deusto.spq.client.data.SalaTrabajo;
 import es.deusto.spq.client.data.Usuario;
+import es.deusto.spq.client.remote.ServiceLocator;
 import es.deusto.spq.client.resources.JCalendario;
 
 import javax.swing.JTextPane;
@@ -57,10 +58,10 @@ public class CalendarioSalas extends JFrame {
 	public static String fecha3 = "";
 	public static int maxPerso = 0;
 
-	public CalendarioSalas(int altura, int anchura, final Usuario user, Controller controller) throws ParseException {
+	public CalendarioSalas(final Usuario user, Controller controller) throws ParseException {
 		contentpane = new JPanel();
 
-		JCalendario calendario = new JCalendario(controller);
+		JCalendario calendario = new JCalendario();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentpane);
@@ -127,7 +128,7 @@ public class CalendarioSalas extends JFrame {
 		String fechaString = sdf.format(calendario.getDate());
 		for (int i = 0; i < reservas.size(); i++) {
 			if (sdf.format(reservas.get(i).getFecha()).equals(fechaString)) {
-				combo.removeItem("SalaTrabajo" + reservas.get(i).getCod_Sala());
+				combo.removeItem("Sala" + reservas.get(i).getCod_Sala());
 			}
 		}
 		if (combo.getItemCount() == 0) {
@@ -136,7 +137,7 @@ public class CalendarioSalas extends JFrame {
 		} else {
 			btnreservar.setEnabled(true);
 		}
-		actualizar(false, false, controller, calendario);
+		actualizar(false, false, calendario);
 
 		btnreservar.addActionListener(new ActionListener() {
 
@@ -151,18 +152,17 @@ public class CalendarioSalas extends JFrame {
 				ReservaSala reservaNueva = new ReservaSala();
 				reservaNueva.setCalefaccion(chckbxNewCheckBox.isSelected());
 				reservaNueva.setEmail(user.getEmail());
-				reservaNueva.setCod_Reserva_Sala(reservas.size() + 1);
+				reservaNueva.setCod_Reserva_Sala(reservas.size()+1);
 				reservaNueva.setCod_Sala(s.getCod_sala());
 				SimpleDateFormat sdf1 = new SimpleDateFormat("EEE, dd MMM yyyy");
 				String fechaString = sdf1.format(calendario.getDate());
+				Calendar cal = Calendar.getInstance();
 				try {
-					reservaNueva.setFecha(sdf1.parse(fechaString));
+					cal.setTime(sdf1.parse(fechaString));
 				} catch (ParseException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(reservaNueva.getFecha());
 
 				if (ComboDisponibilidad.getSelectedItem().equals("16:00-18:00")) {
 					cal.add(Calendar.HOUR_OF_DAY, 16);
@@ -206,13 +206,14 @@ public class CalendarioSalas extends JFrame {
 				ReservaSalas reserva;
 
 				try {
-					reserva = new ReservaSalas(426, 463, user, reservaNueva, ComboDisponibilidad.getSelectedItem().toString(), controller, calendario);
+					reserva = new ReservaSalas(user, reservaNueva, ComboDisponibilidad.getSelectedItem().toString(), controller, calendario);
 					reserva.setVisible(true);
+					ComboDisponibilidad.removeAll();
+					CalendarioSalas.this.dispose();
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				actualizar(false, false, controller, calendario);
 
 			}
 		});
@@ -237,7 +238,7 @@ public class CalendarioSalas extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				actualizar(true, false, controller, calendario);
+				actualizar(true, false, calendario);
 
 			}
 		});
@@ -261,8 +262,9 @@ public class CalendarioSalas extends JFrame {
 		});
 	}
 
-	public static void actualizar(boolean sala, boolean horas, Controller controller, JCalendario calendario) {
-
+	public static void actualizar(boolean sala, boolean horas, JCalendario calendario) {
+		ServiceLocator servicelocator = new ServiceLocator();
+		Controller controller = new Controller(servicelocator);
 		List<SalaTrabajo> salas = controller.cogerSalas();
 		List<ReservaSala> reservas = new ArrayList<>();
 		if (sala) {
@@ -314,7 +316,7 @@ public class CalendarioSalas extends JFrame {
 				textPane.setText("No hay salas disponibles este día");
 			} else {
 				ComboDisponibilidad.removeItem(ComboDisponibilidad.getSelectedItem());
-				actualizar(false, false, controller, calendario);
+				actualizar(false, false, calendario);
 			}
 
 		} else {

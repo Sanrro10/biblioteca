@@ -163,6 +163,7 @@ public class Registro extends JFrame {
 					error = true;
 				}else if (!error){
 					controller.registrarUsuario(textEmail.getText(), textUser.getText(), textSurname.getText(), Integer.parseInt(textTlfn.getText()), String.valueOf(textPass.getPassword()));
+					correcto = true;
 				}
 				
 				

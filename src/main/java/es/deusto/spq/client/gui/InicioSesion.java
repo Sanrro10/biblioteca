@@ -107,11 +107,11 @@ public class InicioSesion extends JFrame {
 		labelBiblioteca.setFont(new Font("Tahoma", Font.PLAIN, 48));
 		labelBiblioteca.setBounds(0, 0, 534, 95);
 		contentpane.add(labelBiblioteca);
-		final Usuario user = new Usuario();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				ReservaLibros reserva;
+				Usuario user = new Usuario("a@a.com", "a", "a", 942687531, "123", false);
 				try {
 					reserva = new ReservaLibros(user, controller);
 					reserva.setVisible(true);

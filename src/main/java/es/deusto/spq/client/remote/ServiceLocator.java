@@ -20,8 +20,6 @@ import org.apache.log4j.PropertyConfigurator;
 
 import es.deusto.spq.client.data.*;
 import es.deusto.spq.client.resources.GetPropertyValues;
-import es.deusto.spq.server.data.dto.ActividadDTO;
-import es.deusto.spq.server.data.dto.UsuarioDTO;
 
 
 /**
@@ -56,18 +54,18 @@ public class ServiceLocator {
 	  */
 	public boolean registrarUsuario(String email, String nombre, String apellidos, int telefono, String contrasenya) {
 		WebTarget registerUserWebTarget = webTarget.path("server/registro");
-		System.out.println(registerUserWebTarget);
-		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
 		Usuario u = new Usuario();
 		u.setEmail(email);
 		u.setNombre(nombre);
 		u.setApellidos(apellidos);
 		u.setTelefono(telefono);
 		u.setContrasenya(contrasenya);
+		u.setGestor(false);
 		
-		Response response = invocationBuilder.post(Entity.entity(u, MediaType.APPLICATION_JSON));
+		Entity<Usuario> entity = Entity.entity(u, MediaType.APPLICATION_JSON);
+		Response response = registerUserWebTarget.request().post(entity);
 		System.err.println(response);
-		if (response != Response.ok().build()) {
+		if (response.getStatus() != Status.OK.getStatusCode()) {
 			logger.error("Error connecting with the server. Code: " + response.getStatus());
 			return false;
 		} else {
@@ -107,10 +105,10 @@ public class ServiceLocator {
 
 		Response response = invocationBuilder.post(Entity.entity(u, MediaType.APPLICATION_JSON));
 		System.err.println(response);
-		 if (response == Response.ok().build()) {
+		 if (response.getStatus() == Status.OK.getStatusCode()) {
 			return 1;
 			
-		}else if(response == Response.accepted().build()){
+		}else if(response.getStatus() == Status.ACCEPTED.getStatusCode()){
 			return 2;
 		}return 0;
 	}
@@ -123,9 +121,9 @@ public class ServiceLocator {
 	  */
 	public Response insertarReservaSala(ReservaSala rsala) {
 		WebTarget webTarget1 = webTarget.path("server/insertarReservaSala");	
-		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
-
-		Response response = invocationBuilder.post(Entity.entity(rsala, MediaType.APPLICATION_JSON));
+		Entity<ReservaSala> entity = Entity.entity(rsala, MediaType.APPLICATION_JSON);
+		Response response = webTarget1.request().post(entity);
+		System.out.println(response);
 		return response;
 	}
 	/**
@@ -137,9 +135,8 @@ public class ServiceLocator {
 	  */
 	public Response insertarSolicitud(Solicitud solicitud) {
 		WebTarget webTarget1 = webTarget.path("server/insertarSolicitud");	
-		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
-
-		Response response = invocationBuilder.post(Entity.entity(solicitud, MediaType.APPLICATION_JSON));
+		Entity<Solicitud> entity = Entity.entity(solicitud, MediaType.APPLICATION_JSON);
+		Response response = webTarget1.request().post(entity);
 		return response;
 	}
 	/**
@@ -151,10 +148,10 @@ public class ServiceLocator {
 	  */
 	public Response insertarReservaLibro(ReservaLibro rlibro) {
 		WebTarget webTarget1 = webTarget.path("server/insertarReservaLibro");	
-		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
-
-		Response response = invocationBuilder.post(Entity.entity(rlibro, MediaType.APPLICATION_JSON));
+		Entity<ReservaLibro> entity = Entity.entity(rlibro, MediaType.APPLICATION_JSON);
+		Response response = webTarget1.request().post(entity);
 		return response;
+		 
 	}
 	/**
 	  * Método para insertar un libro en la BD. 
@@ -165,9 +162,8 @@ public class ServiceLocator {
 	  */
 	public Response insertarLibro(Libro libro) {
 		WebTarget webTarget1 = webTarget.path("server/insertarLibro");	
-		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
-
-		Response response = invocationBuilder.post(Entity.entity(libro, MediaType.APPLICATION_JSON));
+		Entity<Libro> entity = Entity.entity(libro, MediaType.APPLICATION_JSON);
+		Response response = webTarget1.request().post(entity);
 		return response;
 	}
 
@@ -180,9 +176,8 @@ public class ServiceLocator {
 	  */
 	public Response editarUsuario(Usuario user) {
 		WebTarget webTarget1 = webTarget.path("server/editarUsuario");	
-		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
-
-		Response response = invocationBuilder.post(Entity.entity(user, MediaType.APPLICATION_JSON));
+		Entity<Usuario> entity = Entity.entity(user, MediaType.APPLICATION_JSON);
+		Response response = webTarget1.request().post(entity);
 		return response;
 	}
 	/**
@@ -252,7 +247,7 @@ public class ServiceLocator {
 	  * @return Lista de las salas de la BD
 	  */
 	public List<SalaTrabajo> cogerSalas() {
-		WebTarget webTarget1 = webTarget.path("server/cogerSalas");	
+		WebTarget webTarget1 = webTarget.path("server/cogerSalasTrabajo");	
 		Invocation.Builder invocationBuilder = webTarget1.request(MediaType.APPLICATION_JSON);
 
 		List<SalaTrabajo> list = new ArrayList<SalaTrabajo>();

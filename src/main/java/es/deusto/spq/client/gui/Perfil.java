@@ -170,6 +170,17 @@ public class Perfil extends JFrame {
 					textField_2.setEditable(true);
 					textField_3.setEditable(true);
 					textField_4.setEditable(true);
+				}else {
+					ReservaLibros ventana;
+					try {
+						ventana = new ReservaLibros(usuario, controller);
+						ventana.setVisible(true);
+						Perfil.this.dispose();
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				}
 			}
 		});

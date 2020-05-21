@@ -14,6 +14,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import es.deusto.spq.client.data.*;
 import es.deusto.spq.client.remote.ServiceLocator;
@@ -70,7 +71,7 @@ public class Controller {
 	  * @return Un boolean que es true en caso de que no haya habido ningún error y es false en caso contrario
 	  */
 	public boolean insertarReservaSala(ReservaSala rsala) {
-		if(serviceLocator.insertarReservaSala(rsala).equals(Response.ok().build())) {
+		if(serviceLocator.insertarReservaSala(rsala).getStatus() == Status.OK.getStatusCode()) {
 			return true;
 		}
 		return false;
@@ -83,7 +84,7 @@ public class Controller {
 	  * @return Un boolean que es true en caso de que no haya habido ningún error y es false en caso contrario
 	  */
 	public boolean insertarSolicitud(Solicitud solicitud) {
-		if(serviceLocator.insertarSolicitud(solicitud).equals(Response.ok().build())) {
+		if(serviceLocator.insertarSolicitud(solicitud).getStatus() == Status.OK.getStatusCode()) {
 			return true;
 		}
 		return false;
@@ -96,7 +97,7 @@ public class Controller {
 	  * @return Un boolean que es true en caso de que no haya habido ningún error y es false en caso contrario
 	  */
 	public boolean insertarReservaLibro(ReservaLibro rlibro) {
-		if(serviceLocator.insertarReservaLibro(rlibro).equals(Response.ok().build())) {
+		if(serviceLocator.insertarReservaLibro(rlibro).getStatus() == Status.OK.getStatusCode()) {
 			return true;
 		}
 		return false;
@@ -109,7 +110,7 @@ public class Controller {
 	  * @return Un boolean que es true en caso de que no haya habido ningún error y es false en caso contrario
 	  */
 	public boolean insertarLibro(Libro libro) {
-		if(serviceLocator.insertarLibro(libro).equals(Response.ok().build())) {
+		if(serviceLocator.insertarLibro(libro).getStatus() == Status.OK.getStatusCode()) {
 			return true;
 		}
 		return false;
@@ -122,7 +123,7 @@ public class Controller {
 	  * @return Un boolean que es true en caso de que no haya habido ningún error y es false en caso contrario
 	  */
 	public boolean editarUsuario(Usuario user) {
-		if(serviceLocator.editarUsuario(user).equals(Response.ok().build())) {
+		if(serviceLocator.editarUsuario(user).getStatus() == Status.OK.getStatusCode()) {
 			return true;
 		}
 		return false;

@@ -1,0 +1,30 @@
+language: java
+
+jdk:
+  - openjdk8
+
+services: 
+  - mysql
+before_script:
+- mysql -u root -e "DROP SCHEMA IF EXISTS biblioteca;"
+- mysql -u root -e "DROP USER IF EXISTS 'root'@'localhost';"
+- mysql -u root -e "CREATE SCHEMA biblioteca;"
+- mysql -u root -e "CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';"
+- mysql -u root -e "GRANT ALL ON biblioteca.* TO 'spq'@'localhost';"
+
+script:
+ - mvn clean compile
+ - mvn datanucleus:schema-create 
+ - mvn test
+ 
+branches:
+  only:
+  - master
+
+notifications:
+  email:
+    recipients:
+      - i.glzsr@opendeusto.es
+      
+    on_success: never
+    on_failure: always

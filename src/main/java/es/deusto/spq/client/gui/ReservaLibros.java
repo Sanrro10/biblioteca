@@ -164,9 +164,9 @@ public class ReservaLibros extends JFrame {
 			}
 		}
 		try {
-			for (int i = 0; i < libros.size(); i++) {
-				if ((comboBox.getSelectedItem().equals((libros.get(i).toStringResumido())))) {
-					txtpnDatos.setText(libros.get(i).toString());
+			for (int i = 0; i < libros2.size(); i++) {
+				if ((comboBox.getSelectedItem().equals((libros2.get(i).toStringResumido())))) {
+					txtpnDatos.setText(libros2.get(i).toString());
 				}
 			}
 
@@ -324,26 +324,30 @@ public class ReservaLibros extends JFrame {
 					}
 				}if(num_Reservas <5) {
 						ReservaLibro reservaLibro = new ReservaLibro();
-						Libro libro = libros.get(comboBox.getSelectedIndex());
+						Libro libro = libros2.get(comboBox.getSelectedIndex());
 						reservaLibro.setCod_Libro(libro.getCod_Libro());
 						reservaLibro.setEmail(user.getEmail()); 
 						reservaLibro.setFecha_Devolución(libro.fechaReserva());
 						reservaLibro.setEstado_Libro(11);
+						reservaLibro.setCod_Reserva_Libro(reservas.size());
 						controller.insertarReservaLibro(reservaLibro);
-						comboBox.remove(comboBox.getSelectedIndex());
+//						comboBox.remove(comboBox.getSelectedIndex());
+						libros2.remove(comboBox.getSelectedIndex());
+						comboBox.removeAllItems();
 						comboBox.revalidate();
 							try {
-								for (int i1 = 0; i1 < libros.size(); i1++) {
-									if ((comboBox.getSelectedItem().equals((libros.get(i1).toStringResumido())))) {
-										txtpnDatos.setText(libros.get(i1).toString());
-									}
+								for (int i1 = 0; i1 < libros2.size(); i1++) {
+//									if ((comboBox.getSelectedItem().equals((libros2.get(i1).toStringResumido())))) {
+//										txtpnDatos.setText(libros2.get(i1).toString());
+//									}
+									comboBox.addItem(libros2.get(i1).toStringResumido());
 								}
 
 							} catch (java.lang.NullPointerException a) {
 								txtpnDatos.setText("No hay libros disponibles");
 							}
 				
-				
+							comboBox.revalidate();
 							comboBox.repaint();
 							txtpnDatos.repaint();
 							contentpane.repaint();		
@@ -362,7 +366,7 @@ public class ReservaLibros extends JFrame {
 
 				CalendarioSalas calendario;
 				try {
-					calendario = new CalendarioSalas(850, 522, user, controller);
+					calendario = new CalendarioSalas(user, controller);
 					calendario.setVisible(true);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block

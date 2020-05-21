@@ -32,7 +32,6 @@ public class ReservaLibro {
 	Date fecha_Devolución;
 	int estado_Libro;
 	
-	public static ArrayList<Integer> lista = new ArrayList<>();
 	
 	
 	public ReservaLibro(int cod_Reserva_Libro, String email, int cod_Libro, Date fecha_Devolución, int estado_Libro) {
@@ -52,12 +51,6 @@ public class ReservaLibro {
 	public ReservaLibro() {
 		
 		
-	}
-	public ArrayList<Integer> getLista() {
-		return lista;
-	}
-	public void setLista(ArrayList<Integer> lista) {
-		this.lista = lista;
 	}
 	public int getCod_Reserva_Libro() {
 		return cod_Reserva_Libro;

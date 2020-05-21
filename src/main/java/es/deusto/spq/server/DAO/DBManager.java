@@ -1,5 +1,6 @@
 package es.deusto.spq.server.DAO;
 
+import java.awt.print.Printable;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javax.jdo.Transaction;
 import org.glassfish.grizzly.http.server.HttpServer;
 
 import es.deusto.spq.server.data.*;
+import es.deusto.spq.server.data.dto.SolicitudDTO;
 
 /**
  * Clase DBManager en el Servidor.
@@ -27,6 +29,7 @@ import es.deusto.spq.server.data.*;
 public class DBManager {	
 	private static DBManager instance = null;
 	private PersistenceManagerFactory pmf = null;
+	private static boolean inicializado = false;
 	
 	
 	private DBManager() {
@@ -40,14 +43,16 @@ public class DBManager {
 	  * @return la instancia de DBManager
 	  */
 	public static DBManager getInstance() {
-		if (instance == null) {
-			instance = new DBManager();
-			SalaTrabajo sala1 = new SalaTrabajo(1, "Piso 1", 4);
-			if(instance.getSala(1)==null) {
-				instance.initializeData();
-			}
+//		if (instance == null) {
+			instance = new DBManager();	
+//			System.out.println("Nuevo DBManager");
+//		}
+	if(!inicializado) {
+			inicializado = true;
+			instance.deleteData();
+			instance.initializeData();
 			
-		}		
+	}
 		
 		return instance;
 	}
@@ -63,7 +68,6 @@ public class DBManager {
 
 		try {
 			tx.begin();
-			System.out.println(" * Delete an object: " + object);
 			
 			pm.deletePersistent(object);
 			
@@ -77,6 +81,18 @@ public class DBManager {
 
 			pm.close();
 		}
+	}/**
+	  * Método para borrar los objetos de la BD
+	   */
+	public void deleteData() {
+		deleteUsuarios();
+		deleteLibros();
+		deleteReserva_Libros();
+		deleteReserva_Salas();
+		deleteSalaTrabajos();
+		deleteSolicitudes();
+		deleteActividades();
+		
 	}
 	/**
 	  * Método para insertar un objeto de la BD
@@ -94,6 +110,7 @@ public class DBManager {
 			tx.commit();
 		} catch (Exception ex) {
 			System.out.println("  $ Error storing an object: " + ex.getMessage());
+			System.out.println("Object:" + object);
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -223,8 +240,11 @@ public class DBManager {
 	   */
 	public void update(Usuario user) {
 		Usuario user2 = getUsuario(user.getEmail());
-		delete(user2);
-		store(user);	
+		if (user2!=null) {
+			System.out.println(user2.getNombre()+user2.getApellidos()+user2.getEmail());
+			delete(user2);
+			store(user);
+		}	
 	}
 	/**
 	  * Método para actualizar un Libro de la BD
@@ -233,8 +253,10 @@ public class DBManager {
 	   */
 	public void update(Libro libro) {
 		Libro libro2 = getLibro(libro.getCod_Libro());
+		if (libro2!=null) {
 		delete(libro2);
 		store(libro);
+		}
 	}
 	/**
 	  * Método para actualizar una SalaTrabajo de la BD
@@ -243,8 +265,10 @@ public class DBManager {
 	   */
 	public void update(SalaTrabajo sala) {
 		SalaTrabajo sala2 = getSala(sala.getCod_sala());
+		if (sala2!=null) {
 		delete(sala2);
 		store(sala);
+		}
 	}
 	/**
 	  * Método para actualizar una ReservaSala de la BD
@@ -253,8 +277,10 @@ public class DBManager {
 	   */
 	public void update(ReservaSala rsala) {
 		ReservaSala rsala2 = getReserva_Sala(rsala.getCod_Reserva_Sala());
+		if (rsala2!=null) {
 		delete(rsala2);
 		store(rsala);
+		}
 	}
 	/**
 	  * Método para actualizar una ReservaLibro de la BD
@@ -263,8 +289,10 @@ public class DBManager {
 	   */	
 	public void update(ReservaLibro rlibro) {
 		ReservaLibro rlibro2 = getReserva_Libro(rlibro.getCod_Reserva_Libro());
+		if (rlibro2!=null) {
 		delete(rlibro2);
 		store(rlibro);
+		}
 	}
 
 	/**
@@ -312,7 +340,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE codigoS == '" + codigoS + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Solicitud.class.getName() + " WHERE codigoS == '" + codigoS + "'");
 			query.setUnique(true);
 			solicitud = (Solicitud) query.execute();
 			
@@ -343,13 +371,13 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE email == '" + email + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Usuario.class.getName() + " WHERE email == '" + email + "'");
 			query.setUnique(true);
 			user = (Usuario) query.execute();
 			
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println(" $ Error cogiendo el sala de la BD: " + ex.getMessage());
+			System.out.println(" $ Error cogiendo el usuario de la BD: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -374,7 +402,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_sala == '" + cod_sala + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + SalaTrabajo.class.getName() + " WHERE cod_sala == '" + cod_sala + "'");
 			query.setUnique(true);
 			sala = (SalaTrabajo) query.execute();
 			
@@ -405,7 +433,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Libro == '" + cod_Reserva_Libro + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + ReservaLibro.class.getName() + " WHERE cod_Reserva_Libro == '" + cod_Reserva_Libro + "'");
 			query.setUnique(true);
 			reservaLibro = (ReservaLibro) query.execute();
 			
@@ -436,7 +464,7 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Libro.class.getName() + " WHERE cod_Reserva_Sala == '" + cod_Reserva_Sala + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + ReservaSala.class.getName() + " WHERE cod_Reserva_Sala == '" + cod_Reserva_Sala + "'");
 			query.setUnique(true);
 			reservaSala = (ReservaSala) query.execute();
 			
@@ -689,6 +717,227 @@ public class DBManager {
 
 		return actividades;		
 	}
+	/**
+	  * Método para borrar la Lista de Usuarios de la BD
+	   */
+	public void deleteUsuarios() {
+		List<Usuario> usuarios = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+			
+
+			tx.begin();
+			
+			Extent<Usuario> extent = pm.getExtent(Usuario.class, true);
+
+			for (Usuario usuario : extent) {
+				pm.deletePersistent(usuario);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+	}
+	/**
+	  * Método para coger la Lista de Solicitudes de la BD
+	   */
+	public void deleteSolicitudes() {
+		List<Solicitud> solicitudes = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+			
+
+			tx.begin();
+			
+			Extent<Solicitud> extent = pm.getExtent(Solicitud.class, true);
+
+			for (Solicitud solicitud : extent) {
+				pm.deletePersistent(solicitud);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+	
+	}
+	/**
+	  * Método para borrar los libros de la BD
+	   */
+	public void deleteLibros() {
+		List<Libro> libros = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+			
+
+			tx.begin();
+			
+			Extent<Libro> extent = pm.getExtent(Libro.class, true);
+
+			for (Libro libro : extent) {
+				pm.deletePersistent(libro);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+	
+	}
+	/**
+	  * Método para borrar los SalaTrabajos de la BD
+	   */
+	public void deleteSalaTrabajos() {
+		List<SalaTrabajo> salas = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+			
+
+			tx.begin();
+			
+			Extent<SalaTrabajo> extent = pm.getExtent(SalaTrabajo.class, true);
+
+			for (SalaTrabajo sala : extent) {
+				pm.deletePersistent(sala);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+	}
+	/**
+	  * Método para borrar los ReservaLibros de la BD
+	   */
+	public void deleteReserva_Libros() {
+		List<ReservaLibro> salas = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+
+			tx.begin();
+			
+			Extent<ReservaLibro> extent = pm.getExtent(ReservaLibro.class, true);
+
+			for (ReservaLibro sala : extent) {
+				pm.deletePersistent(sala);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+	}
+	/**
+	  * Método para borrar los ReservaSalas de la BD
+	   */
+	public void deleteReserva_Salas() {
+		List<ReservaSala> rsalas = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+
+			tx.begin();
+			
+			Extent<ReservaSala> extent = pm.getExtent(ReservaSala.class, true);
+
+			for (ReservaSala rsala : extent) {
+				pm.deletePersistent(rsala);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+	}
+	/**
+	  * Método para borrar los Actividades de la BD
+	   */
+	public void deleteActividades() {
+		List<Actividad> actividades = new ArrayList<>();		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+
+		try {
+
+			tx.begin();
+			
+			Extent<Actividad> extent = pm.getExtent(Actividad.class, true);
+
+			for (Actividad rsala : extent) {
+				pm.deletePersistent(rsala);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Categories: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+	}
 
 	
 	/**
@@ -696,7 +945,6 @@ public class DBManager {
 	   */
 	public void initializeData() {
 		System.out.println(" * Initializing data base");
-		Calendar c = Calendar.getInstance();
 		Usuario u1 = new Usuario("a@a.com", "a", "a", 942687531, "123", false);
 		Usuario g1 = new Usuario("gestor1@biblioteca.com", "Marcos", "Perez", 945167382, "root", true);
 		Libro el_Quijote = new Libro(1, "Don Quijote de la Mancha", "Miguel de Cervantes", "Novela hitórica", 30);
@@ -718,6 +966,7 @@ public class DBManager {
 		Actividad a10 = new Actividad(5, "17:00-18:30", "Cuentacuentos");
 		Actividad a11 = new Actividad(6, "10:00-14:00", "Apoyo escolar");
 		Actividad a12 = new Actividad(6, "18:00-20:30", "Club del cómic");
+		Solicitud solicitud = new Solicitud(0, "El sabueso de los Baskerville", "Arthur Conan Doyle", "Novela policíaca", 2);
 		
 		try {
 			store(u1);
@@ -741,6 +990,7 @@ public class DBManager {
 			store(a10);
 			store(a11);
 			store(a12);
+			store(solicitud);
 		} catch (Exception ex) {
 			System.out.println(" $ Error initializing data: " + ex.getMessage());
 			ex.printStackTrace();
