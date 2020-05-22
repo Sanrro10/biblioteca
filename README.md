@@ -54,7 +54,7 @@ Para obtener la documentación del proyecto, ejecutar este comando:
 
 ## Tests 💻
 
-Para obtener los tests del proyecto, ejecutar este comando:
+Para obtener los tests del proyecto, ejecutar este comando tras abrir el servidor:
 ```
     mvn test    
 ```
