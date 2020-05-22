@@ -38,12 +38,8 @@ Para arrancar el programa será necesario abrir un terminal en la ruta del proye
     ¡Importante no cerrar este terminal mientars usamos la aplicación! Podemos minimizarla para que no nos moleste
     
 ```
-Abrimos de nuevo otra consola y la ruta del proyecto donde esté el archivo "pom.xml" y ejecutaremos estos comandos:
+Abrimos de nuevo otra consola y la ruta del proyecto donde esté el archivo "pom.xml" y ejecutaremos este comando para abrir la parte del cliente:
 ```
-    mvn clean
-    mvn compile
-    mvn datanucleus:schema-delete
-    mvn datanucleus:schema-create 
     mvn exec:java -PClient
     
 ```
@@ -53,12 +49,28 @@ Abrimos de nuevo otra consola y la ruta del proyecto donde esté el archivo "pom
 
 La aplicación es capaz de registrar usuarios en una base de datos e iniciar sesión permitiendo el paso solo a aquellos previamente registrados. Al iniciar sesión tenemos la opción de ver todos los libros disponibles que tenemos en la biblioteca, pudiendo reservarlo y visualizar el titulo, el genero, el autor y el último día de la reserva. También es posible entrar como gestor y tendremos distintos privilegios. Al entrar tenemos la posibilidad de gestionar un libro, donde nos permite añadir un libro nuevo, donde podemos introducir el nombre, el genero, el autor y un plazo de dias para la reserva o modificar un libro, que en caso de no haber introducido bien algún dato del libro previamente añadido lo podemos modificar, ademas es podible eliminar libros. También es posible visualizar los libros que se han pasado el plazo de la reserva y en un futuro será posible sancionarlos. 
 
+Para obtener la documentación del proyecto, ejecutar este comando:
+```
+    mvn site
+    
+```
+
+## Tests 💻
+
+Para obtener los tests del proyecto, ejecutar este comando:
+```
+    mvn test
+    
+```
+
 ## Construido con 🛠️
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [Eclipse](https://www.eclipse.org/) - El framework web usado
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
+* [Log4j](https://logging.apache.org/log4j/2.x/) - Logger
+* [Travis](https://travis-ci.org/) - Tester e implementador
 
 
 ## Autores ✒️
