@@ -25,7 +25,7 @@ _Clonar repositorio_
   git remote add origin https://github.com/Sanrro10/biblioteca.git
   git push -u origin master
   ```
-
+Además, tendremos que crear la BD "biblioteca" con el usuario "root" y contraseña "12345"
 ## Setup ⚙️
 
 Para arrancar el programa será necesario abrir un terminal en la ruta del proyecto donde esté el archivo "pom.xml" y ejecutaremos estos comandos:
