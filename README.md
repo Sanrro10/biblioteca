@@ -35,13 +35,11 @@ Para arrancar el programa será necesario abrir un terminal en la ruta del proye
     mvn datanucleus:schema-create
     mvn exec:java -PServer
     
-    ¡Importante no cerrar este terminal mientars usamos la aplicación! Podemos minimizarla para que no nos moleste
-    
+    ¡Importante no cerrar este terminal mientars usamos la aplicación! Podemos minimizarla para que no nos moleste    
 ```
 Abrimos de nuevo otra consola y la ruta del proyecto donde esté el archivo "pom.xml" y ejecutaremos este comando para abrir la parte del cliente:
 ```
     mvn exec:java -PClient
-    
 ```
 
 
@@ -51,16 +49,14 @@ La aplicación es capaz de registrar usuarios en una base de datos e iniciar ses
 
 Para obtener la documentación del proyecto, ejecutar este comando:
 ```
-    mvn site
-    
+    mvn site    
 ```
 
 ## Tests 💻
 
 Para obtener los tests del proyecto, ejecutar este comando:
 ```
-    mvn test
-    
+    mvn test    
 ```
 
 ## Construido con 🛠️
