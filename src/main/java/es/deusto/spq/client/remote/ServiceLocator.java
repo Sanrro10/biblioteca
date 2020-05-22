@@ -64,7 +64,6 @@ public class ServiceLocator {
 		
 		Entity<Usuario> entity = Entity.entity(u, MediaType.APPLICATION_JSON);
 		Response response = registerUserWebTarget.request().post(entity);
-		System.err.println(response);
 		if (response.getStatus() != Status.OK.getStatusCode()) {
 			logger.error("Error connecting with the server. Code: " + response.getStatus());
 			return false;
@@ -104,7 +103,6 @@ public class ServiceLocator {
 		u.setContrasenya(contrasenya);
 
 		Response response = invocationBuilder.post(Entity.entity(u, MediaType.APPLICATION_JSON));
-		System.err.println(response);
 		 if (response.getStatus() == Status.OK.getStatusCode()) {
 			return 1;
 			
@@ -123,7 +121,6 @@ public class ServiceLocator {
 		WebTarget webTarget1 = webTarget.path("server/insertarReservaSala");	
 		Entity<ReservaSala> entity = Entity.entity(rsala, MediaType.APPLICATION_JSON);
 		Response response = webTarget1.request().post(entity);
-		System.out.println(response);
 		return response;
 	}
 	/**

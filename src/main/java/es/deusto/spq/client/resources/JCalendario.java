@@ -199,7 +199,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 		monthYearPanel.add(yearChooser, BorderLayout.CENTER);
 		monthYearPanel.setBorder(BorderFactory.createEmptyBorder());
 
-		dayChooser = new DayChooser(weekOfYearVisible, this);
+		dayChooser = new DayChooser(weekOfYearVisible);
 		dayChooser.addPropertyChangeListener(this);
 		dayChooser.setLocale(this.locale);
 
@@ -839,10 +839,9 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 	 @author isanr
 	 */
 	public class DayChooser extends JDayChooser{
-		JCalendario calendario;
-		public DayChooser(boolean weekOfYearVisible, JCalendario calendario) {
+		public DayChooser(boolean weekOfYearVisible) {
 			super();
-			this.calendario = calendario;
+			
 		}
 
 		@Override
@@ -851,7 +850,7 @@ public class JCalendario extends JPanel implements PropertyChangeListener {
 			String buttonText = button.getText();
 			int day = new Integer(buttonText).intValue();
 			setDay(day);
-			CalendarioSalas.actualizar(true, true, calendario);
+			CalendarioSalas.actualizar(true, true);
 		}
 	}
 }

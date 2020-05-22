@@ -57,11 +57,11 @@ public class CalendarioSalas extends JFrame {
 	public static String fecha2 = "";
 	public static String fecha3 = "";
 	public static int maxPerso = 0;
+	static JCalendario calendario = new JCalendario();
 
 	public CalendarioSalas(final Usuario user, Controller controller) throws ParseException {
 		contentpane = new JPanel();
 
-		JCalendario calendario = new JCalendario();
 
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentpane);
@@ -91,6 +91,7 @@ public class CalendarioSalas extends JFrame {
 			combo.addItem(salas.get(i).toCombo());
 		}
 		contentpane.add(combo);
+		combo.setSelectedIndex(0);
 
 		ComboDisponibilidad.setBounds(320, 40, 90, 25);
 		List<ReservaSala> reservas = controller.cogerReservasSala();
@@ -137,7 +138,7 @@ public class CalendarioSalas extends JFrame {
 		} else {
 			btnreservar.setEnabled(true);
 		}
-		actualizar(false, false, calendario);
+		actualizar(false, false);
 
 		btnreservar.addActionListener(new ActionListener() {
 
@@ -208,7 +209,8 @@ public class CalendarioSalas extends JFrame {
 				try {
 					reserva = new ReservaSalas(user, reservaNueva, ComboDisponibilidad.getSelectedItem().toString(), controller, calendario);
 					reserva.setVisible(true);
-					ComboDisponibilidad.removeAll();
+					ComboDisponibilidad.removeAllItems();
+					combo.removeAllItems();
 					CalendarioSalas.this.dispose();
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
@@ -238,7 +240,7 @@ public class CalendarioSalas extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				actualizar(true, false, calendario);
+				actualizar(true, false);
 
 			}
 		});
@@ -262,7 +264,7 @@ public class CalendarioSalas extends JFrame {
 		});
 	}
 
-	public static void actualizar(boolean sala, boolean horas, JCalendario calendario) {
+	public static void actualizar(boolean sala, boolean horas) {
 		ServiceLocator servicelocator = new ServiceLocator();
 		Controller controller = new Controller(servicelocator);
 		List<SalaTrabajo> salas = controller.cogerSalas();
@@ -304,7 +306,7 @@ public class CalendarioSalas extends JFrame {
 		} catch (NullPointerException e) {
 			// TODO: handle exception
 		}
-		Date fecha = cal.getTime();
+		fecha = cal.getTime();
 		for (int i = 0; i < reservas.size(); i++) {
 			if (reservas.get(i).getFecha().equals(fecha)) {
 				combo.removeItem("Sala" + reservas.get(i).getCod_Sala());
@@ -316,7 +318,7 @@ public class CalendarioSalas extends JFrame {
 				textPane.setText("No hay salas disponibles este día");
 			} else {
 				ComboDisponibilidad.removeItem(ComboDisponibilidad.getSelectedItem());
-				actualizar(false, false, calendario);
+				actualizar(false, false);
 			}
 
 		} else {

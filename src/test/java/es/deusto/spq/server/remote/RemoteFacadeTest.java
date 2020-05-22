@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-
+import es.deusto.spq.server.data.Usuario;
 import es.deusto.spq.server.data.dto.ActividadDTO;
 import es.deusto.spq.server.data.dto.LibroDTO;
 import es.deusto.spq.server.data.dto.ReservaLibroDTO;
@@ -50,7 +50,7 @@ public class RemoteFacadeTest {
         libro.setTitulo("aaaq");
         solicitud = new SolicitudDTO(300, "a", "a", "a", 2);
         user1 = new UsuarioDTO("a", "a", "a", 12345, "a", false);
-        user2 = new UsuarioDTO("a@a.com", "A", "a", 12345, "123", false);
+        user2 = new UsuarioDTO("a@a.com", "a", "AA", 942687531, "123", false);
         rlibro.setCod_Libro(200);
 		rlibro.setCod_Reserva_Libro(300);
 		rlibro.setEmail("a@a.com");
@@ -66,11 +66,8 @@ public class RemoteFacadeTest {
 
 	@Test
 	public void registrarUsuarioTest(){
+		user1 = new UsuarioDTO("a", "a", "a", 12345, "a", false);
 		assertEquals(Status.OK.getStatusCode(), remote.registrarUsuario(user1).getStatus());
-	}
-	@Test
-	public void iniciarSesionTest() {
-		assertEquals(Status.OK.getStatusCode(), remote.iniciarSesion(user2).getStatus());
 	}
 	@Test
 	public void insertarReservaSalaTest() {
@@ -87,10 +84,6 @@ public class RemoteFacadeTest {
 	@Test
 	public void insertarSolicitudTest() {
 		assertEquals(Status.OK.getStatusCode(), remote.insertarSolicitud(solicitud).getStatus());
-	}
-	@Test
-	public void editarUsuarioTest() {
-		assertEquals(Status.OK.getStatusCode(), remote.editarUsuario(user2).getStatus());
 	}
 	@Test
 	public void cogerUsuariosTest() {
